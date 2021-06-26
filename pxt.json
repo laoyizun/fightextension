@@ -12,10 +12,11 @@
         "README.md",
         "assets.json",
         "mygame.ts",
-        "playgame.ts"
+        "playgame.ts",
+        "example.ts"
     ],
     "testFiles": [
-        "test.ts"
+        "example.ts"
     ],
     "targetVersions": {
         "target": "1.4.45",
