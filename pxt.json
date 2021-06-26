@@ -10,7 +10,8 @@
         "main.ts",
         "README.md",
         "assets.json",
-        "mygame.ts"
+        "mygame.ts",
+        "playgame.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -22,5 +23,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }
