@@ -509,7 +509,7 @@ namespace myGame {
     function invoke() {
         const _currentRequest = _getCurrentRequest()
         control.runInParallel(() => {
-            while (!_currentRequest.isEmpty()) {
+            while (_currentRequest.callbacks.length != 0) {
                 let timeAction = _currentRequest.pop()
                 pause(timeAction.delay)
                 timeAction.callback(_currentRequest.sprite)
@@ -525,9 +525,7 @@ namespace myGame {
     //% draggableParameters="reporter"
     //% weight=79
     export function then(delay:number, cb:(projectile: wave) => void) {
-        let f : (sprite: Sprite) =>void = cb
-        console.log("?")
-        _getCurrentRequest().pushCb(delay*1000, f)
+        _getCurrentRequest().callbacks.push({delay:delay*1000, callback:cb})
     }
 
 
