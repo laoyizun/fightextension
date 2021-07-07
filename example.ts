@@ -3911,13 +3911,8 @@ myGame.skillSet("磁暴步兵", function (player2) {
         })
     })
     myGame.setSkill(player2, myGame.SkillKind.A10, 20, function (tempVar, player3) {
-        if (myGame.dirRight(player3, myGame.playerStatus.hurted)) {
-            myGame.add(tempVar, "d", 15)
-        } else {
-            myGame.add(tempVar, "d", -15)
-        }
         myGame.atkAction(player3, myGame.atkKind.RushAtkA, 0.4)
-        myGame.shoot2(player3, 水平雷电球, player3.x + myGame.getVal(tempVar, "d"), player3.sprite.y - 3, 180, 95)
+        myGame.shoot2(player3, 水平雷电球, player3.x, player3.sprite.y - 3, 180, 95, 15)
     })
     myGame.setSkill(player2, myGame.SkillKind.A3, 5, function (tempVar, player3) {
         myGame.atkAction(player3, myGame.atkKind.BasicAtkA)

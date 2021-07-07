@@ -12,7 +12,10 @@
         "README.md",
         "assets.json",
         "mygame.ts",
-        "playgame.ts"
+        "playgame.ts",
+        "mygame-2.ts",
+        "mygame-1.ts",
+        "assets.ts"
     ],
     "testFiles": [
         "example.ts"
