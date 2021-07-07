@@ -15,13 +15,13 @@
         "playgame.ts",
         "mygame-2.ts",
         "mygame-1.ts",
-        "assets.ts",
+        "assets.ts"
+    ],
+    "testFiles": [
         "example-dragon.ts",
         "examloe-bat.ts",
         "example-ghost.ts",
-        "example-tesla.ts"
-    ],
-    "testFiles": [
+        "example-tesla.ts",
         "example.ts"
     ],
     "targetVersions": {
