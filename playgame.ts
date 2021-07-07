@@ -174,8 +174,8 @@ namespace playGame{
     b2.setFlag(SpriteFlag.Invisible, true)
     let clock1 = -1
     let clock2 = -1
-    let dialog1: game.Dialog
-    let dialog2: game.Dialog
+    let dialog1: game.SplashDialog
+    let dialog2: game.SplashDialog
     let txt1: game.Dialog
     let index1 = 0
     let index2 = 0
@@ -206,6 +206,28 @@ namespace playGame{
             }
         }
     }
+
+    function resetSplashDialog(dialog: game.SplashDialog){
+        dialog.frame = img`
+            3 3 3
+            3 . 3
+            3 3 3
+        `
+        dialog.textColor = 15
+        dialog.cursor = img`
+            .
+        `
+        let clock: number
+        dialog.update()
+        dialog.offset = 0
+        dialog.maxOffset = dialog.text.length * dialog.font.charWidth - 70
+        dialog.timer = 2
+        clock = setInterval(() => {
+            dialog.update()
+        }, 25)
+        return clock
+    }
+
     //%block
     //%group="游戏初始化"
     //%blockNamespace=游戏
@@ -215,14 +237,14 @@ namespace playGame{
 
         scene.setBackgroundColor(1)
 
-        c1.setPosition(35, 65)
-        p1.setPosition(35, 35)
-        m1.setPosition(35, 58)
-        b1.setPosition(35, 60)
-        c2.setPosition(125, 65)
-        p2.setPosition(125, 35)
-        m2.setPosition(125, 58)
-        b2.setPosition(125, 60)
+        c1.setPosition(35, 55)
+        p1.setPosition(35, 25)
+        m1.setPosition(35, 48)
+        b1.setPosition(35, 50)
+        c2.setPosition(125, 55)
+        p2.setPosition(125, 25)
+        m2.setPosition(125, 48)
+        b2.setPosition(125, 50)
         c1.setFlag(SpriteFlag.Invisible, false)
         p1.setFlag(SpriteFlag.Invisible, false)
         m1.setFlag(SpriteFlag.Invisible, false)
@@ -234,36 +256,29 @@ namespace playGame{
         
         game.pushScene()
         game.currentScene().flags |= scene.Flag.SeeThrough;
-        dialog1 = new game.Dialog(75, 26);
+        dialog1 = new game.SplashDialog(75, 23);
         const s1 = sprites.create(dialog1.image, -1);
-        s1.top = 75;
+        s1.top = 70;
         s1.left = 1;
         dialog1.setText(characters[index1].name)
         dialog1.drawTextCore();
         m1.setImage(characters[index1].character.img)
 
-        txt1 = new game.Dialog(75, 25, img`
-            . . . .
-            . . . .
-            . . . .
-            . . . .
-        `);
-        const s3 = sprites.create(txt1.image, -1);
-        s3.top = 95;
-        s3.left = 50;
-        txt1.textColor = 3
-        txt1.setText("开始游戏")
-        txt1.drawTextCore();
-
-        //game.pushScene()
-        //game.currentScene().flags |= scene.Flag.SeeThrough;
-        dialog2 = new game.Dialog(75, 26);
+        dialog2 = new game.SplashDialog(75, 23);
         const s2 = sprites.create(dialog2.image, -1);
-        s2.top = 75;
+        s2.top = 70;
         s2.left = 85;
         dialog2.setText(characters[index2].name)
         dialog2.drawTextCore();
         m2.setImage(characters[index2].character.img)
+
+        txt1 = new game.Dialog(75, 25);
+        const s3 = sprites.create(txt1.image, -1);
+        s3.top = 96;
+        s3.left = 44;
+        txt1.textColor = 3
+        txt1.setText("开始游戏")
+        txt1.drawTextCore();
 
         animation.runImageAnimation(b1, [dot, img`.`], 1000, true)
         animation.runImageAnimation(b2, [dot, img`.`], 1000, true)
@@ -271,6 +286,10 @@ namespace playGame{
         let t = 150
         let lock = 0
         let interval: number
+
+        let splashDialogClock1 = resetSplashDialog(dialog1)
+        let splashDialogClock2 = resetSplashDialog(dialog2)
+
         interval = setInterval(()=>{
             if(clock1 == -2 && clock2 == -2){
                 if(lock == 0
@@ -293,6 +312,8 @@ namespace playGame{
                     b2.lifespan = 0
                     game.popScene()
                     clearInterval(interval)
+                    clearInterval(splashDialogClock1)
+                    clearInterval(splashDialogClock2)
                     myGame.overlap(chooseCharacter(myGame.PlayerKind.Player1, index1), 
                                 chooseCharacter(myGame.PlayerKind.Player2, index2))
                 }
@@ -322,7 +343,7 @@ namespace playGame{
             else if(controller.player1.isPressed(ControllerButton.Left) && clock1 == -1){
                 clearTimeout(clock1)
                 c1.setImage(limg)
-                clearInterior(dialog1)
+                //clearInterior(dialog1)
                 index1 = (index1-1+characters.length)%characters.length
                 dialog1.setText(characters[index1].name)
                 dialog1.drawTextCore()
@@ -335,7 +356,7 @@ namespace playGame{
             else if(controller.player1.isPressed(ControllerButton.Right) && clock1 == -1){
                 clearTimeout(clock1)
                 c1.setImage(rimg)
-                clearInterior(dialog1)
+                //clearInterior(dialog1)
                 index1 = (1+index1)%characters.length
                 dialog1.setText(characters[index1].name)
                 dialog1.drawTextCore()
@@ -370,7 +391,7 @@ namespace playGame{
             else if(controller.player2.isPressed(ControllerButton.Left) && clock2 == -1){
                 clearTimeout(clock2)
                 c2.setImage(limg)
-                clearInterior(dialog2)
+                //clearInterior(dialog2)
                 index2 = (index2-1+characters.length)%characters.length
                 dialog2.setText(characters[index2].name)
                 dialog2.drawTextCore()
@@ -383,7 +404,7 @@ namespace playGame{
             else if(controller.player2.isPressed(ControllerButton.Right) && clock2 == -1){
                 clearTimeout(clock2)
                 c2.setImage(rimg)
-                clearInterior(dialog2)
+                //clearInterior(dialog2)
                 index2 = (1+index2)%characters.length
                 dialog2.setText(characters[index2].name)
                 dialog2.drawTextCore()
