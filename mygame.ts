@@ -40,7 +40,7 @@ namespace myGame{
         A9,
         //% block="⬇️+→+A"
         A10,
-        //% block=/"受身+A"
+        //% block="受身+A"
         A11,
         //% block="B"
         B,
