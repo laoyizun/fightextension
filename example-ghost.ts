@@ -10,7 +10,6 @@ function twinkle (sprite: Sprite, visTime: number, unvisTime: number, n: number)
         })
     })
 }
-
 myGame.basicSet(img`
     ........................
     ........................
@@ -702,6 +701,61 @@ myGame.basicSet(img`
     player4.sprite.setFlag(SpriteFlag.Ghost, true)
     myGame.setAbility(player4, myGame.abilityKind.def, 0.4)
 })
+let skill: myGame.skill = null
+myGame.defAnimation(function () {
+    myGame.setAnimation([img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 7 7 . . . . . . . 
+        . . . . . . . . 7 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 7 . . . . . . . . 
+        . . . . . . . . 7 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . 7 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `], "抓痕", 80)
+})
 myGame.setProjectiles("低级死灵的弹射物集合", function () {
     myGame.setProjectile(img`
         . . . . . . . . . . . . . . . . 
@@ -820,15 +874,14 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         myGame.tailshoot(projectile, 20, "抓痕")
     })
 })
-let skill: myGame.skill = null
 myGame.skillSet("低级死灵", function (player3) {
-    myGame.setSkill(player3, myGame.SkillKind.A8, 5, function (tempVar, player2) {
-        myGame.shoot2(player2, "鬼火", player2.x, player2.y)
+    myGame.setSkill(player3, myGame.SkillKind.A8, 5, function (tempVar, undefined) {
+        myGame.shoot2(player3, "鬼火", player3.x, player3.y)
     })
-    myGame.setSkill(player3, myGame.SkillKind.A9, 10, function (tempVar, player3) {
+    myGame.setSkill(player3, myGame.SkillKind.A9, 10, function (tempVar, undefined) {
         myGame.shoot2(player3, "死灵粒子", player3.x, player3.y)
     })
-    myGame.setSkill(player3, myGame.SkillKind.A10, 15, function (tempVar, player3) {
+    myGame.setSkill(player3, myGame.SkillKind.A10, 15, function (tempVar, undefined) {
         myGame.add2(tempVar, "projectile", myGame.newPosture(player3, img`
             ........................
             ........................
@@ -885,49 +938,50 @@ myGame.skillSet("低级死灵", function (player3) {
             multishot(myGame.getVal2(tempVar, "projectile"), 190, 3, 0.2, -10, "幽灵粒子")
         })
     })
-    myGame.setSkill(player3, myGame.SkillKind.B9, 10, function (tempVar, player2) {
-        if (myGame.getSprite(player2, myGame.ME.M).x < myGame.getSprite(player2, myGame.ME.E).x) {
-            myGame.getSprite(player2, myGame.ME.M).setPosition(myGame.getSprite(player2, myGame.ME.E).x + 10, myGame.getSprite(player2, myGame.ME.E).y)
-            if (myGame.dirRight(player2, myGame.playerStatus.right)) {
-                myGame.turn(player2)
+    myGame.setSkill(player3, myGame.SkillKind.B9, 10, function (tempVar, undefined) {
+        if (myGame.getSprite(player3, myGame.ME.M).x < myGame.getSprite(player3, myGame.ME.E).x) {
+            myGame.getSprite(player3, myGame.ME.M).setPosition(myGame.getSprite(player3, myGame.ME.E).x + 10, myGame.getSprite(player3, myGame.ME.E).y)
+            if (myGame.dirRight(player3, myGame.playerStatus.right)) {
+                myGame.turn(player3)
             }
         } else {
-            myGame.getSprite(player2, myGame.ME.M).setPosition(myGame.getSprite(player2, myGame.ME.E).x - 10, myGame.getSprite(player2, myGame.ME.E).y)
-            if (!(myGame.dirRight(player2, myGame.playerStatus.right))) {
-                myGame.turn(player2)
+            myGame.getSprite(player3, myGame.ME.M).setPosition(myGame.getSprite(player3, myGame.ME.E).x - 10, myGame.getSprite(player3, myGame.ME.E).y)
+            if (!(myGame.dirRight(player3, myGame.playerStatus.right))) {
+                myGame.turn(player3)
             }
         }
-        myGame.atkAction(player2, myGame.atkKind.RushAtkA, 0.7)
-        myGame.immune(player2, 1)
-        twinkle(myGame.getSprite(player2, myGame.ME.M), 0.2, 0.2, 5)
+        myGame.atkAction(player3, myGame.atkKind.RushAtkA, 0.7)
+        myGame.immune(player3, 1)
+        twinkle(myGame.getSprite(player3, myGame.ME.M), 0.2, 0.2, 5)
     })
     skill = myGame.getSkill(player3, myGame.SkillKind.B9)
     myGame.setSkill2(player3, myGame.SkillKind.B11, skill)
-    myGame.setSkill(player3, myGame.SkillKind.A9, 5, function (tempVar, player2) {
-        myGame.immune(player2, 1)
-        myGame.atkAction(player2, myGame.atkKind.BasicAtkA, 0.3)
-        myGame.run(player2)
+    myGame.setSkill(player3, myGame.SkillKind.A9, 5, function (tempVar, undefined) {
+        myGame.immune(player3, 1)
+        myGame.atkAction(player3, myGame.atkKind.BasicAtkA, 0.3)
+        myGame.run(player3)
         myGame.add3(tempVar, myGame.getSkill(player3, myGame.SkillKind.A), "A")
-        myGame.setSkill(player3, myGame.SkillKind.A, 5, function (tempVar, player4) {
-            if (myGame.dirRight(player4, myGame.playerStatus.right)) {
+        myGame.setSkill(player3, myGame.SkillKind.A, 5, function (tempVar, undefined2) {
+            if (myGame.dirRight(player3, myGame.playerStatus.right)) {
                 myGame.add(tempVar, "d", 6)
             } else {
                 myGame.add(tempVar, "d", -6)
             }
-            myGame.atkAction(player4, myGame.atkKind.BasicAtkA)
-            myGame.shoot2(player4, "幽灵爪", myGame.getHPMPXY(player4, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 1, myGame.getHPMPXY(player4, myGame.HPMP.y) + 10, 130, 100, -10)
-            myGame.shoot2(player4, "幽灵爪", myGame.getHPMPXY(player4, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 2, myGame.getHPMPXY(player4, myGame.HPMP.y) + 8, 130, 105, -15)
-            myGame.shoot2(player4, "幽灵爪", myGame.getHPMPXY(player4, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 3, myGame.getHPMPXY(player4, myGame.HPMP.y) + 6, 130, 110, -20)
-            myGame.setSkill(player3, myGame.SkillKind.A, 5, function (tempVar, player5) {
-                if (myGame.dirRight(player5, myGame.playerStatus.right)) {
+            myGame.atkAction(player3, myGame.atkKind.BasicAtkA)
+            myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 1, myGame.getHPMPXY(player3, myGame.HPMP.y) + 10, 130, 100, -10)
+            myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 2, myGame.getHPMPXY(player3, myGame.HPMP.y) + 8, 130, 105, -15)
+            myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 3, myGame.getHPMPXY(player3, myGame.HPMP.y) + 6, 130, 110, -20)
+            myGame.setSkill(player3, myGame.SkillKind.A, 5, function (tempVar, undefined3) {
+                let player5: myGame.Character = null
+                if (myGame.dirRight(player3, myGame.playerStatus.right)) {
                     myGame.add(tempVar, "d", 6)
                 } else {
                     myGame.add(tempVar, "d", -6)
                 }
-                myGame.atkAction(player5, myGame.atkKind.BasicAtkA)
-                myGame.shoot2(player5, "幽灵爪", myGame.getHPMPXY(player5, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 4, myGame.getHPMPXY(player5, myGame.HPMP.y) - 20, 230, 100, -10)
-                myGame.shoot2(player5, "幽灵爪", myGame.getHPMPXY(player5, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 5, myGame.getHPMPXY(player5, myGame.HPMP.y) - 18, 230, 105, -15)
-                myGame.shoot2(player5, "幽灵爪", myGame.getHPMPXY(player5, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 6, myGame.getHPMPXY(player5, myGame.HPMP.y) - 16, 230, 110, -20)
+                myGame.atkAction(player3, myGame.atkKind.BasicAtkA)
+                myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 4, myGame.getHPMPXY(player3, myGame.HPMP.y) - 20, 230, 100, -10)
+                myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 5, myGame.getHPMPXY(player3, myGame.HPMP.y) - 18, 230, 105, -15)
+                myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 6, myGame.getHPMPXY(player3, myGame.HPMP.y) - 16, 230, 110, -20)
             })
         })
         myGame.after(0.8, function () {

@@ -200,7 +200,6 @@ function BFanim (projectile: Sprite) {
         )
     }
 }
-
 myGame.basicSet(img`
     fff........fff..
     cbbcf......ccff.
@@ -781,8 +780,8 @@ myGame.basicSet(img`
 })
 
 myGame.skillSet("大蝙蝠", function (player3) {
-    myGame.setSkill(player3, myGame.SkillKind.A10, 20, function (tempVar, player4) {
-        myGame.add2(tempVar, "projectile", myGame.newPosture(player4, img`
+    myGame.setSkill(player3, myGame.SkillKind.A10, 20, function (tempVar, undefined) {
+        myGame.add2(tempVar, "projectile", myGame.newPosture(player3, img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . c c . . c c . . 
             . . . . . . c c c 3 c c 3 c . . 
@@ -822,12 +821,12 @@ myGame.skillSet("大蝙蝠", function (player3) {
             myGame.splitshoot(myGame.getVal2(tempVar, "projectile"), "红激光", 0, -2, 180, 75, 5)
         })
     })
-    myGame.setSkill(player3, myGame.SkillKind.B, 4, function (tempVar, player4) {
-        myGame.atkAction(player4, myGame.atkKind.BasicAtkB)
-        myGame.shoot2(player4, "音波", player4.x, player4.y, 180, 75, -3)
+    myGame.setSkill(player3, myGame.SkillKind.B, 4, function (tempVar, undefined) {
+        myGame.atkAction(player3, myGame.atkKind.BasicAtkB)
+        myGame.shoot2(player3, "音波", player3.x, player3.y, 180, 75, -3)
     })
-    myGame.setSkill(player3, myGame.SkillKind.B10, 35, function (tempVar, player4) {
-        myGame.add2(tempVar, "projectile", myGame.newPosture(player4, img`
+    myGame.setSkill(player3, myGame.SkillKind.B10, 35, function (tempVar, undefined) {
+        myGame.add2(tempVar, "projectile", myGame.newPosture(player3, img`
             ................
             ................
             ................
@@ -875,10 +874,10 @@ myGame.skillSet("大蝙蝠", function (player3) {
             myGame.splitshoot(myGame.getVal2(tempVar, "projectile"), "蝙蝠群", 0, 0, randint(120, 160), 75, 5)
         })
     })
-    myGame.setSkill(player3, myGame.SkillKind.B9, 10, function (tempVar, player4) {
-        myGame.run(player4, 120)
-        myGame.defent(player4, 0.5)
-        myGame.add2(tempVar, "projectile", myGame.newPosture(player4, img`
+    myGame.setSkill(player3, myGame.SkillKind.B9, 10, function (tempVar, undefined) {
+        myGame.run(player3, 120)
+        myGame.defent(player3, 0.5)
+        myGame.add2(tempVar, "projectile", myGame.newPosture(player3, img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . c c . c c . . . 
@@ -922,9 +921,9 @@ myGame.skillSet("大蝙蝠", function (player3) {
         myGame.setBullet2(myGame.getVal2(tempVar, "projectile"), myGame.bulletP2.rebound, true)
         myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.perishTogether, -1)
     })
-    myGame.setSkill(player3, myGame.SkillKind.B4, 4, function (tempVar, player4) {
-        myGame.defent(player4, 0.5)
-        myGame.add2(tempVar, "projectile", myGame.newPosture(player4, img`
+    myGame.setSkill(player3, myGame.SkillKind.B4, 4, function (tempVar, undefined) {
+        myGame.defent(player3, 0.5)
+        myGame.add2(tempVar, "projectile", myGame.newPosture(player3, img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . c c . . c c . . 
             . . . . . . c c c 3 c c 3 c . . 
@@ -964,10 +963,10 @@ myGame.skillSet("大蝙蝠", function (player3) {
         myGame.setBullet2(myGame.getVal2(tempVar, "projectile"), myGame.bulletP2.rebound, true)
         myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.perishTogether, -1)
     })
-    myGame.setSkill(player3, myGame.SkillKind.A3, 15, function (tempVar, player4) {
-        myGame.atkAction(player4, myGame.atkKind.RushAtkB, 0.5)
+    myGame.setSkill(player3, myGame.SkillKind.A3, 15, function (tempVar, undefined) {
+        myGame.atkAction(player3, myGame.atkKind.RushAtkB, 0.5)
         for (let index = 0; index < 4; index++) {
-            myGame.shoot2(player4, "跟踪蝙蝠", player4.x, player4.y, randint(0, 360), randint(25, 45))
+            myGame.shoot2(player3, "跟踪蝙蝠", player3.x, player3.y, randint(0, 360), randint(25, 45))
         }
     })
 })
@@ -1118,4 +1117,3 @@ myGame.setProjectiles("大蝙蝠的弹射物集合", function () {
         })
     })
 })
-

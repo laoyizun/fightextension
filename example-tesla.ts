@@ -1,15 +1,4 @@
 // 在此处测试；当此软件包作为插件使用时，将不会编译此软件包。
-let 闪电 = ""
-let 雷电射线 = ""
-let 螺旋小雷电球 = ""
-let 螺旋雷电球 = ""
-let 雷云 = ""
-let 小雷电球 = ""
-let 水平雷电球 = ""
-let 蓄力雷电 = ""
-let 随机弹 = ""
-let 竖直雷电球 = ""
-
 myGame.basicSet(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
@@ -485,52 +474,169 @@ myGame.basicSet(img`
         ............ff...fff............
         `])
 })
+let 闪电 = ""
+let 雷电射线 = ""
+let 螺旋小雷电球 = ""
+let 螺旋雷电球 = ""
+let 雷云 = ""
+let 小雷电球 = ""
+let 水平雷电球 = ""
+let 蓄力雷电 = ""
+let 随机弹 = ""
+let 竖直雷电球 = ""
+let 电球爆炸 = ""
 
+myGame.defAnimation(function () {
+    电球爆炸 = "电球爆炸"
+    myGame.setAnimation([img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . 8 8 . . . . . . 
+        . . . . 8 a . . 8 8 . a . . . . 
+        . . . 8 a 8 a 8 . . a . a . . . 
+        . . . 9 9 9 . a a a . 8 9 a . . 
+        . . 9 . . . 9 a 9 9 9 9 8 a . . 
+        . . . . . . . a a . 9 9 8 . a . 
+        . . . . . . . a 9 . 9 8 8 . . . 
+        . . 9 . . . 9 a 9 9 9 8 8 a . . 
+        . . 8 9 9 9 . a a a . 8 9 a . . 
+        . . . 8 a 8 a 8 . . 8 . a . . . 
+        . . . a 8 a . . 8 8 . a a . . . 
+        . . . . . . . . 8 8 . a . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . 8 a . . . . . . . . . . 
+        . . . 8 a 8 a 8 8 8 . . . . . . 
+        . . . a a 9 9 a 8 9 . 8 9 a . . 
+        . . 9 a . . . a 9 a a 9 8 a . . 
+        . . . . . . . . a . a 9 8 . a . 
+        . . . . . . . . a . 9 8 a . . . 
+        . . 9 a . . . a 9 a 8 8 8 a . . 
+        . . a a a 9 9 a 8 9 . 8 9 a . . 
+        . . 8 8 a 8 a 8 8 8 . . . . . . 
+        . . . . 8 a . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . 8 . . . . . . . . . . . 
+        . . . 8 a . 8 8 8 . a . . . . . 
+        . . . a a 8 9 8 a a 8 8 9 a . . 
+        . . 9 a . 9 a 9 a 9 a 9 8 a . . 
+        . . . . . a . a . . . 9 8 . a . 
+        . . . . . a . a . . . 8 a . . . 
+        . . 9 a . 9 a 9 a 9 9 8 8 a . . 
+        . . a a a 8 9 8 a a 8 8 9 a . . 
+        . . 8 8 a . 8 8 8 . a . . . . . 
+        . . . . 8 . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . a . . . 
+        . . . a 8 a . . 8 8 . a . a . . 
+        . . . 8 a 8 a a 8 a a 9 8 9 . . 
+        . . 9 9 9 9 9 a 9 9 9 8 8 . a . 
+        . . 8 9 9 9 9 a 9 9 8 8 8 . . . 
+        . . . 8 a 8 a 8 8 8 a 9 8 9 . . 
+        . . a a 8 a . . 8 8 . a . a . . 
+        . . a . . . . . . . . . a a . . 
+        . . . . . . . . . . . . a . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . 8 8 . . . . . . . . . . 
+        . . . 8 8 9 8 8 . . . . . 9 . . 
+        . . 9 a 9 a a 8 a a 9 9 9 8 . . 
+        . . a a a . 9 9 a 9 8 a 8 a a . 
+        . . a a a . 9 9 a 9 a 8 a a . . 
+        . . 9 8 9 a 8 8 8 a 9 9 9 a . . 
+        . . . 8 8 9 8 8 . . . . . 9 . . 
+        . . . . 8 8 . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . a 8 . . . . 
+        . . . . . . 8 8 8 a 8 a 8 . . . 
+        . . . 9 8 . 9 8 a 9 9 a a a . . 
+        . . a 8 9 a a 9 a . . . a 9 . . 
+        . . . 8 9 a . a . . . . . . . . 
+        . . . a 8 9 . a . . . . . . . . 
+        . . a 8 8 8 a 9 a . . . a 9 . . 
+        . . a 9 8 . 9 8 a 9 9 a a a . . 
+        . . . . . . 8 8 8 a 8 a 8 8 . . 
+        . . . . . . . . . . a 8 . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `], 电球爆炸, 100)
+})
 myGame.skillSet("磁暴步兵", function (player2) {
-    myGame.setSkill(player2, myGame.SkillKind.B1, 0, function (tempVar, player4) {
-        myGame.atkAction(player4, myGame.atkKind.BasicAtkB)
-        myGame.shoot2(player4, 竖直雷电球, player4.x, player4.y, 90, 250, 0)
+    myGame.setSkill(player2, myGame.SkillKind.B1, 0, function (tempVar, undefined) {
+        myGame.atkAction(player2, myGame.atkKind.BasicAtkB)
+        myGame.shoot2(player2, 竖直雷电球, player2.x, player2.y, 90, 250, 0)
     })
-    myGame.setSkill(player2, myGame.SkillKind.A1, 1, function (tempVar, player4) {
-        myGame.counterAttack(player4, 5, function () {
-            if (myGame.dirRight(player4, myGame.playerStatus.hurted)) {
+    myGame.setSkill(player2, myGame.SkillKind.A1, 1, function (tempVar, undefined) {
+        myGame.counterAttack(player2, 5, function () {
+            if (myGame.dirRight(player2, myGame.playerStatus.hurted)) {
                 myGame.add(tempVar, "d", 15)
             } else {
                 myGame.add(tempVar, "d", -15)
             }
-            myGame.atkAction(player4, myGame.atkKind.BasicAtkA, 4)
-            multiRandomShot(myGame.getSprite(player4, myGame.ME.P), 75, 105, 50, 105, 12, 0.3, myGame.getVal(tempVar, "d"), 0, 随机弹)
+            myGame.atkAction(player2, myGame.atkKind.BasicAtkA, 4)
+            multiRandomShot(myGame.getSprite(player2, myGame.ME.P), 75, 105, 50, 105, 12, 0.3, myGame.getVal(tempVar, "d"), 0, 随机弹)
         })
     })
-    myGame.setSkill(player2, myGame.SkillKind.A9, 5, function (tempVar, player3) {
-        myGame.atkAction(player3, myGame.atkKind.RushAtkA)
-        myGame.autoAttack(player3, 2, 15, function () {
-            myGame.shoot2(player3, 蓄力雷电, player3.x, player3.sprite.y + 7, 180, 0, 10)
+    myGame.setSkill(player2, myGame.SkillKind.A9, 5, function (tempVar, undefined) {
+        myGame.atkAction(player2, myGame.atkKind.RushAtkA)
+        myGame.autoAttack(player2, 2, 15, function () {
+            myGame.shoot2(player2, 蓄力雷电, player2.x, player2.sprite.y + 7, 180, 0, 10)
         })
     })
-    myGame.setSkill(player2, myGame.SkillKind.A10, 20, function (tempVar, player3) {
-        myGame.atkAction(player3, myGame.atkKind.RushAtkA, 0.4)
-        myGame.shoot2(player3, 水平雷电球, player3.x, player3.sprite.y - 3, 180, 95, 15)
+    myGame.setSkill(player2, myGame.SkillKind.A10, 20, function (tempVar, undefined) {
+        myGame.atkAction(player2, myGame.atkKind.RushAtkA, 0.4)
+        myGame.shoot2(player2, 水平雷电球, player2.x, player2.sprite.y - 3, 180, 95, 15)
     })
-    myGame.setSkill(player2, myGame.SkillKind.A3, 5, function (tempVar, player3) {
-        myGame.atkAction(player3, myGame.atkKind.BasicAtkA)
+    myGame.setSkill(player2, myGame.SkillKind.A3, 5, function (tempVar, undefined) {
+        myGame.atkAction(player2, myGame.atkKind.BasicAtkA)
         myGame.add(tempVar, "a", 30)
         for (let index = 0; index < 6; index++) {
-            myGame.shoot2(player3, 小雷电球, player3.enemy.x, player3.enemy.y, myGame.getVal(tempVar, "a"), -75, 100)
+            myGame.shoot2(player2, 小雷电球, player2.enemy.x, player2.enemy.y, myGame.getVal(tempVar, "a"), -75, 100)
             myGame.updateVar(120 / 6, tempVar, "a")
         }
     })
-    myGame.setSkill(player2, myGame.SkillKind.B3, 20, function (tempVar, player3) {
-        myGame.atkAction(player3, myGame.atkKind.BasicAtkB, 0.6)
+    myGame.setSkill(player2, myGame.SkillKind.B3, 20, function (tempVar, undefined) {
+        myGame.atkAction(player2, myGame.atkKind.BasicAtkB, 0.6)
         myGame.add(tempVar, "d", randint(15, 20))
         for (let index = 0; index < 2; index++) {
-            myGame.shoot2(player3, 雷云, player3.enemy.x + myGame.getVal(tempVar, "d"), 112, 90, 0, 100)
+            myGame.shoot2(player2, 雷云, player2.enemy.x + myGame.getVal(tempVar, "d"), 112, 90, 0, 100)
             myGame.add(tempVar, "d", 0 - myGame.getVal(tempVar, "d"))
         }
     })
-    myGame.setSkill(player2, myGame.SkillKind.B9, 10, function (tempVar, player4) {
-        myGame.atkAction(player4, myGame.atkKind.BasicAtkB, 0.3)
-        myGame.shoot2(player4, 螺旋雷电球, player4.x, player4.y - 10, 120, 50)
+    myGame.setSkill(player2, myGame.SkillKind.B9, 10, function (tempVar, undefined) {
+        myGame.atkAction(player2, myGame.atkKind.BasicAtkB, 0.3)
+        myGame.shoot2(player2, 螺旋雷电球, player2.x, player2.y - 10, 120, 50)
     })
 })
 myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
