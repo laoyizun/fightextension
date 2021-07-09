@@ -877,7 +877,7 @@ function _runAnimation(name: string, loop: boolean = false){
     //%blockNamespace=技能
     //%group="技能设置"
     //%afterOnStart=true
-    //%blockId=setSkill block="设置技能 %player=variables_get(player) %str=SkillKind 消耗mp %mp"
+    //%blockId=setSkill block="设置技能 $player=variables_get(player) %str=SkillKind 消耗mp %mp"
     //%str.defl=SkillKind.A mp.defl=0
     //%weight=90
     //%topblock=false
