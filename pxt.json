@@ -23,7 +23,7 @@
     ],
     "testFiles": [
         "example-dragon.ts",
-        "examloe-bat.ts",
+        "example-bat.ts",
         "example-ghost.ts",
         "example-tesla.ts",
         "example.ts"
