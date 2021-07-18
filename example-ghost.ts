@@ -1,8 +1,8 @@
 // 在此处测试；当此软件包作为插件使用时，将不会编译此软件包。
 function twinkle (sprite: Sprite, visTime: number, unvisTime: number, n: number) {
-    myGame.after(visTime, function () {
+    fightext_skill.after(visTime, function () {
         sprite.setFlag(SpriteFlag.Invisible, true)
-        myGame.after(unvisTime, function () {
+        fightext_skill.after(unvisTime, function () {
             sprite.setFlag(SpriteFlag.Invisible, false)
             if (n > 1) {
                 twinkle(sprite, visTime, unvisTime, n - 1)
@@ -10,7 +10,7 @@ function twinkle (sprite: Sprite, visTime: number, unvisTime: number, n: number)
         })
     })
 }
-myGame.basicSet(img`
+fightext_character.basicSet(img`
     ........................
     ........................
     ........................
@@ -36,7 +36,7 @@ myGame.basicSet(img`
     ........................
     ........................
     `, "低级死灵", function (player4) {
-    myGame.setAtkImage(player4, myGame.atkimgKind.hand1, img`
+    fightext_character.setAtkImage(player4, fightext_character.atkimgKind.hand1, img`
         ........................
         ........................
         ........................
@@ -87,7 +87,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setAtkImage(player4, myGame.atkimgKind.hand2, img`
+    fightext_character.setAtkImage(player4, fightext_character.atkimgKind.hand2, img`
         ........................
         ........................
         ........................
@@ -138,7 +138,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setAtkImage(player4, myGame.atkimgKind.leg1, img`
+    fightext_character.setAtkImage(player4, fightext_character.atkimgKind.leg1, img`
         ........................
         ........................
         ........................
@@ -189,7 +189,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setAtkImage(player4, myGame.atkimgKind.leg2, img`
+    fightext_character.setAtkImage(player4, fightext_character.atkimgKind.leg2, img`
         ........................
         ........................
         ........................
@@ -240,7 +240,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setStImage(player4, myGame.stimgKind.Defence, img`
+    fightext_character.setStImage(player4, fightext_character.stimgKind.Defence, img`
         ........................
         ........777.............
         ..........77777.........
@@ -266,7 +266,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setStImage(player4, myGame.stimgKind.Hitover, img`
+    fightext_character.setStImage(player4, fightext_character.stimgKind.Hitover, img`
         ........................
         ........................
         ........................
@@ -292,7 +292,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setStImage(player4, myGame.stimgKind.Lie, img`
+    fightext_character.setStImage(player4, fightext_character.stimgKind.Lie, img`
         ........................
         ........................
         ........................
@@ -318,7 +318,7 @@ myGame.basicSet(img`
         ........ff1111ff........
         ..........ffff..........
         `)
-    myGame.setStImage(player4, myGame.stimgKind.Stand, img`
+    fightext_character.setStImage(player4, fightext_character.stimgKind.Stand, img`
         ........................
         ........................
         ........................
@@ -344,7 +344,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setStImage(player4, myGame.stimgKind.Quickst, img`
+    fightext_character.setStImage(player4, fightext_character.stimgKind.Quickst, img`
         ........................
         ........................
         ........................
@@ -370,7 +370,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `)
-    myGame.setWalkImage(player4, myGame.aniKind.Hurt, [img`
+    fightext_character.setWalkImage(player4, fightext_character.aniKind.Hurt, [img`
         ........................
         ........................
         ........................
@@ -446,7 +446,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `])
-    myGame.setWalkImage(player4, myGame.aniKind.Stand, [img`
+    fightext_character.setWalkImage(player4, fightext_character.aniKind.Stand, [img`
         ........................
         ........................
         ........................
@@ -572,7 +572,7 @@ myGame.basicSet(img`
         ........................
         ........................
         `])
-    myGame.setWalkImage(player4, myGame.aniKind.Walk, [img`
+    fightext_character.setWalkImage(player4, fightext_character.aniKind.Walk, [img`
         ........................
         ........................
         ........................
@@ -699,11 +699,11 @@ myGame.basicSet(img`
         ........................
         `], 100)
     player4.sprite.setFlag(SpriteFlag.Ghost, true)
-    myGame.setAbility(player4, myGame.abilityKind.def, 0.4)
+    fightext_character.setAbility(player4, fightext_character.abilityKind.def, 0.4)
 })
-let skill: myGame.skill = null
-myGame.defAnimation(function () {
-    myGame.setAnimation([img`
+let skill: fightext_skill.skill = null
+fightext_animation.defAnimation(function () {
+    fightext_animation.setAnimation([img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -756,8 +756,8 @@ myGame.defAnimation(function () {
         . . . . . . . . . . . . . . . . 
         `], "抓痕", 80)
 })
-myGame.setProjectiles("低级死灵的弹射物集合", function () {
-    myGame.setProjectile(img`
+fightext_projectile.setProjectiles("低级死灵的弹射物集合", function () {
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . 9 1 9 . . . . . . . 
@@ -775,11 +775,11 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "鬼火", function (projectile) {
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
-        myGame.circular(projectile, 3, 0, myGame.clockwise.p, 50)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.circular(projectile, 3, 0, fightext_projectile.clockwise.p, 50)
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -797,23 +797,23 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "死灵粒子", function (projectile) {
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
         projectile.ay = -100
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
-        myGame.then(0.5, function (projectile) {
+        fightext_projectile.then(0.5, function (projectile) {
             projectile.ay = 0
-            myGame.acceToV(projectile, 0.5, 1.5, 0)
+            fightext_projectile.acceToV(projectile, 0.5, 1.5, 0)
         })
-        myGame.then(0.5, function (projectile) {
-            myGame.circular(projectile, 30, 0)
+        fightext_projectile.then(0.5, function (projectile) {
+            fightext_projectile.circular(projectile, 30, 0)
         })
-        myGame.then(2, function (projectile) {
-            myGame.stopcircular(projectile)
-            myGame.aimedshot(projectile)
+        fightext_projectile.then(2, function (projectile) {
+            fightext_projectile.stopcircular(projectile)
+            fightext_projectile.aimedshot(projectile)
         })
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -831,18 +831,18 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "幽灵粒子", function (projectile) {
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
         projectile.lifespan = 3000
-        myGame.bulletInterval(0.5, projectile, function () {
+        fightext_projectile.bulletInterval(0.5, projectile, function () {
             projectile.setFlag(SpriteFlag.Invisible, true)
         })
-        myGame.after(0.25, function () {
-            myGame.bulletInterval(0.5, projectile, function () {
+        fightext_skill.after(0.25, function () {
+            fightext_projectile.bulletInterval(0.5, projectile, function () {
                 projectile.setFlag(SpriteFlag.Invisible, false)
             })
         })
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -861,28 +861,28 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         `, "幽灵爪", function (projectile) {
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
         projectile.lifespan = 1000
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 2)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 3)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 2)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hurted, 3)
         if (projectile.vy < 0) {
-            myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
+            fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
         } else {
-            myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, -75)
+            fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, -75)
         }
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
-        myGame.tailshoot(projectile, 20, "抓痕")
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.tailshoot(projectile, 20, "抓痕")
     })
 })
-myGame.skillSet("低级死灵", function (player3) {
-    myGame.setSkill(player3, myGame.SkillKind.A8, 5, function (tempVar, undefined) {
-        myGame.shoot2(player3, "鬼火", player3.x, player3.y)
+fightext_skill.skillSet("低级死灵", function (player3) {
+    fightext_skill.setSkill(player3, fightext_skill.SkillKind.A8, 5, function (tempVar, undefined) {
+        fightext_skill.shoot2(player3, "鬼火", player3.x, player3.y)
     })
-    myGame.setSkill(player3, myGame.SkillKind.A9, 10, function (tempVar, undefined) {
-        myGame.shoot2(player3, "死灵粒子", player3.x, player3.y)
+    fightext_skill.setSkill(player3, fightext_skill.SkillKind.A9, 10, function (tempVar, undefined) {
+        fightext_skill.shoot2(player3, "死灵粒子", player3.x, player3.y)
     })
-    myGame.setSkill(player3, myGame.SkillKind.A10, 15, function (tempVar, undefined) {
-        myGame.add2(tempVar, "projectile", myGame.newPosture(player3, img`
+    fightext_skill.setSkill(player3, fightext_skill.SkillKind.A10, 15, function (tempVar, undefined) {
+        fightext_skill.add2(tempVar, "projectile", fightext_skill.newPosture(player3, img`
             ........................
             ........................
             ........................
@@ -933,59 +933,59 @@ myGame.skillSet("低级死灵", function (player3) {
             ........................
             ........................
             `))
-        multishot(myGame.getVal2(tempVar, "projectile"), 170, 3, 0.2, 10, "幽灵粒子")
-        myGame.after(0.6, function () {
-            multishot(myGame.getVal2(tempVar, "projectile"), 190, 3, 0.2, -10, "幽灵粒子")
+        multishot(fightext_skill.getVal2(tempVar, "projectile"), 170, 3, 0.2, 10, "幽灵粒子")
+        fightext_skill.after(0.6, function () {
+            multishot(fightext_skill.getVal2(tempVar, "projectile"), 190, 3, 0.2, -10, "幽灵粒子")
         })
     })
-    myGame.setSkill(player3, myGame.SkillKind.B9, 10, function (tempVar, undefined) {
-        if (myGame.getSprite(player3, myGame.ME.M).x < myGame.getSprite(player3, myGame.ME.E).x) {
-            myGame.getSprite(player3, myGame.ME.M).setPosition(myGame.getSprite(player3, myGame.ME.E).x + 10, myGame.getSprite(player3, myGame.ME.E).y)
-            if (myGame.dirRight(player3, myGame.playerStatus.right)) {
-                myGame.turn(player3)
+    fightext_skill.setSkill(player3, fightext_skill.SkillKind.B9, 10, function (tempVar, undefined) {
+        if (fightext_character.getSprite(player3, fightext_character.ME.M).x < fightext_character.getSprite(player3, fightext_character.ME.E).x) {
+            fightext_character.getSprite(player3, fightext_character.ME.M).setPosition(fightext_character.getSprite(player3, fightext_character.ME.E).x + 10, fightext_character.getSprite(player3, fightext_character.ME.E).y)
+            if (fightext_character.dirRight(player3, fightext_character.playerStatus.right)) {
+                fightext_skill.turn(player3)
             }
         } else {
-            myGame.getSprite(player3, myGame.ME.M).setPosition(myGame.getSprite(player3, myGame.ME.E).x - 10, myGame.getSprite(player3, myGame.ME.E).y)
-            if (!(myGame.dirRight(player3, myGame.playerStatus.right))) {
-                myGame.turn(player3)
+            fightext_character.getSprite(player3, fightext_character.ME.M).setPosition(fightext_character.getSprite(player3, fightext_character.ME.E).x - 10, fightext_character.getSprite(player3, fightext_character.ME.E).y)
+            if (!(fightext_character.dirRight(player3, fightext_character.playerStatus.right))) {
+                fightext_skill.turn(player3)
             }
         }
-        myGame.atkAction(player3, myGame.atkKind.RushAtkA, 0.7)
-        myGame.immune(player3, 1)
-        twinkle(myGame.getSprite(player3, myGame.ME.M), 0.2, 0.2, 5)
+        fightext_character.atkAction(player3, fightext_character.atkKind.RushAtkA, 0.7)
+        fightext_skill.immune(player3, 1)
+        twinkle(fightext_character.getSprite(player3, fightext_character.ME.M), 0.2, 0.2, 5)
     })
-    skill = myGame.getSkill(player3, myGame.SkillKind.B9)
-    myGame.setSkill2(player3, myGame.SkillKind.B11, skill)
-    myGame.setSkill(player3, myGame.SkillKind.A9, 5, function (tempVar, undefined) {
-        myGame.immune(player3, 1)
-        myGame.atkAction(player3, myGame.atkKind.BasicAtkA, 0.3)
-        myGame.run(player3)
-        myGame.add3(tempVar, myGame.getSkill(player3, myGame.SkillKind.A), "A")
-        myGame.setSkill(player3, myGame.SkillKind.A, 5, function (tempVar, undefined2) {
-            if (myGame.dirRight(player3, myGame.playerStatus.right)) {
-                myGame.add(tempVar, "d", 6)
+    skill = fightext_skill.getSkill(player3, fightext_skill.SkillKind.B9)
+    fightext_skill.setSkill2(player3, fightext_skill.SkillKind.B11, skill)
+    fightext_skill.setSkill(player3, fightext_skill.SkillKind.A9, 5, function (tempVar, undefined) {
+        fightext_skill.immune(player3, 1)
+        fightext_character.atkAction(player3, fightext_character.atkKind.BasicAtkA, 0.3)
+        fightext_skill.run(player3)
+        fightext_skill.add3(tempVar, fightext_skill.getSkill(player3, fightext_skill.SkillKind.A), "A")
+        fightext_skill.setSkill(player3, fightext_skill.SkillKind.A, 5, function (tempVar, undefined2) {
+            if (fightext_character.dirRight(player3, fightext_character.playerStatus.right)) {
+                fightext_skill.add(tempVar, "d", 6)
             } else {
-                myGame.add(tempVar, "d", -6)
+                fightext_skill.add(tempVar, "d", -6)
             }
-            myGame.atkAction(player3, myGame.atkKind.BasicAtkA)
-            myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 1, myGame.getHPMPXY(player3, myGame.HPMP.y) + 10, 130, 100, -10)
-            myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 2, myGame.getHPMPXY(player3, myGame.HPMP.y) + 8, 130, 105, -15)
-            myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 3, myGame.getHPMPXY(player3, myGame.HPMP.y) + 6, 130, 110, -20)
-            myGame.setSkill(player3, myGame.SkillKind.A, 5, function (tempVar, undefined3) {
-                let player5: myGame.Character = null
-                if (myGame.dirRight(player3, myGame.playerStatus.right)) {
-                    myGame.add(tempVar, "d", 6)
+            fightext_character.atkAction(player3, fightext_character.atkKind.BasicAtkA)
+            fightext_skill.shoot2(player3, "幽灵爪", fightext_character.getHPMPXY(player3, fightext_character.HPMP.x) + fightext_skill.getVal(tempVar, "d") * 1, fightext_character.getHPMPXY(player3, fightext_character.HPMP.y) + 10, 130, 100, -10)
+            fightext_skill.shoot2(player3, "幽灵爪", fightext_character.getHPMPXY(player3, fightext_character.HPMP.x) + fightext_skill.getVal(tempVar, "d") * 2, fightext_character.getHPMPXY(player3, fightext_character.HPMP.y) + 8, 130, 105, -15)
+            fightext_skill.shoot2(player3, "幽灵爪", fightext_character.getHPMPXY(player3, fightext_character.HPMP.x) + fightext_skill.getVal(tempVar, "d") * 3, fightext_character.getHPMPXY(player3, fightext_character.HPMP.y) + 6, 130, 110, -20)
+            fightext_skill.setSkill(player3, fightext_skill.SkillKind.A, 5, function (tempVar, undefined3) {
+                let player5: fightext_character.Character = null
+                if (fightext_character.dirRight(player3, fightext_character.playerStatus.right)) {
+                    fightext_skill.add(tempVar, "d", 6)
                 } else {
-                    myGame.add(tempVar, "d", -6)
+                    fightext_skill.add(tempVar, "d", -6)
                 }
-                myGame.atkAction(player3, myGame.atkKind.BasicAtkA)
-                myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 4, myGame.getHPMPXY(player3, myGame.HPMP.y) - 20, 230, 100, -10)
-                myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 5, myGame.getHPMPXY(player3, myGame.HPMP.y) - 18, 230, 105, -15)
-                myGame.shoot2(player3, "幽灵爪", myGame.getHPMPXY(player3, myGame.HPMP.x) + myGame.getVal(tempVar, "d") * 6, myGame.getHPMPXY(player3, myGame.HPMP.y) - 16, 230, 110, -20)
+                fightext_character.atkAction(player3, fightext_character.atkKind.BasicAtkA)
+                fightext_skill.shoot2(player3, "幽灵爪", fightext_character.getHPMPXY(player3, fightext_character.HPMP.x) + fightext_skill.getVal(tempVar, "d") * 4, fightext_character.getHPMPXY(player3, fightext_character.HPMP.y) - 20, 230, 100, -10)
+                fightext_skill.shoot2(player3, "幽灵爪", fightext_character.getHPMPXY(player3, fightext_character.HPMP.x) + fightext_skill.getVal(tempVar, "d") * 5, fightext_character.getHPMPXY(player3, fightext_character.HPMP.y) - 18, 230, 105, -15)
+                fightext_skill.shoot2(player3, "幽灵爪", fightext_character.getHPMPXY(player3, fightext_character.HPMP.x) + fightext_skill.getVal(tempVar, "d") * 6, fightext_character.getHPMPXY(player3, fightext_character.HPMP.y) - 16, 230, 110, -20)
             })
         })
-        myGame.after(0.8, function () {
-            myGame.setSkill2(player3, myGame.SkillKind.A, myGame.getVal3(tempVar, "A"))
+        fightext_skill.after(0.8, function () {
+            fightext_skill.setSkill2(player3, fightext_skill.SkillKind.A, fightext_skill.getVal3(tempVar, "A"))
         })
     })
 })

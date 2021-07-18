@@ -3,7 +3,7 @@
 namespace matchstickMen{
     export function f(){
         //复制以下内容到自己项目的main.ts
-        myGame.basicSet(img`
+        fightext_character.basicSet(img`
     fff........fff..
     cbbcf......ccff.
     .cbbcf......ccff
@@ -27,7 +27,7 @@ namespace matchstickMen{
     ................
     ................
             `, "未命名", function (player) {
-            myGame.setAtkImage(player, myGame.atkimgKind.hand1, img`
+            fightext_character.setAtkImage(player, fightext_character.atkimgKind.hand1, img`
                 ...........fff..
                 fff........ccfff
                 cbbcf...cc.cccff
@@ -76,7 +76,7 @@ namespace matchstickMen{
                 ........................................
                 ........................................
                 `)
-            myGame.setAtkImage(player, myGame.atkimgKind.hand2, img`
+            fightext_character.setAtkImage(player, fightext_character.atkimgKind.hand2, img`
                 ...........fff..
                 fff........ccfff
                 cbbcf...cc.cccff
@@ -125,7 +125,7 @@ namespace matchstickMen{
                 ........................................
                 ........................................
                 `)
-            myGame.setAtkImage(player, myGame.atkimgKind.leg1, img`
+            fightext_character.setAtkImage(player, fightext_character.atkimgKind.leg1, img`
                 ...........fff..
                 fff........ccfff
                 cbbcf...cc.cccff
@@ -166,7 +166,7 @@ namespace matchstickMen{
                     . . . . . . . . . . . . . . . .
                     . . . . . . . . . . . . . . . .
                 `)
-            myGame.setAtkImage(player, myGame.atkimgKind.leg2, img`
+            fightext_character.setAtkImage(player, fightext_character.atkimgKind.leg2, img`
                 ...........fff..
                 fff........ccfff
                 cbbcf...cc.cccff
@@ -207,7 +207,7 @@ namespace matchstickMen{
                 . . . . . . . . . . . . . . . .
                 . . . . . . . . . . . . . . . .
                 `)
-            myGame.setStImage(player, myGame.stimgKind.Defence, img`
+            fightext_character.setStImage(player, fightext_character.stimgKind.Defence, img`
                 . . . . . . . . . . . . . . . .
                 . . . . . . . . c c . . c c . .
                 . . . . . . c c c 3 c c 3 c . .
@@ -225,7 +225,7 @@ namespace matchstickMen{
                 c c c c . . . . . . . c c c . .
                 . . . . . . . . . . . . . . . .
                 `)
-            myGame.setStImage(player, myGame.stimgKind.Hitover, img`
+            fightext_character.setStImage(player, fightext_character.stimgKind.Hitover, img`
                 ...fffffff......
                 ..fbbbbbbcf.....
                 .f2222bbbbcf....
@@ -247,7 +247,7 @@ namespace matchstickMen{
                 ................
                 ................
                 `)
-            myGame.setStImage(player, myGame.stimgKind.Lie, img`
+            fightext_character.setStImage(player, fightext_character.stimgKind.Lie, img`
                 . . . . . . . . . . . . . . . .
                 . . c c c . . . . . . . c c c c
                 . c c c . . . . . . c c c c c .
@@ -265,7 +265,7 @@ namespace matchstickMen{
                 . . c c . . c c . . . . . . . .
                 . . . . . . . . . . . . . . . .
                 `)
-            myGame.setStImage(player, myGame.stimgKind.Stand, img`
+            fightext_character.setStImage(player, fightext_character.stimgKind.Stand, img`
                 fff........fff..
                 cbbcf......ccff.
                 .cbbcf......ccff
@@ -289,7 +289,7 @@ namespace matchstickMen{
                 ................
                 ................
                 `)
-            myGame.setStImage(player, myGame.stimgKind.Quickst, img`
+            fightext_character.setStImage(player, fightext_character.stimgKind.Quickst, img`
                 . f f f . . . . . . . . f f f .
                 . c b b c f . . . . . . . c f f
                 . . c b b c f . . . . . . c c f
@@ -307,7 +307,7 @@ namespace matchstickMen{
                 . . . . . f c b b b b b b f . .
                 . . . . . . f f f f f f f . . .
                 `)
-            myGame.setWalkImage(player, myGame.aniKind.Hurt, [img`
+            fightext_character.setWalkImage(player, fightext_character.aniKind.Hurt, [img`
                 . f f f . . . . . . 5 . f f f .
                 . c b b c f . . . . 5 . . c f f
                 . . c b b c f . . . 5 . . c c f
@@ -393,7 +393,7 @@ namespace matchstickMen{
                 . c c c c c f f f f f f f . . .
                 c c c c . . . . . . . . . . . .
                 `])
-            myGame.setWalkImage(player, myGame.aniKind.Stand, [img`
+            fightext_character.setWalkImage(player, fightext_character.aniKind.Stand, [img`
                 fff........fff..
                 cbbcf......ccff.
                 .cbbcf......ccff
@@ -486,7 +486,7 @@ namespace matchstickMen{
                 ................
                 ................
                 `])
-            myGame.setWalkImage(player, myGame.aniKind.Walk, [img`
+            fightext_character.setWalkImage(player, fightext_character.aniKind.Walk, [img`
                 fff........fff..
                 cbbcf......ccff.
                 .cbbcf......ccff
@@ -579,13 +579,13 @@ namespace matchstickMen{
                 ................
                 ................
                 `], 100)
-            myGame.setAbility(player, myGame.abilityKind.jumpspeed, 150)
+            fightext_character.setAbility(player, fightext_character.abilityKind.jumpspeed, 150)
         })
 
-        myGame.skillSet("未命名", function (player) {
-            myGame.setSkill(player, myGame.SkillKind.A, 0, function (tempVar, player2) {
+        fightext_skill.skillSet("未命名", function (player) {
+            fightext_skill.setSkill(player, fightext_skill.SkillKind.A, 0, function (tempVar, player2) {
             })
-            myGame.setSkill(player, myGame.SkillKind.B, 0, function (tempVar, player2) {
+            fightext_skill.setSkill(player, fightext_skill.SkillKind.B, 0, function (tempVar, player2) {
             })
         })
         //复制到这里为止

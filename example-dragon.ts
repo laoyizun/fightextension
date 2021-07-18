@@ -1,5 +1,5 @@
 // 在此处测试；当此软件包作为插件使用时，将不会编译此软件包。
-myGame.basicSet(img`
+fightext_character.basicSet(img`
     ........................
     ........................
     ...........ccc..........
@@ -25,7 +25,7 @@ myGame.basicSet(img`
     ......cccdd555dcccccc...
     ........cccccccc........
     `, "恶龙", function (player2) {
-    myGame.setAtkImage(player2, myGame.atkimgKind.hand1, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.hand1, img`
         ........................
         ........................
         ........................
@@ -76,7 +76,7 @@ myGame.basicSet(img`
         ..................................555...
         ....................................55..
         `)
-    myGame.setAtkImage(player2, myGame.atkimgKind.hand2, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.hand2, img`
         ........................
         ........................
         ........................
@@ -127,7 +127,7 @@ myGame.basicSet(img`
         ..................................222...
         ....................................22..
         `)
-    myGame.setAtkImage(player2, myGame.atkimgKind.leg1, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.leg1, img`
         ........................
         ........................
         ........................
@@ -178,7 +178,7 @@ myGame.basicSet(img`
         ..................................444...
         ....................................44..
         `)
-    myGame.setAtkImage(player2, myGame.atkimgKind.leg2, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.leg2, img`
         ........................
         ........................
         ........................
@@ -229,7 +229,7 @@ myGame.basicSet(img`
         ..................................442...
         ....................................42..
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Defence, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Defence, img`
         ........ccc.............
         ........cccccccc........
         .....cc..cc55555cc......
@@ -255,7 +255,7 @@ myGame.basicSet(img`
         ......cccdd555dcccccc...
         ........cccccccc........
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Hitover, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Hitover, img`
         ........ccc.............
         .......c555cccccccc.....
         ......c5555dbbbbbbccc...
@@ -281,7 +281,7 @@ myGame.basicSet(img`
         ..........cc............
         ........................
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Lie, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Lie, img`
         ........................
         ................cccc....
         ................cddbc...
@@ -307,7 +307,7 @@ myGame.basicSet(img`
         ......c555ccc...........
         .......ccc..............
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Stand, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Stand, img`
         ........................
         ........................
         ...........ccc..........
@@ -333,7 +333,7 @@ myGame.basicSet(img`
         ......cccdd555dcccccc...
         ........cccccccc........
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Quickst, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Quickst, img`
         ........................
         ............cc..........
         ............ccc.........
@@ -359,7 +359,7 @@ myGame.basicSet(img`
         .....cccccccc555c.......
         .............ccc........
         `)
-    myGame.setWalkImage(player2, myGame.aniKind.Hurt, [img`
+    fightext_character.setWalkImage(player2, fightext_character.aniKind.Hurt, [img`
         .........ccc............
         .........cccccccc.......
         ......cc..cc55555cc.....
@@ -485,7 +485,7 @@ myGame.basicSet(img`
         .....ccccdd555dccccc....
         ........cccccccc........
         `])
-    myGame.setWalkImage(player2, myGame.aniKind.Walk, [img`
+    fightext_character.setWalkImage(player2, fightext_character.aniKind.Walk, [img`
         ........................
         ........................
         ...........cc...........
@@ -636,17 +636,17 @@ myGame.basicSet(img`
         ......ccccbddddbc.......
         ..........cd5555dc......
         `], 100)
-    myGame.setAbility(player2, myGame.abilityKind.def, 0.4)
+    fightext_character.setAbility(player2, fightext_character.abilityKind.def, 0.4)
 })
 
 let 替身巨龙 = ""
 let 火球 = ""
 let 尾焰 = ""
-let projectile: myGame.WaveSprite = null
+let projectile: fightext_projectile.WaveSprite = null
 let skill2 = null
-myGame.skillSet("恶龙", function (player2) {
-    myGame.setSkill(player2, myGame.SkillKind.B8, 8, function (tempVar, player2) {
-        multishot(myGame.newPosture(player2, img`
+fightext_skill.skillSet("恶龙", function (player2) {
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.B8, 8, function (tempVar, player2) {
+        multishot(fightext_skill.newPosture(player2, img`
             ........................................
             ........................................
             ........................................
@@ -690,8 +690,8 @@ myGame.skillSet("恶龙", function (player2) {
             . . . . . . . . . . . . . . . . 
             `), 180, 3, 0.3, 0, 火球)
     })
-    myGame.setSkill(player2, myGame.SkillKind.A8, 5, function (tempVar, player2) {
-        multishot(myGame.newPosture(player2, img`
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.A8, 5, function (tempVar, player2) {
+        multishot(fightext_skill.newPosture(player2, img`
             ........................................
             ........................................
             ........................................
@@ -735,12 +735,12 @@ myGame.skillSet("恶龙", function (player2) {
             . . . . . . . . . . . . . . . . 
             `), 190, 3, 0, -10, 火球)
     })
-    myGame.setSkill(player2, myGame.SkillKind.B10, 60, function (tempVar, player2) {
-        myGame.atkAction(player2, myGame.atkKind.RushAtkB, 1)
-        myGame.shoot2(player2, 替身巨龙, player2.x, player2.y - 25, 180, 0, 30)
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.B10, 60, function (tempVar, player2) {
+        fightext_character.atkAction(player2, fightext_character.atkKind.RushAtkB, 1)
+        fightext_skill.shoot2(player2, 替身巨龙, player2.x, player2.y - 25, 180, 0, 30)
     })
-    myGame.setSkill(player2, myGame.SkillKind.B9, 15, function (tempVar, player2) {
-        projectile = myGame.newPosture(player2, img`
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.B9, 15, function (tempVar, player2) {
+        projectile = fightext_skill.newPosture(player2, img`
             ........................................
             ........................................
             ........................................
@@ -783,10 +783,10 @@ myGame.skillSet("恶龙", function (player2) {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `)
-        myGame.shoot2(player2, "火焰弹", player2.x, player2.y + 3, 180, 100, 10)
+        fightext_skill.shoot2(player2, "火焰弹", player2.x, player2.y + 3, 180, 100, 10)
     })
-    myGame.setSkill(player2, myGame.SkillKind.A9, 15, function (tempVar, player2) {
-        multishot(myGame.newPosture(player2, img`
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.A9, 15, function (tempVar, player2) {
+        multishot(fightext_skill.newPosture(player2, img`
             ........................................
             ........................................
             ........................................
@@ -830,8 +830,8 @@ myGame.skillSet("恶龙", function (player2) {
             . . . . . . . . . . . . . . . . 
             `), 190, 6, 0.1, 0, "火焰轮")
     })
-    myGame.setSkill(player2, myGame.SkillKind.A1, 25, function (tempVar, player2) {
-        projectile = myGame.newPosture(player2, img`
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.A1, 25, function (tempVar, player2) {
+        projectile = fightext_skill.newPosture(player2, img`
             ........................................
             ........................................
             ........................................
@@ -874,12 +874,12 @@ myGame.skillSet("恶龙", function (player2) {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `)
-        myGame.shoot2(player2, "星星之火", player2.x, player2.y, 180, 0, 10)
+        fightext_skill.shoot2(player2, "星星之火", player2.x, player2.y, 180, 0, 10)
     })
 })
 
-myGame.setProjectiles("恶龙的弹射物集合", function () {
-    myGame.setProjectile(img`
+fightext_projectile.setProjectiles("恶龙的弹射物集合", function () {
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -897,12 +897,12 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "蓝火球", function (projectile) {
-        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 30)
-        myGame.setBullet(projectile, myGame.bulletP.hitrec, 600)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,1)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 30)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hitrec, 600)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,1)
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -920,16 +920,16 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "黑火球", function (projectile) {
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 10)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 120)
-        myGame.setBullet(projectile, myGame.bulletP.hitrec, 400)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,5)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hurted, 10)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 120)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hitrec, 400)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,5)
     })
-    替身巨龙 = myGame.strProjectiles("替身巨龙")
-    myGame.setProjectile(img`
+    替身巨龙 = fightext_projectile.strProjectiles("替身巨龙")
+    fightext_projectile.setProjectile(img`
         ..................................bbbbbbbbbbbbbbbbbbb........................
         ...............................bbbbb5555555555555555bbb......................
         ....................cbb......bbb5555555555555555555555bb.....................
@@ -1008,25 +1008,25 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         ....ccc..ccccc...............................................................
         `, 替身巨龙, function (projectile) {
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,99)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,99)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
         projectile.setStayInScreen(true)
         for (let index = 0; index < randint(30, randint(40, randint(60, 80))); index++) {
-            myGame.then(0.1, function (projectile) {
-                myGame.splitshoot(projectile, "红火球", 0, -23, randint(randint(130, 180), 230), 75, 10)
+            fightext_projectile.then(0.1, function (projectile) {
+                fightext_projectile.splitshoot(projectile, "红火球", 0, -23, randint(randint(130, 180), 230), 75, 10)
                 if (Math.percentChance(33.3)) {
-                    myGame.splitshoot(projectile, "蓝火球", 0, -23, randint(randint(130, 180), 230), 75, 10)
+                    fightext_projectile.splitshoot(projectile, "蓝火球", 0, -23, randint(randint(130, 180), 230), 75, 10)
                 }
                 if (Math.percentChance(10)) {
-                    myGame.splitshoot(projectile, "黑火球", 0, -23, randint(randint(130, 180), 230), 75, 10)
+                    fightext_projectile.splitshoot(projectile, "黑火球", 0, -23, randint(randint(130, 180), 230), 75, 10)
                 }
             })
         }
-        myGame.then(1.5, function (projectile) {
+        fightext_projectile.then(1.5, function (projectile) {
             projectile.destroy()
         })
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -1044,12 +1044,12 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "红火球", function (projectile) {
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 3)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,3)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 3)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,3)
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -1067,15 +1067,15 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . 3 3 . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "星星之火", function (projectile) {
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
         projectile.lifespan = 2500
-        myGame.overlapAct(projectile, myGame.overlapKind.three, function () {
+        fightext_projectile.overlapAct(projectile, fightext_sprites.overlapKind.three, function () {
             for (let index = 0; index < 3; index++) {
-                myGame.splitshoot(projectile, "火焰柱", 0, 0, 180, randint(-50, 50))
+                fightext_projectile.splitshoot(projectile, "火焰柱", 0, 0, 180, randint(-50, 50))
             }
         })
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . 2 . . . . . . 
         . . . . . . . . 2 2 2 2 . . . . 
@@ -1093,18 +1093,18 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "火焰弹", function (projectile) {
-        myGame.circular(projectile, 0.1, 0, myGame.clockwise.p, 120, 180)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 10)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 6)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 150)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,10)
-fightext_projectile.setBlastAnim(projectile, 火球爆炸)
-        myGame.tailshoot(projectile, 40, 尾焰)
+        fightext_projectile.circular(projectile, 0.1, 0, fightext_projectile.clockwise.p, 120, 180)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 10)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hurted, 6)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 150)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,10)
+        fightext_projectile.setBlastAnim(projectile, 火球爆炸)
+        fightext_projectile.tailshoot(projectile, 40, 尾焰)
     })
-    火球 = myGame.strProjectiles("火球")
-    myGame.setProjectile(img`
+    火球 = fightext_projectile.strProjectiles("火球")
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -1124,7 +1124,7 @@ fightext_projectile.setBlastAnim(projectile, 火球爆炸)
         `, 火球, function (projectile) {
         projectile.lifespan = 800
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . 2 . . . . . . . . 
         . . . . . . 3 1 2 . . . . . . . 
@@ -1142,11 +1142,11 @@ fightext_projectile.setBlastAnim(projectile, 火球爆炸)
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "火焰轮", function (projectile) {
-        myGame.circular(projectile, 4, 0, myGame.clockwise.p, 45, 180)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.circular(projectile, 4, 0, fightext_projectile.clockwise.p, 45, 180)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
-    myGame.setProjectile(img`
+    fightext_projectile.setProjectile(img`
         ................
         ................
         .....231132.....
@@ -1345,19 +1345,19 @@ fightext_projectile.setBlastAnim(projectile, 火球爆炸)
         .....231132.....
         `, "火焰柱", function (projectile) {
         projectile.lifespan = 500
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 8)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 150)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.xspeed, 45)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 6)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 8)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 150)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.xspeed, 45)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hurted, 6)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
 })
 let 火球爆炸 = ""
-myGame.defAnimation(function () {
+fightext_animation.defAnimation(function () {
     火球爆炸 = "火球爆炸"
-    myGame.setAnimation([img`
+    fightext_animation.setAnimation([img`
         ............................
         ............................
         ............................
@@ -1475,7 +1475,7 @@ myGame.defAnimation(function () {
         ................b...........
         `], 火球爆炸, 100)
     尾焰 = "尾焰"
-    myGame.setAnimation([img`
+    fightext_animation.setAnimation([img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -1561,7 +1561,7 @@ myGame.defAnimation(function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `], 尾焰, 100)
-    myGame.setAnimation([img`
+    fightext_animation.setAnimation([img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 

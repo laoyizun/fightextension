@@ -441,7 +441,7 @@ namespace playGame{
     //%group="游戏初始化"
     //%blockId=overlap block="开始游戏 %p1=variables_get(player1) %p2=variables_get(player2)"
     //%weight=90
-    export function overlap(p1: myGame.Character, p2: myGame.Character){
+    export function overlap(p1: fightext_character.Character, p2: fightext_character.Character){
         myGame.overlap(p1, p2)
     }
     */

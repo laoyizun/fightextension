@@ -1,5 +1,5 @@
-// 在此处测试；当此软件包作为插件使用时，将不会编译此软件包。
-myGame.basicSet(img`
+//在此处测试；当此软件包作为插件使用时，将不会编译此软件包
+fightext_character.basicSet(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -17,7 +17,7 @@ myGame.basicSet(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, "磁暴步兵", function (player2) {
-    myGame.setAtkImage(player2, myGame.atkimgKind.hand1, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.hand1, img`
         ..................................
         ..................................
         ..................................
@@ -68,7 +68,7 @@ myGame.basicSet(img`
         ..................................
         ..................................
         `)
-    myGame.setAtkImage(player2, myGame.atkimgKind.hand2, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.hand2, img`
         ................................
         ................................
         ................................
@@ -119,7 +119,7 @@ myGame.basicSet(img`
         ......................c.........
         ................................
         `)
-    myGame.setAtkImage(player2, myGame.atkimgKind.leg1, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.leg1, img`
         ..................................
         ..................................
         ..................................
@@ -170,7 +170,7 @@ myGame.basicSet(img`
         ..................................
         ..................................
         `)
-    myGame.setAtkImage(player2, myGame.atkimgKind.leg2, img`
+    fightext_character.setAtkImage(player2, fightext_character.atkimgKind.leg2, img`
         ..................................
         ..................................
         ..................................
@@ -221,7 +221,7 @@ myGame.basicSet(img`
         ........................cdd1c.....
         ........................cccc......
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Defence, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Defence, img`
         ................................
         .............ffffff....55.......
         ...........ffeeeef2f..aab5......
@@ -239,7 +239,7 @@ myGame.basicSet(img`
         ...........ffffffeeff..cabd.....
         ............ff...fff..aabd......
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Hitover, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Hitover, img`
         .................................
         .................................
         .................................
@@ -265,7 +265,7 @@ myGame.basicSet(img`
         ..........ffffffef...............
         ..............fff................
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Lie, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Lie, img`
         ................................
         ................................
         ................................
@@ -291,7 +291,7 @@ myGame.basicSet(img`
         ...........ffffffef......cddc...
         ...............fff........ccc...
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Quickst, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Quickst, img`
         .............ffffff.............
         ...........ffeeeef2f............
         ..........ffeeeef222f...........
@@ -317,7 +317,7 @@ myGame.basicSet(img`
         ................................
         ................................
         `)
-    myGame.setStImage(player2, myGame.stimgKind.Stand, img`
+    fightext_character.setStImage(player2, fightext_character.stimgKind.Stand, img`
         .............ffffff.............
         ...........ffeeeef2f............
         ..........ffeeeef222f...........
@@ -335,7 +335,7 @@ myGame.basicSet(img`
         .............ffffff.............
         ..............fff...............
         `)
-    myGame.setWalkImage(player2, myGame.aniKind.Hurt, [img`
+    fightext_character.setWalkImage(player2, fightext_character.aniKind.Hurt, [img`
         ................................
         .........9......................
         ..........9..ffffff.............
@@ -404,7 +404,7 @@ myGame.basicSet(img`
         ..........ffffffeeff............
         ...........ff...fff.............
         `])
-    myGame.setWalkImage(player2, myGame.aniKind.Walk, [img`
+    fightext_character.setWalkImage(player2, fightext_character.aniKind.Walk, [img`
         .............ffffff.............
         ...........ffeeeef2f............
         ..........ffeeeef222f...........
@@ -486,9 +486,9 @@ let 随机弹 = ""
 let 竖直雷电球 = ""
 let 电球爆炸 = ""
 
-myGame.defAnimation(function () {
+fightext_animation.defAnimation(function () {
     电球爆炸 = "电球爆炸"
-    myGame.setAnimation([img`
+    fightext_animation.setAnimation([img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . 8 8 . . . . . . 
@@ -592,56 +592,56 @@ myGame.defAnimation(function () {
         . . . . . . . . . . . . . . . . 
         `], 电球爆炸, 100)
 })
-myGame.skillSet("磁暴步兵", function (player2) {
-    myGame.setSkill(player2, myGame.SkillKind.B1, 0, function (tempVar, undefined) {
-        myGame.atkAction(player2, myGame.atkKind.BasicAtkB)
-        myGame.shoot2(player2, 竖直雷电球, player2.x, player2.y, 90, 250, 0)
+fightext_skill.skillSet("磁暴步兵", function (player2) {
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.B1, 0, function (tempVar, undefined) {
+        fightext_character.atkAction(player2, fightext_character.atkKind.BasicAtkB)
+        fightext_skill.shoot2(player2, 竖直雷电球, player2.x, player2.y, 90, 250, 0)
     })
-    myGame.setSkill(player2, myGame.SkillKind.A1, 1, function (tempVar, undefined) {
-        myGame.counterAttack(player2, 5, function () {
-            if (myGame.dirRight(player2, myGame.playerStatus.hurted)) {
-                myGame.add(tempVar, "d", 15)
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.A1, 1, function (tempVar, undefined) {
+        fightext_skill.counterAttack(player2, 5, function () {
+            if (fightext_character.dirRight(player2, fightext_character.playerStatus.hurted)) {
+                fightext_skill.add(tempVar, "d", 15)
             } else {
-                myGame.add(tempVar, "d", -15)
+                fightext_skill.add(tempVar, "d", -15)
             }
-            myGame.atkAction(player2, myGame.atkKind.BasicAtkA, 4)
-            multiRandomShot(myGame.getSprite(player2, myGame.ME.P), 75, 105, 50, 105, 12, 0.3, myGame.getVal(tempVar, "d"), 0, 随机弹)
+            fightext_character.atkAction(player2, fightext_character.atkKind.BasicAtkA, 4)
+            multiRandomShot(fightext_character.getSprite(player2, fightext_character.ME.P), 75, 105, 50, 105, 12, 0.3, fightext_skill.getVal(tempVar, "d"), 0, 随机弹)
         })
     })
-    myGame.setSkill(player2, myGame.SkillKind.A9, 5, function (tempVar, undefined) {
-        myGame.atkAction(player2, myGame.atkKind.RushAtkA)
-        myGame.autoAttack(player2, 2, 15, function () {
-            myGame.shoot2(player2, 蓄力雷电, player2.x, player2.sprite.y + 7, 180, 0, 10)
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.A9, 5, function (tempVar, undefined) {
+        fightext_character.atkAction(player2, fightext_character.atkKind.RushAtkA)
+        fightext_skill.autoAttack(player2, 2, 15, function () {
+            fightext_skill.shoot2(player2, 蓄力雷电, player2.x, player2.sprite.y + 7, 180, 0, 10)
         })
     })
-    myGame.setSkill(player2, myGame.SkillKind.A10, 20, function (tempVar, undefined) {
-        myGame.atkAction(player2, myGame.atkKind.RushAtkA, 0.4)
-        myGame.shoot2(player2, 水平雷电球, player2.x, player2.sprite.y - 3, 180, 95, 15)
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.A10, 20, function (tempVar, undefined) {
+        fightext_character.atkAction(player2, fightext_character.atkKind.RushAtkA, 0.4)
+        fightext_skill.shoot2(player2, 水平雷电球, player2.x, player2.sprite.y - 3, 180, 95, 15)
     })
-    myGame.setSkill(player2, myGame.SkillKind.A3, 5, function (tempVar, undefined) {
-        myGame.atkAction(player2, myGame.atkKind.BasicAtkA)
-        myGame.add(tempVar, "a", 30)
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.A3, 5, function (tempVar, undefined) {
+        fightext_character.atkAction(player2, fightext_character.atkKind.BasicAtkA)
+        fightext_skill.add(tempVar, "a", 30)
         for (let index = 0; index < 6; index++) {
-            myGame.shoot2(player2, 小雷电球, player2.enemy.x, player2.enemy.y, myGame.getVal(tempVar, "a"), -75, 100)
-            myGame.updateVar(120 / 6, tempVar, "a")
+            fightext_skill.shoot2(player2, 小雷电球, player2.enemy.x, player2.enemy.y, fightext_skill.getVal(tempVar, "a"), -75, 100)
+            fightext_skill.updateVar(120 / 6, tempVar, "a")
         }
     })
-    myGame.setSkill(player2, myGame.SkillKind.B3, 20, function (tempVar, undefined) {
-        myGame.atkAction(player2, myGame.atkKind.BasicAtkB, 0.6)
-        myGame.add(tempVar, "d", randint(15, 20))
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.B3, 20, function (tempVar, undefined) {
+        fightext_character.atkAction(player2, fightext_character.atkKind.BasicAtkB, 0.6)
+        fightext_skill.add(tempVar, "d", randint(15, 20))
         for (let index = 0; index < 2; index++) {
-            myGame.shoot2(player2, 雷云, player2.enemy.x + myGame.getVal(tempVar, "d"), 112, 90, 0, 100)
-            myGame.add(tempVar, "d", 0 - myGame.getVal(tempVar, "d"))
+            fightext_skill.shoot2(player2, 雷云, player2.enemy.x + fightext_skill.getVal(tempVar, "d"), 112, 90, 0, 100)
+            fightext_skill.add(tempVar, "d", 0 - fightext_skill.getVal(tempVar, "d"))
         }
     })
-    myGame.setSkill(player2, myGame.SkillKind.B9, 10, function (tempVar, undefined) {
-        myGame.atkAction(player2, myGame.atkKind.BasicAtkB, 0.3)
-        myGame.shoot2(player2, 螺旋雷电球, player2.x, player2.y - 10, 120, 50)
+    fightext_skill.setSkill(player2, fightext_skill.SkillKind.B9, 10, function (tempVar, undefined) {
+        fightext_character.atkAction(player2, fightext_character.atkKind.BasicAtkB, 0.3)
+        fightext_skill.shoot2(player2, 螺旋雷电球, player2.x, player2.y - 10, 120, 50)
     })
 })
-myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
-    螺旋小雷电球 = myGame.strProjectiles("螺旋小雷电球")
-    myGame.setProjectile(img`
+fightext_projectile.setProjectiles("磁暴步兵的弹射物集合", function () {
+    螺旋小雷电球 = fightext_projectile.strProjectiles("螺旋小雷电球")
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -660,11 +660,11 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         `, 螺旋小雷电球, function (projectile) {
         projectile.lifespan = 100000
-        myGame.circular(projectile, 20, 10, myGame.clockwise.p, 5, 180)
+        fightext_projectile.circular(projectile, 20, 10, fightext_projectile.clockwise.p, 5, 180)
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
     })
-    螺旋雷电球 = myGame.strProjectiles("螺旋雷电球")
-    myGame.setProjectile(img`
+    螺旋雷电球 = fightext_projectile.strProjectiles("螺旋雷电球")
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -684,11 +684,11 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         `, 螺旋雷电球, function (projectile) {
         projectile.lifespan = 12000
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
-        myGame.runAnimation(projectile, 电球爆炸, true)
-        myGame.circular(projectile, 20, 0, myGame.clockwise.p, 10, 180)
+        fightext_animation.runAnimation(projectile, 电球爆炸, true)
+        fightext_projectile.circular(projectile, 20, 0, fightext_projectile.clockwise.p, 10, 180)
     })
-    小雷电球 = myGame.strProjectiles("小雷电球")
-    myGame.setProjectile(img`
+    小雷电球 = fightext_projectile.strProjectiles("小雷电球")
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -708,8 +708,8 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         `, 小雷电球, function (projectile) {
 
     })
-    竖直雷电球 = myGame.strProjectiles("竖直雷电球")
-    myGame.setProjectile(img`
+    竖直雷电球 = fightext_projectile.strProjectiles("竖直雷电球")
+    fightext_projectile.setProjectile(img`
         ....................
         ....................
         .........a..........
@@ -821,19 +821,19 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         200,
         true
         )
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
-        myGame.acceToV(projectile, 1, 0, 0)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.acceToV(projectile, 1, 0, 0)
         for (let index = 0; index < 12; index++) {
-            myGame.then(0.5, function (projectile) {
-                myGame.splitshoot(projectile, 螺旋小雷电球, 0, 0, 90, 60, 0)
+            fightext_projectile.then(0.5, function (projectile) {
+                fightext_projectile.splitshoot(projectile, 螺旋小雷电球, 0, 0, 90, 60, 0)
             })
         }
-        myGame.then(0.5, function (projectile) {
+        fightext_projectile.then(0.5, function (projectile) {
             projectile.destroy()
         })
     })
-    水平雷电球 = myGame.strProjectiles("水平雷电球")
-    myGame.setProjectile(img`
+    水平雷电球 = fightext_projectile.strProjectiles("水平雷电球")
+    fightext_projectile.setProjectile(img`
         ....................
         ....................
         .........a..........
@@ -855,17 +855,17 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         ..........a.........
         ....................
         `, 水平雷电球, function (projectile) {
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 5)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.xspeed, 65)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,15)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hurted, 5)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.xspeed, 65)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,15)
 fightext_projectile.setBlastAnim(projectile, 电球爆炸)
     })
-    随机弹 = myGame.strProjectiles("随机弹")
-    myGame.setProjectile(img`
+    随机弹 = fightext_projectile.strProjectiles("随机弹")
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -883,11 +883,11 @@ fightext_projectile.setBlastAnim(projectile, 电球爆炸)
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, 随机弹, function (projectile) {
-        myGame.setBullet(projectile, fightext_projectile.bulletP.xspeed, 0)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 60)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.xspeed, 0)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.yspeed, 60)
     })
-    蓄力雷电 = myGame.strProjectiles("蓄力雷电")
-    myGame.setProjectile(img`
+    蓄力雷电 = fightext_projectile.strProjectiles("蓄力雷电")
+    fightext_projectile.setProjectile(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -1014,13 +1014,13 @@ fightext_projectile.setBlastAnim(projectile, 电球爆炸)
         50,
         true
         )
-        myGame.setBullet2(projectile, myGame.bulletP2.attachPlayer, true)
-        myGame.after(0.58, function () {
-            myGame.splitshoot(projectile, 雷电射线, 0, 0, 180, 50, 80)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.attachPlayer, true)
+        fightext_skill.after(0.58, function () {
+            fightext_projectile.splitshoot(projectile, 雷电射线, 0, 0, 180, 50, 80)
         })
     })
-    雷电射线 = myGame.strProjectiles("雷电射线")
-    myGame.setProjectile(img`
+    雷电射线 = fightext_projectile.strProjectiles("雷电射线")
+    fightext_projectile.setProjectile(img`
         .....................................................................................................................................aa..........
         ..............................aa....................................................................................................a.a.8...88...
         ..............................aa............................................................aaa...................................aa..9a8888.8...
@@ -1039,14 +1039,14 @@ fightext_projectile.setBlastAnim(projectile, 电球爆炸)
         .................................................................................................................................................
         `, 雷电射线, function (projectile) {
         projectile.lifespan = 100
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 2)
-        myGame.setBullet(projectile, myGame.bulletP.hitrec, 800)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hurted, 2)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hitrec, 800)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
-    雷云 = myGame.strProjectiles("雷云")
-    myGame.setProjectile(img`
+    雷云 = fightext_projectile.strProjectiles("雷云")
+    fightext_projectile.setProjectile(img`
         ....................
         ....................
         ....................
@@ -1159,9 +1159,9 @@ fightext_projectile.setBlastAnim(projectile, 电球爆炸)
         100,
         false
         )
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
-        myGame.then(0.5, function (projectile) {
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.then(0.5, function (projectile) {
             animation.runImageAnimation(
             projectile,
             [img`
@@ -1238,11 +1238,11 @@ fightext_projectile.setBlastAnim(projectile, 电球爆炸)
             )
         })
         for (let index = 0; index < randint(2, 5); index++) {
-            myGame.then(0.4, function (projectile) {
-                myGame.splitshoot(projectile, 闪电, 0, 0, -90, 50, 55)
+            fightext_projectile.then(0.4, function (projectile) {
+                fightext_projectile.splitshoot(projectile, 闪电, 0, 0, -90, 50, 55)
             })
         }
-        myGame.then(0, function (projectile) {
+        fightext_projectile.then(0, function (projectile) {
             animation.runImageAnimation(
             projectile,
             [img`
@@ -1335,12 +1335,12 @@ fightext_projectile.setBlastAnim(projectile, 电球爆炸)
             false
             )
         })
-        myGame.then(0.4, function (projectile) {
+        fightext_projectile.then(0.4, function (projectile) {
             projectile.destroy()
         })
     })
-    闪电 = myGame.strProjectiles("闪电")
-    myGame.setProjectile(img`
+    闪电 = fightext_projectile.strProjectiles("闪电")
+    fightext_projectile.setProjectile(img`
         ......998.......
         ......9a8.......
         .....99..8......
@@ -1448,11 +1448,11 @@ fightext_projectile.setBlastAnim(projectile, 电球爆炸)
         .......9........
         `, 闪电, function (projectile) {
         projectile.lifespan = 100
-        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 2)
-        myGame.setBullet(projectile, myGame.bulletP.hitrec, 800)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
-        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hurted, 2)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.hitrec, 800)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        fightext_projectile.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        fightext_projectile.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
 })
