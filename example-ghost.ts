@@ -775,8 +775,8 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "鬼火", function (projectile) {
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
         myGame.circular(projectile, 3, 0, myGame.clockwise.p, 50)
     })
     myGame.setProjectile(img`
@@ -797,8 +797,8 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "死灵粒子", function (projectile) {
-        myGame.setBullet2(projectile, myGame.bulletP2.breakdef, true)
-        myGame.setBullet(projectile, myGame.bulletP.damage, 5)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
         projectile.ay = -100
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
         myGame.then(0.5, function (projectile) {
@@ -831,7 +831,7 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "幽灵粒子", function (projectile) {
-        myGame.setBullet2(projectile, myGame.bulletP2.breakdef, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
         projectile.lifespan = 3000
         myGame.bulletInterval(0.5, projectile, function () {
             projectile.setFlag(SpriteFlag.Invisible, true)
@@ -861,16 +861,16 @@ myGame.setProjectiles("低级死灵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         `, "幽灵爪", function (projectile) {
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
         projectile.lifespan = 1000
-        myGame.setBullet(projectile, myGame.bulletP.damage, 2)
-        myGame.setBullet(projectile, myGame.bulletP.hurted, 3)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 2)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 3)
         if (projectile.vy < 0) {
-            myGame.setBullet(projectile, myGame.bulletP.yspeed, 75)
+            myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
         } else {
-            myGame.setBullet(projectile, myGame.bulletP.yspeed, -75)
+            myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, -75)
         }
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
         myGame.tailshoot(projectile, 20, "抓痕")
     })
 })

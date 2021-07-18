@@ -915,11 +915,11 @@ myGame.skillSet("大蝙蝠", function (player3) {
         myGame.overlapAct(myGame.getVal2(tempVar, "projectile"), myGame.overlapKind.two, function () {
             myGame.splitshoot(myGame.getVal2(tempVar, "projectile"), "回血", 0, 0, 180, 0)
         })
-        myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.damage, 5)
-        myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.hurted, 2)
-        myGame.setBullet2(myGame.getVal2(tempVar, "projectile"), myGame.bulletP2.indeflectible, true)
+        myGame.setBullet(myGame.getVal2(tempVar, fightext_projectile.bulletP.damage, 5)
+        myGame.setBullet(myGame.getVal2(tempVar, fightext_projectile.bulletP.hurted, 2)
+        myGame.setBullet2(myGame.getVal2(tempVar, fightext_projectile.bulletP2.indeflectible, true)
         myGame.setBullet2(myGame.getVal2(tempVar, "projectile"), myGame.bulletP2.rebound, true)
-        myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.perishTogether, -1)
+        myGame.setBullet(myGame.getVal2(tempVar, fightext_projectile.bulletP.perishTogether,-1)
     })
     myGame.setSkill(player3, myGame.SkillKind.B4, 4, function (tempVar, undefined) {
         myGame.defent(player3, 0.5)
@@ -958,10 +958,10 @@ myGame.skillSet("大蝙蝠", function (player3) {
             c c c c . . . . . . . c c c . . 
             . . . . . . . . . . . . . . . . 
             `))
-        myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.damage, 5)
-        myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.hurted, 2)
+        myGame.setBullet(myGame.getVal2(tempVar, fightext_projectile.bulletP.damage, 5)
+        myGame.setBullet(myGame.getVal2(tempVar, fightext_projectile.bulletP.hurted, 2)
         myGame.setBullet2(myGame.getVal2(tempVar, "projectile"), myGame.bulletP2.rebound, true)
-        myGame.setBullet(myGame.getVal2(tempVar, "projectile"), myGame.bulletP.perishTogether, -1)
+        myGame.setBullet(myGame.getVal2(tempVar, fightext_projectile.bulletP.perishTogether,-1)
     })
     myGame.setSkill(player3, myGame.SkillKind.A3, 15, function (tempVar, undefined) {
         myGame.atkAction(player3, myGame.atkKind.RushAtkB, 0.5)
@@ -996,7 +996,7 @@ myGame.setProjectiles("大蝙蝠的弹射物集合", function () {
         ................
         `, "跟踪蝙蝠", function (projectile) {
         projectile.setFlag(SpriteFlag.BounceOnWall, true)
-        myGame.setBullet(projectile, myGame.bulletP.damage, 5)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
         BFanim(projectile)
         myGame.bulletInterval(0.4, projectile, function () {
             BFanim(projectile)
@@ -1055,8 +1055,8 @@ myGame.setProjectiles("大蝙蝠的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "红激光", function (projectile) {
-        myGame.setBullet(projectile, myGame.bulletP.damage, 1)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 1)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
     })
     myGame.setProjectile(img`
         fff........fff..
@@ -1084,10 +1084,10 @@ myGame.setProjectiles("大蝙蝠的弹射物集合", function () {
         `, "蝙蝠群", function (projectile) {
         BFanim(projectile)
         projectile.ay = 40
-        myGame.setBullet(projectile, myGame.bulletP.damage, 5)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
         myGame.setBullet(projectile, myGame.bulletP.hitrec, 450)
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 75)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
         myGame.bulletInterval(0.4, projectile, function () {
             BFanim(projectile)
         })
@@ -1110,7 +1110,7 @@ myGame.setProjectiles("大蝙蝠的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "回血", function (projectile) {
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
         projectile.lifespan = 500
         myGame.bulletInterval(0.1, projectile, function () {
             myGame.projectileOwner(projectile).hp += 1

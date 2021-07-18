@@ -706,7 +706,7 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, 小雷电球, function (projectile) {
-    	
+
     })
     竖直雷电球 = myGame.strProjectiles("竖直雷电球")
     myGame.setProjectile(img`
@@ -821,7 +821,7 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         200,
         true
         )
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
         myGame.acceToV(projectile, 1, 0, 0)
         for (let index = 0; index < 12; index++) {
             myGame.then(0.5, function (projectile) {
@@ -855,14 +855,14 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         ..........a.........
         ....................
         `, 水平雷电球, function (projectile) {
-        myGame.setBullet(projectile, myGame.bulletP.damage, 15)
-        myGame.setBullet(projectile, myGame.bulletP.hurted, 5)
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 75)
-        myGame.setBullet(projectile, myGame.bulletP.xspeed, 65)
-        myGame.setBullet2(projectile, myGame.bulletP2.breakdef, true)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, 15)
-        myGame.setBlastAnim(projectile, 电球爆炸)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 5)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.xspeed, 65)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,15)
+fightext_projectile.setBlastAnim(projectile, 电球爆炸)
     })
     随机弹 = myGame.strProjectiles("随机弹")
     myGame.setProjectile(img`
@@ -883,8 +883,8 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, 随机弹, function (projectile) {
-        myGame.setBullet(projectile, myGame.bulletP.xspeed, 0)
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 60)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.xspeed, 0)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 60)
     })
     蓄力雷电 = myGame.strProjectiles("蓄力雷电")
     myGame.setProjectile(img`
@@ -1039,11 +1039,11 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         .................................................................................................................................................
         `, 雷电射线, function (projectile) {
         projectile.lifespan = 100
-        myGame.setBullet(projectile, myGame.bulletP.damage, 15)
-        myGame.setBullet(projectile, myGame.bulletP.hurted, 2)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 2)
         myGame.setBullet(projectile, myGame.bulletP.hitrec, 800)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
     雷云 = myGame.strProjectiles("雷云")
     myGame.setProjectile(img`
@@ -1159,8 +1159,8 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         100,
         false
         )
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
         myGame.then(0.5, function (projectile) {
             animation.runImageAnimation(
             projectile,
@@ -1448,11 +1448,11 @@ myGame.setProjectiles("磁暴步兵的弹射物集合", function () {
         .......9........
         `, 闪电, function (projectile) {
         projectile.lifespan = 100
-        myGame.setBullet(projectile, myGame.bulletP.damage, 15)
-        myGame.setBullet(projectile, myGame.bulletP.hurted, 2)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 15)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 2)
         myGame.setBullet(projectile, myGame.bulletP.hitrec, 800)
-        myGame.setBullet2(projectile, myGame.bulletP2.breakdef, true)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
 })

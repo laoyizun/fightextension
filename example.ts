@@ -190,40 +190,40 @@ namespace matchstickMen{
                 ................
                 ................
                 `, img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
                 `)
             myGame.setStImage(player, myGame.stimgKind.Defence, img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . c c . . c c . . 
-                . . . . . . c c c 3 c c 3 c . . 
-                . . . . . c c c b 3 c b 3 b c . 
-                . . . . f f b b b b b b b b c . 
-                . . . . f f b b b b b b b b c c 
-                . . . f f f c b b 1 b b b 1 b c 
-                . . . f f f f b b b b b b b b c 
-                . . . b b b c c b c b b b c b f 
-                . . . c c c c f b 1 f f f 1 b f 
-                . . . c c b b f b b b b b b f . 
-                . . . c b b c c b b b b b f c c 
-                . . c b b c c f f f f f f c c c 
-                . c c c c c . . . . . . c c c . 
-                c c c c . . . . . . . c c c . . 
-                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . c c . . c c . .
+                . . . . . . c c c 3 c c 3 c . .
+                . . . . . c c c b 3 c b 3 b c .
+                . . . . f f b b b b b b b b c .
+                . . . . f f b b b b b b b b c c
+                . . . f f f c b b 1 b b b 1 b c
+                . . . f f f f b b b b b b b b c
+                . . . b b b c c b c b b b c b f
+                . . . c c c c f b 1 f f f 1 b f
+                . . . c c b b f b b b b b b f .
+                . . . c b b c c b b b b b f c c
+                . . c b b c c f f f f f f c c c
+                . c c c c c . . . . . . c c c .
+                c c c c . . . . . . . c c c . .
+                . . . . . . . . . . . . . . . .
                 `)
             myGame.setStImage(player, myGame.stimgKind.Hitover, img`
                 ...fffffff......
@@ -248,22 +248,22 @@ namespace matchstickMen{
                 ................
                 `)
             myGame.setStImage(player, myGame.stimgKind.Lie, img`
-                . . . . . . . . . . . . . . . . 
-                . . c c c . . . . . . . c c c c 
-                . c c c . . . . . . c c c c c . 
-                c c c f f f f f f c c b b c . . 
-                c c f b b b b b c c b b c . . . 
-                . f b b b b b b f b b c c . . . 
-                f b 1 f f f 1 b f c c c c . . . 
-                f b c b b b c b c c b b b . . . 
-                c b b b b b b b b f f f f . . . 
-                c b 1 1 b b 1 1 b c f f f . . . 
-                c c b b b b b b b b f f . . . . 
-                . c b b b b b b b b f f . . . . 
-                . c b 3 b c 3 b c c c . . . . . 
-                . . c 3 c c 3 c c c . . . . . . 
-                . . c c . . c c . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . .
+                . . c c c . . . . . . . c c c c
+                . c c c . . . . . . c c c c c .
+                c c c f f f f f f c c b b c . .
+                c c f b b b b b c c b b c . . .
+                . f b b b b b b f b b c c . . .
+                f b 1 f f f 1 b f c c c c . . .
+                f b c b b b c b c c b b b . . .
+                c b b b b b b b b f f f f . . .
+                c b 1 1 b b 1 1 b c f f f . . .
+                c c b b b b b b b b f f . . . .
+                . c b b b b b b b b f f . . . .
+                . c b 3 b c 3 b c c c . . . . .
+                . . c 3 c c 3 c c c . . . . . .
+                . . c c . . c c . . . . . . . .
+                . . . . . . . . . . . . . . . .
                 `)
             myGame.setStImage(player, myGame.stimgKind.Stand, img`
                 fff........fff..
@@ -290,108 +290,108 @@ namespace matchstickMen{
                 ................
                 `)
             myGame.setStImage(player, myGame.stimgKind.Quickst, img`
-                . f f f . . . . . . . . f f f . 
-                . c b b c f . . . . . . . c f f 
-                . . c b b c f . . . . . . c c f 
-                . . c c c b f . . . . . . . f c 
-                . . c c b b f f . . . . . f f c 
-                . . c b b c b f c c . c c f f f 
-                . . c b c c b f c c c c c f f f 
-                . . . c c c b c b 3 c c 3 c f . 
-                . . . c c c c b b 3 c b 3 b c . 
-                . . . . c c b b b b b b b b c c 
-                . . . c f b b b 1 1 b b b 1 1 c 
-                . . c c f b b b b b b b b b b f 
-                . . . . f b b b b c b b b c b f 
-                . . . . f c b b b 1 f f f 1 f . 
-                . . . . . f c b b b b b b f . . 
-                . . . . . . f f f f f f f . . . 
+                . f f f . . . . . . . . f f f .
+                . c b b c f . . . . . . . c f f
+                . . c b b c f . . . . . . c c f
+                . . c c c b f . . . . . . . f c
+                . . c c b b f f . . . . . f f c
+                . . c b b c b f c c . c c f f f
+                . . c b c c b f c c c c c f f f
+                . . . c c c b c b 3 c c 3 c f .
+                . . . c c c c b b 3 c b 3 b c .
+                . . . . c c b b b b b b b b c c
+                . . . c f b b b 1 1 b b b 1 1 c
+                . . c c f b b b b b b b b b b f
+                . . . . f b b b b c b b b c b f
+                . . . . f c b b b 1 f f f 1 f .
+                . . . . . f c b b b b b b f . .
+                . . . . . . f f f f f f f . . .
                 `)
             myGame.setWalkImage(player, myGame.aniKind.Hurt, [img`
-                . f f f . . . . . . 5 . f f f . 
-                . c b b c f . . . . 5 . . c f f 
-                . . c b b c f . . . 5 . . c c f 
-                . . c c c b f . . . . . . . f c 
-                . . c c b b f f . . 5 . . f f c 
-                . . c b b c b f c c . c c f f f 
-                . . c b c c b f c c c c c f f f 
-                . . . c c c b c b 3 c c 3 c f . 
-                . . . c c c c b b 3 c b 3 b c . 
-                . . . . c c b b b b b b b b c c 
-                . . . c f b b b 1 1 b b b 1 1 c 
-                . . c c f b b b b b b b b b b f 
-                . . . . f b b b b c b b b c b f 
-                . . . . f c b b b 1 f f f 1 f . 
-                . . . . . f c b b b b b b f . . 
-                . . . . . . f f f f f f f . . . 
+                . f f f . . . . . . 5 . f f f .
+                . c b b c f . . . . 5 . . c f f
+                . . c b b c f . . . 5 . . c c f
+                . . c c c b f . . . . . . . f c
+                . . c c b b f f . . 5 . . f f c
+                . . c b b c b f c c . c c f f f
+                . . c b c c b f c c c c c f f f
+                . . . c c c b c b 3 c c 3 c f .
+                . . . c c c c b b 3 c b 3 b c .
+                . . . . c c b b b b b b b b c c
+                . . . c f b b b 1 1 b b b 1 1 c
+                . . c c f b b b b b b b b b b f
+                . . . . f b b b b c b b b c b f
+                . . . . f c b b b 1 f f f 1 f .
+                . . . . . f c b b b b b b f . .
+                . . . . . . f f f f f f f . . .
                 `,img`
-                f f f . . . . . 2 . . f f f . . 
-                c b b c f . . . 2 . . c c f f . 
-                . c b b c f . . 2 . . . c c f f 
-                . c c c c f . . . . . . c f c f 
-                . c c b b b f . 2 c . c c f f f 
-                . c b b c b f c c 3 c c 3 c f f 
-                . c b c c b f c b 3 c b 3 b f f 
-                . . c c c b b c b 1 b b b 1 c . 
-                . . . c c c c b b 1 b b b 1 c . 
-                . . . . c c b b b b b b b b b c 
-                . . . . f b b b b c 1 f f 1 b c 
-                . . . c f b b b b f 1 f f 1 f f 
-                . . c c f b b b b f 2 2 2 2 f f 
-                . . . . f c b b b b 2 2 2 2 f . 
-                . . . . . f c b b b b b b f . . 
-                . . . . . . f f f f f f f . . . 
+                f f f . . . . . 2 . . f f f . .
+                c b b c f . . . 2 . . c c f f .
+                . c b b c f . . 2 . . . c c f f
+                . c c c c f . . . . . . c f c f
+                . c c b b b f . 2 c . c c f f f
+                . c b b c b f c c 3 c c 3 c f f
+                . c b c c b f c b 3 c b 3 b f f
+                . . c c c b b c b 1 b b b 1 c .
+                . . . c c c c b b 1 b b b 1 c .
+                . . . . c c b b b b b b b b b c
+                . . . . f b b b b c 1 f f 1 b c
+                . . . c f b b b b f 1 f f 1 f f
+                . . c c f b b b b f 2 2 2 2 f f
+                . . . . f c b b b b 2 2 2 2 f .
+                . . . . . f c b b b b b b f . .
+                . . . . . . f f f f f f f . . .
                 `,img`
-                f f f . . . . . . . . f f f . . 
-                c b b c f . 9 . . . . c c f f . 
-                . c b b c f . 9 . . 9 . c c f f 
-                . c c c 9 f . 9 . 9 . . c f c f 
-                . c c b b 9 f . c c . c c f f f 
-                . c b b c b f c c 3 c c 3 c f f 
-                . c b c c b f c b 3 c b 3 b f f 
-                . . c c c b b c b 1 b b b 1 c . 
-                . . . c c c c b b 1 b b b 1 c . 
-                . . . . c c b b b b b b b b b c 
-                . . . . f b b b b c 1 f f 1 b c 
-                . . . c f b b b b f 1 f f 1 f f 
-                . . c c f b b b b f 2 2 2 2 f f 
-                . . . . f c b b b b 2 2 2 2 f . 
-                . . . . . f c b b b b b b f . . 
-                . . . . . . f f f f f f f . . . 
+                f f f . . . . . . . . f f f . .
+                c b b c f . 9 . . . . c c f f .
+                . c b b c f . 9 . . 9 . c c f f
+                . c c c 9 f . 9 . 9 . . c f c f
+                . c c b b 9 f . c c . c c f f f
+                . c b b c b f c c 3 c c 3 c f f
+                . c b c c b f c b 3 c b 3 b f f
+                . . c c c b b c b 1 b b b 1 c .
+                . . . c c c c b b 1 b b b 1 c .
+                . . . . c c b b b b b b b b b c
+                . . . . f b b b b c 1 f f 1 b c
+                . . . c f b b b b f 1 f f 1 f f
+                . . c c f b b b b f 2 2 2 2 f f
+                . . . . f c b b b b 2 2 2 2 f .
+                . . . . . f c b b b b b b f . .
+                . . . . . . f f f f f f f . . .
                 `,img`
-                . . . . . . 9 . . . . f f f . . 
-                f f f . . . . 9 . . . c c f f f 
-                c b b c 9 9 . . c c . c c c f f 
-                . c b b b f 9 c c 3 c c 3 c f f 
-                . c c c b b f c b 3 c b 3 c f f 
-                . c c b c 9 f c b b b b b b c f 
-                . c b 9 c b b c b 1 b b b 1 c c 
-                . c b c c c b b b b b b b b b c 
-                . . c c c c c b b c 1 f f 1 b c 
-                . . . c f b b b b f 1 f f 1 f c 
-                . . . c f b b b b f f f f f f f 
-                . . c c f b b b b f 2 2 2 2 f f 
-                . . . . f c b b b 2 2 2 2 2 f . 
-                . . . . . f c b b b 2 2 2 f . . 
-                . . . . . . f f f f f f f . . . 
-                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . . . f f f . .
+                f f f . . . . 9 . . . c c f f f
+                c b b c 9 9 . . c c . c c c f f
+                . c b b b f 9 c c 3 c c 3 c f f
+                . c c c b b f c b 3 c b 3 c f f
+                . c c b c 9 f c b b b b b b c f
+                . c b 9 c b b c b 1 b b b 1 c c
+                . c b c c c b b b b b b b b b c
+                . . c c c c c b b c 1 f f 1 b c
+                . . . c f b b b b f 1 f f 1 f c
+                . . . c f b b b b f f f f f f f
+                . . c c f b b b b f 2 2 2 2 f f
+                . . . . f c b b b 2 2 2 2 2 f .
+                . . . . . f c b b b 2 2 2 f . .
+                . . . . . . f f f f f f f . . .
+                . . . . . . . . . . . . . . . .
                 `,img`
-                . . . . . 9 . . . . . . . . . . 
-                . . 9 . . . 9 . . . . . . . . . 
-                . . . . 9 . . . c c . c c . . . 
-                . . . . . 9 c c c 3 c c 3 f . . 
-                . . . 9 . c c c b 3 c b 3 c f . 
-                . . . . f f b b b b b b b b c f 
-                . . . . f f b b b 1 b b b 1 c c 
-                . . . f f f c b b b b b b b b c 
-                . . . f f f f b b c 1 f f 1 b c 
-                . . . b b b c c b f 1 f f 1 f f 
-                . . . c c c c f b f f f f f f f 
-                . . c c c b b f b f 2 2 2 2 f f 
-                . . . c b b c c b 2 2 2 2 2 f . 
-                . . c b b c c f f b 2 2 2 f . . 
-                . c c c c c f f f f f f f . . . 
-                c c c c . . . . . . . . . . . . 
+                . . . . . 9 . . . . . . . . . .
+                . . 9 . . . 9 . . . . . . . . .
+                . . . . 9 . . . c c . c c . . .
+                . . . . . 9 c c c 3 c c 3 f . .
+                . . . 9 . c c c b 3 c b 3 c f .
+                . . . . f f b b b b b b b b c f
+                . . . . f f b b b 1 b b b 1 c c
+                . . . f f f c b b b b b b b b c
+                . . . f f f f b b c 1 f f 1 b c
+                . . . b b b c c b f 1 f f 1 f f
+                . . . c c c c f b f f f f f f f
+                . . c c c b b f b f 2 2 2 2 f f
+                . . . c b b c c b 2 2 2 2 2 f .
+                . . c b b c c f f b 2 2 2 f . .
+                . c c c c c f f f f f f f . . .
+                c c c c . . . . . . . . . . . .
                 `])
             myGame.setWalkImage(player, myGame.aniKind.Stand, [img`
                 fff........fff..
@@ -581,7 +581,7 @@ namespace matchstickMen{
                 `], 100)
             myGame.setAbility(player, myGame.abilityKind.jumpspeed, 150)
         })
-        
+
         myGame.skillSet("未命名", function (player) {
             myGame.setSkill(player, myGame.SkillKind.A, 0, function (tempVar, player2) {
             })
@@ -595,18 +595,18 @@ namespace matchstickMen{
 
 function multiRandomShot (projectile2: Sprite, amn: number, amx: number, smn: number, smx: number, n: number, delay: number, xoffset: number, yoffset: number, name: string) {
     if (n > 0) {
-        myGame.shoot2(myGame.projectileOwner(myGame.spriteToWave(projectile2)), name, myGame.projectileOwner(myGame.spriteToWave(projectile2)).x + xoffset, myGame.projectileOwner(myGame.spriteToWave(projectile2)).y + yoffset, randint(amn, amx), randint(smn, smx), 0)
+        fightext_skill.shoot2(fightext_projectile.projectileOwner(fightext_projectile.spriteToWave(projectile2)), name, fightext_projectile.projectileOwner(fightext_projectile.spriteToWave(projectile2)).x + xoffset, fightext_projectile.projectileOwner(fightext_projectile.spriteToWave(projectile2)).y + yoffset, randint(amn, amx), randint(smn, smx), 0)
     }
-    myGame.after(delay, function () {
+    fightext_skill.after(delay, function () {
         multiRandomShot(projectile2, amn, amx, smn, smx, n - 1, delay, xoffset, yoffset, name)
     })
 }
 
 function multishot (projectile2: Sprite, a: number, n: number, delay: number, offset: number, name: string) {
     if (n > 0) {
-        myGame.shoot2(myGame.projectileOwner(myGame.spriteToWave(projectile2)), name, myGame.projectileOwner(myGame.spriteToWave(projectile2)).x, myGame.projectileOwner(myGame.spriteToWave(projectile2)).y, a, 85, 10)
+        fightext_skill.shoot2(fightext_projectile.projectileOwner(fightext_projectile.spriteToWave(projectile2)), name, fightext_projectile.projectileOwner(fightext_projectile.spriteToWave(projectile2)).x, fightext_projectile.projectileOwner(fightext_projectile.spriteToWave(projectile2)).y, a, 85, 10)
     }
-    myGame.after(delay, function () {
+    fightext_skill.after(delay, function () {
         multishot(projectile2, a + offset, n - 1, delay, offset, name)
     })
 }

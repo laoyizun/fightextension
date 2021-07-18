@@ -1,31 +1,371 @@
-namespace myGame {
+//%icon="\uf007" color="#6A6FEA"
+namespace 人物{}
+namespace fightext_character {
+    import reset = fightext_projectile.reset;
+    import WaveSprite = fightext_projectile.WaveSprite;
+    import setSkill = fightext_skill.setSkill;
+    import SkillKind = fightext_skill.SkillKind;
+    import tempVarDic = fightext_skill.tempVarDic;
+    import aimedshot = fightext_projectile.aimedshot;
 
-    function reset(own: Character, bullet: wave, damage = 1, hitrec = 100, hurted = 1,
-                   breakdef = false, xspeed = 50, yspeed = 20, rebound = false,
-                   indeflectible = false, isDestroyed = false, perishTogether = 0){
-        bullet.own = own
-        bullet.damage = damage //伤害
-        bullet.hitrec = hitrec //被攻击方硬直时间
-        bullet.hurted = hurted //攻击轻重,越大越容易击倒
-        bullet.breakdef = breakdef //是否破防
-        bullet.xspeed = xspeed //击飞时的x轴速度
-        bullet.yspeed = yspeed //击飞时的y轴速度
-        bullet.rebound = rebound //反射敌方子弹
-        bullet.indeflectible = indeflectible //不受反射
-        bullet.isDestroyed = isDestroyed //已消亡
-        bullet.perishTogether = perishTogether //碰撞存活优先级
-        bullet.collision = 0 //上次碰撞类型：0=>未碰撞/超时重制, 1=>子弹碰子弹, 2=>子弹碰人
-        bullet.interval = -1 //碰撞后不消亡使用的时钟
-        bullet.circlock = -1
-        bullet.overlapAct = ()=>{} //碰撞后的行为
-        bullet.overlapKind = 3 //引发overlapAct的碰撞类型：1=>子弹碰子弹, 2=>子弹碰人, 3=>任意
-        bullet.dir = 2 //朝向 1->左，2->右
-        bullet.attachOwner = false //所有者被攻击时自动销毁
-        bullet.blastAnim = null //爆炸(销毁)动画
+    export enum PlayerKind{
+        //% block="1"
+        Player1,
+        //% block="2"
+        Player2
+    }
+
+    export enum atkKind{
+        //% block="击拳1(A)"
+        BasicAtkA,
+        //% block="击拳2(A)"
+        RushAtkA,
+        //% block="踢腿1(B)"
+        BasicAtkB,
+        //% block="踢腿2(B)"
+        RushAtkB
+    }
+
+    export enum stimgKind{
+        //% block="防御"
+        Defence,
+        //% block="击飞"
+        Hitover,
+        //% block="受身"
+        Quickst,
+        //% block="倒地"
+        Lie,
+        //% block="站立"
+        Stand
+    }
+
+    export enum abilityKind{
+        //% block="奔跑速度"
+        rushspeed,
+        //% block="起跳速度"
+        jumpspeed,
+        //% block="行走速度"
+        walkspeed,
+        //% block="A攻击伤害"
+        damageA,
+        //% block="A攻击硬直"
+        hitrecA,
+        //% block="B攻击伤害"
+        damageB,
+        //% block="B攻击硬直"
+        hitrecB,
+        //% block="防御持续时间"
+        defencelas,
+        //% block="最长反击反应时间"
+        defact,
+        //% block="防御减伤系数"
+        def,
+        //% block="倒地时间"
+        downtime,
+        //% block="起身无敌时间"
+        immutime,
+        //% block="击飞速率系数"
+        hitk
+    }
+    export enum atkimgKind{
+        //% block="击拳1"
+        hand1,
+        //% block="击拳2"
+        hand2,
+        //% block="踢腿1"
+        leg1,
+        //% block="踢腿2"
+        leg2
+    }
+
+    export enum aniKind{
+        //% block="受伤动作"
+        Hurt,
+        //% block="走路动画"
+        Walk,
+        //% block="站立动画"
+        Stand
+    }
+
+    export enum HPMP{
+        HP,
+        MP,
+        x,
+        y
+    }
+
+    export enum ME{
+        //% block="精灵"
+        M,
+        //% block="敌方精灵"
+        E,
+        //% block="弹射物"
+        P
+    }
+
+    //=================== 自定义人物 ===================
+    export class CustomCharacter {
+        basicSet: (p: Character)=>void
+        skillSet: (p: Character)=>void
+        img: Image
+        constructor(){
+            this.basicSet = (p: Character)=>{}
+            this.skillSet = (p: Character)=>{}
+        }
+    }
+
+    let myCharacters: { [key: string]: CustomCharacter; } = {}
+
+    export function getCustomCharacter(name:string) :CustomCharacter {
+        return myCharacters[name]
+    }
+
+    //=================== 自定义人物 ===================
+
+    //%block
+    //%blockNamespace=人物
+    //%group="自定义人物"
+    //%blockId=setPlayerStImage block="设置$p=variables_get(player) %k=stimgKind 姿势 $img=screen_image_picker"
+    //%inlineInputMode=inline
+    export function setStImage(p: Character, k: stimgKind, img: Image){
+        if(k == stimgKind.Defence){
+            p.defenceimg = img
+        }
+        else if(k == stimgKind.Hitover){
+            p.hitover = img
+        }
+        else if(k == stimgKind.Lie){
+            p.lieimg = img
+        }
+        else if(k == stimgKind.Stand){
+            p.standard = img
+            p.rstandard = img.clone()
+            p.rstandard.flipX()
+        }
+        else if(k == stimgKind.Quickst){
+            p.quickst = img
+        }
+    }
+    //%block
+    //%blockNamespace=人物
+    //%group="自定义人物"
+    //%blockId=setPlayerAtkImage block="设置$p=variables_get(player) %k=atkimgKind 姿势 $img=screen_image_picker 攻击部位 %atk=screen_image_picker"
+    //%inlineInputMode=inline
+    export function setAtkImage(p: Character, k: atkimgKind, img: Image, atk: Image){
+        if(k == atkimgKind.hand1)
+        {
+            p.attackA = img
+            p.hand = atk
+        }
+        else if(k == atkimgKind.hand2)
+        {
+            p.rushA = img
+            p.rushhand = atk
+        }else if(k == atkimgKind.leg1)
+        {
+            p.attackB = img
+            p.leg = atk
+        }
+        else if(k == atkimgKind.leg2)
+        {
+            p.rushB = img
+            p.rushleg = atk
+        }
+    }
+
+    //%block
+    //%blockNamespace=人物
+    //%group="自定义人物"
+    //%blockId=setPlayerWalkImage block="设置$p=variables_get(player) %k=aniKind $img=animation_editor ||走路帧间隔%t ms"
+    //%inlineInputMode=inline
+    //%t.defl=200
+    export function setWalkImage(p: Character, k: aniKind, img: Image[], t: number = 200){
+        p.walkInterval = t
+        if(k == aniKind.Hurt)
+        {
+            p.hurtedimg = img
+        }
+        else if(k == aniKind.Walk){
+            p.walkimg = img
+        }
+        else if(k == aniKind.Stand){
+            p.standards = img
+            p.rstandards = []
+            for(let i of img){
+                let timg = i.clone()
+                timg.flipX()
+                p.rstandards.push(timg)
+            }
+        }
+    }
+
+    //%block
+    //%blockNamespace=人物
+    //%group="自定义人物"
+    //%blockId=setAbility block="设置%p=variables_get(player) 属性 %k=abilityKind 为 %v"
+    //%v.defl=0
+    export function setAbility(p: Character, k: abilityKind, v: number){
+        if(k == abilityKind.damageA){
+            p.damageA = v
+        }else if(k == abilityKind.damageB){
+            p.damageB = v
+        }else if(k == abilityKind.def){
+            p.def = v
+        }else if(k == abilityKind.defact){
+            p.defact = v
+        }else if(k == abilityKind.defencelas){
+            p.defencelas = v
+        }else if(k == abilityKind.downtime){
+            p.downtime = v
+        }else if(k == abilityKind.hitrecA){
+            p.hitrecA = v
+        }else if(k == abilityKind.hitrecB){
+            p.hitrecB = v
+        }else if(k == abilityKind.immutime){
+            p.immutime = v
+        }else if(k == abilityKind.jumpspeed){
+            p.jumpspeed = v
+        }else if(k == abilityKind.rushspeed){
+            p.rushspeed = v
+        }else if(k == abilityKind.walkspeed){
+            p.walkspeed = v
+        }else if(k == abilityKind.hitk){
+            p.hitk = v
+        }
+    }
+    export enum playerStatus{
+        //% block="受伤"
+        hurted,
+        //% block="击飞"
+        hitover,
+        //% block="跳起"
+        jump,
+        //% block="冲刺"
+        rush,
+        //% block="防御"
+        defence,
+        //% block="攻击"
+        attack,
+        //% block="移动"
+        move,
+        //% block="朝向右"
+        right
+    }
+
+    //%block
+    //%blockNamespace=人物
+    //% group="参数"
+    //%blockId=dirRight block="%p=variables_get(player) %k"
+    //%k.defl=playerStatus.right
+    export function dirRight(p: Character, k: playerStatus = playerStatus.right): boolean{
+        if(k == playerStatus.right){
+            return p.laspres == 2
+        }
+        else if(k == playerStatus.hurted){
+            return p.hurted > 0
+        }
+        else if(k == playerStatus.hitover){
+            return p.hitoverST == 1
+        }else if(k == playerStatus.jump){
+            return p.jump == 1
+        }
+        else if(k == playerStatus.rush){
+            return p.rush == 1
+        }
+        else if(k == playerStatus.defence){
+            return p.defence == 1
+        }
+        else if(k == playerStatus.attack){
+            return p.attack > 0
+        }
+        else if(k == playerStatus.move){
+            return ((p.leftDOWN|p.rightDOWN)&1) == 1
+        }
+        return false
+    }
+
+    //%block
+    //% group="参数"
+    //%blockNamespace=人物
+    //%blockId=getHPMPXY
+    //%block="%p=variables_get(player) %k"
+    export function getHPMPXY(p: Character, k: HPMP){
+        if(k == HPMP.HP){
+            return p.hp
+        }
+        else if(k == HPMP.MP){
+            return p.mp
+        }
+        else if(k == HPMP.x){
+            return p.x
+        }
+        else {
+            return p.y
+        }
+    }
+
+    //%block
+    //% group="参数"
+    //%blockNamespace=人物
+    //%blockId=getSprite
+    //%block="%p=variables_get(player) %k"
+    export function getSprite(p: Character, k: ME){
+        if(k == ME.M){
+            return p.mySprite
+        }
+        else if(k == ME.E){
+            return p.enemySprite
+        }
+        else { //(k == ME.P)
+            let ret = <WaveSprite>sprites.createProjectileFromSprite(img`
+                .
+            `, p.mySprite, p.mySprite.vx, 0)
+            reset(p, ret)
+            ret.lifespan = 0
+            return ret
+        }
+    }
+
+    //%block
+    //%blockNamespace=人物
+    //%group="自定义人物"
+    //%blockId=basicSet block="自定义人物 %img=screen_image_picker 命名为 %name"
+    //%str.defl=SkillKind.A mp.defl=0
+    //%weight=99
+    //%draggableParameters="player"
+    export function basicSet(img: Image, name: string, bs: (player: Character)=>void){
+        if(myCharacters[name] != undefined){
+            console.log("定义人物时发生人物命名冲突："+name)
+            return
+        }
+        let c = new CustomCharacter()
+        c.basicSet = bs
+        myCharacters[name] = c
+        //myCharacters.push({c: c, name: name})
+        c.img = img
+        exportCharacter(name)
+    }
+
+    /*//%block
+    //%blockNamespace=人物
+    //%group="自定义人物"
+    //%blockId=exportCharacter block="导出人物 %name"
+    export */
+    function exportCharacter(name: string){
+        if(playGame.characters == undefined){
+            playGame.characters = []
+        }
+        // for(let x of myCharacters){
+        //     if(x.name == name){
+        //         playGame.characters.push({character: x.c, name: name})
+        //         break
+        //     }
+        // }
+        playGame.characters.push({character: myCharacters[name], name: name})
     }
 
     //重叠消亡 k(collision): 0=>未碰撞/超时重置, 1=>子弹碰子弹, 2=>子弹碰人; v: 碰撞存活优先级
-    function perish(sprite: wave, k: number, v: number){
+    function perish(sprite: WaveSprite, k: number, v: number){
         sprite.collision = k
         if(sprite.overlapKind == 3 || sprite.collision == sprite.overlapKind){
             sprite.overlapAct()
@@ -89,7 +429,7 @@ namespace myGame {
         hitk = 1 //击飞速度修正
         immu = 0 //无敌中
         enemySprite: Sprite = null
-        attachBullet: wave[] = []
+        attachBullet: WaveSprite[] = []
         setEnemy(other: Sprite){
             this.enemySprite = other
         }
@@ -227,20 +567,20 @@ namespace myGame {
         hits = 0
         hits2 = 0
         overlap(sprite: Sprite, otherSprite: Sprite) {
-            if((<wave>sprite).interval != -1){
+            if((<WaveSprite>sprite).interval != -1){
                 return
             }
             if(this.immu == 1){
-                perish(<wave>sprite, 0, 0)
+                perish(<WaveSprite>sprite, 0, 0)
                 return
             }
-            if((<wave>sprite).damage == 0){
+            if((<WaveSprite>sprite).damage == 0){
                 return
             }
-            if ((this.defence == 1 || this.def2 != 1) && !((<wave>sprite).breakdef)) {
+            if ((this.defence == 1 || this.def2 != 1) && !((<WaveSprite>sprite).breakdef)) {
                 clearTimeout(this.defclock)
                 this.defclock = -1
-                this.statusbar.value -= (<wave>sprite).damage * this.def * this.def2
+                this.statusbar.value -= (<WaveSprite>sprite).damage * this.def * this.def2
                 let img = this.defenceimg.clone()
                 if(sprite.x < otherSprite.x){
                     img.flipX()
@@ -272,11 +612,11 @@ namespace myGame {
                 this.attack = 0
                 this.skill = 0
                 this.mySprite.vx = 0
-                this.statusbar.value -= (<wave>sprite).damage
+                this.statusbar.value -= (<WaveSprite>sprite).damage
                 if(this.hits < -100){
                     if(this.hurted != 2){
-                        this.mySprite.vy = Math.max(this.mySprite.vy-(<wave>sprite).yspeed, -150) * this.hitk
-                        this.mySprite.vx = (sprite.x < otherSprite.x ? (<wave>sprite).xspeed : -(<wave>sprite).xspeed) * this.hitk
+                        this.mySprite.vy = Math.max(this.mySprite.vy-(<WaveSprite>sprite).yspeed, -150) * this.hitk
+                        this.mySprite.vx = (sprite.x < otherSprite.x ? (<WaveSprite>sprite).xspeed : -(<WaveSprite>sprite).xspeed) * this.hitk
                         this.mySprite.image.flipY()
                         this.hurted = 2
                         clearTimeout(this.hitclock2)
@@ -301,16 +641,16 @@ namespace myGame {
                             this.hitclock2 = -1
                         }, 100)
                     }
-                    this.hits = Math.max(this.hits2+(<wave>sprite).hurted, this.hits)
+                    this.hits = Math.max(this.hits2+(<WaveSprite>sprite).hurted, this.hits)
                     //this.hits += (<wave>sprite).hurted //Math.max(++this.hits, (<wave>sprite).hurted)
-                    this.hitrec((<wave>sprite).hitrec, this.hits-1, sprite.x < otherSprite.x, <wave>sprite)
+                    this.hitrec((<WaveSprite>sprite).hitrec, this.hits-1, sprite.x < otherSprite.x, <WaveSprite>sprite)
                 }
                 while (this.attachBullet.length != 0) {
                     let b = this.attachBullet.removeAt(0)
                     b.destroy()
                 }
             }
-            perish(<wave>sprite, 2, 0)
+            perish(<WaveSprite>sprite, 2, 0)
             if (this.statusbar.value == 0) {
                 if(this.player == controller.player1){
                     game.splash("player2 win!")
@@ -323,7 +663,7 @@ namespace myGame {
         }
 
         //time: 硬直时间， kind: 受伤动作， dir: 攻击对象在左边， pro: 造成攻击的弹射物
-        hitrec(time: number, kind: number, dir: boolean, pro: wave){
+        hitrec(time: number, kind: number, dir: boolean, pro: WaveSprite){
             clearTimeout(this.hitclock)
             this.hitclock = -1
             clearTimeout(this.hurtclock)
@@ -392,7 +732,7 @@ namespace myGame {
             this.attack = 1
             let img222 = atk.clone()
             animation.stopAnimation(animation.AnimationTypes.All, this.mySprite)
-            let projectile = <wave>sprites.createProjectileFromSprite(img222, this.mySprite, this.mySprite.vx, 0)
+            let projectile = <WaveSprite>sprites.createProjectileFromSprite(img222, this.mySprite, this.mySprite.vx, 0)
             projectile.lifespan = life;
             let follow: number
             follow = setInterval(()=>{
@@ -458,7 +798,7 @@ namespace myGame {
             }
             setTimeout(()=>{this.stand(true)}, time)
         }
-        defaultshoot = (s:wave)=>{}
+        defaultshoot = (s:WaveSprite)=>{}
 
         // 自动攻击，暂停控制，按[下]退出
         autoAttack(time: number, mp: number, atk: ()=>void){
@@ -571,7 +911,7 @@ namespace myGame {
                         . . . . . . . . . . . . . . . .
                         . . . . . . . . . . . . . . . .
                         . . . . . . . . . . . . . . . .
-                    `, (s:wave)=>{
+                    `, (s:WaveSprite)=>{
                         s.lifespan = 600
                         s.damage = 1
                     })
@@ -607,7 +947,7 @@ namespace myGame {
                     . . . . . . . . . . . . . . . .
                     . . . . . . . . . . . . . . . .
                     . . . . . . . . . . . . . . . .
-                `, (b:wave)=>{
+                `, (b:WaveSprite)=>{
                     b.hitrec = 1200
                 })
             })
@@ -636,7 +976,7 @@ namespace myGame {
                         . . . . . . . . . . . . . . . .
                         . . . . . . . . . . . . . . . .
                     `,
-                        (b: wave)=>{
+                        (b: WaveSprite)=>{
                             setTimeout(()=>{
                                 b.vx *= 1.5
                                 b.vy *= 1.5
@@ -669,7 +1009,7 @@ namespace myGame {
                     . . . . . . . . . . . . . . . .
                     . . . . . . . . . . . . . . . .
                     . . . . . . . . . . . . . . . .
-                `, (s:wave)=>{
+                `, (s:WaveSprite)=>{
                     s.damage = 1
                     s.indeflectible = true
                 })
@@ -691,7 +1031,7 @@ namespace myGame {
                         . . . . . . . . . . . . . . . .
                         . . . . . . . . . . . . . . . .
                         . . . . . . . . . . . . . . . .
-                    `, (s:wave)=>{
+                    `, (s:WaveSprite)=>{
                         s.damage = 1
                         s.indeflectible = true
                     })
@@ -1346,7 +1686,7 @@ namespace myGame {
             }
             this.mySprite.setFlag(SpriteFlag.Ghost, true)
             this.mySprite.setFlag(SpriteFlag.Invisible, true);
-            (<wave>(this.mySprite)).own = this
+            (<WaveSprite>(this.mySprite)).own = this
             this.statusbar = statusbars.create(50, 4, StatusBarKind.Health)
             this.statusbar.positionDirection(CollisionDirection.Top)
             this.statusbar.setOffsetPadding(-66666, 0)
@@ -1462,15 +1802,57 @@ namespace myGame {
         }
     }
 
+    //%block
+    //%blockNamespace=技能
+    //%group="动作"
+    //%blockId=attackAction block="攻击 %p=variables_get(player) %atk=atkKind ||持续 $time 秒"
+    //%time.defl = 0
+    //%inlineInputMode=inline
+    //%weight=99
+    export function atkAction(p:Character, atk: atkKind, time: number = 0){
+        if(atk == atkKind.BasicAtkA){
+            if(time == 0){
+                p.basicAttack('A')
+            }
+            else{
+                p.basicAttack('A', time*1000)
+            }
+        }
+        else if(atk == atkKind.RushAtkA){
+            if(time == 0){
+                p.rushAttack('A')
+            }
+            else{
+                p.rushAttack('A', time*1000)
+            }
+        }
+        else if(atk == atkKind.BasicAtkB){
+            if(time == 0){
+                p.basicAttack('B')
+            }
+            else{
+                p.basicAttack('B', time*1000)
+            }
+        }
+        else if(atk == atkKind.RushAtkB){
+            if(time == 0){
+                p.rushAttack('B')
+            }
+            else{
+                p.rushAttack('B', time*1000)
+            }
+        }
+    }
+
     function shoot(p: Character, beginAngel: number, endAngel: number, n: number, speed: number,
                    x: number, y: number, img: Image,
-                   handle: (sprite: wave)=>void){
+                   handle: (sprite: WaveSprite)=>void){
         let offset = Math.max(1, (endAngel-beginAngel)/n)
         beginAngel = (180+beginAngel)// % 360
         endAngel = (180+endAngel)// % 360
         for(let index = beginAngel; index <= endAngel; index += offset)
         {
-            let bullet = <wave>sprites.createProjectileFromSide(img.clone(), 0, 0)
+            let bullet = <WaveSprite>sprites.createProjectileFromSide(img.clone(), 0, 0)
             reset(p, bullet)
             bullet.setPosition(x, y)
             bullet.setVelocity(speed*Math.cos(index/57.3), speed*Math.sin(index/57.3))

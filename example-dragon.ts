@@ -642,7 +642,7 @@ myGame.basicSet(img`
 let 替身巨龙 = ""
 let 火球 = ""
 let 尾焰 = ""
-let projectile: myGame.wave = null
+let projectile: myGame.WaveSprite = null
 let skill2 = null
 myGame.skillSet("恶龙", function (player2) {
     myGame.setSkill(player2, myGame.SkillKind.B8, 8, function (tempVar, player2) {
@@ -897,10 +897,10 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "蓝火球", function (projectile) {
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 30)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 30)
         myGame.setBullet(projectile, myGame.bulletP.hitrec, 600)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, 1)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,1)
     })
     myGame.setProjectile(img`
         . . . . . . . . . . . . . . . . 
@@ -920,13 +920,13 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "黑火球", function (projectile) {
-        myGame.setBullet(projectile, myGame.bulletP.damage, 5)
-        myGame.setBullet(projectile, myGame.bulletP.hurted, 10)
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 120)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 5)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 10)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 120)
         myGame.setBullet(projectile, myGame.bulletP.hitrec, 400)
-        myGame.setBullet2(projectile, myGame.bulletP2.breakdef, true)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, 5)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,5)
     })
     替身巨龙 = myGame.strProjectiles("替身巨龙")
     myGame.setProjectile(img`
@@ -1008,8 +1008,8 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         ....ccc..ccccc...............................................................
         `, 替身巨龙, function (projectile) {
         projectile.setFlag(SpriteFlag.AutoDestroy, false)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, 99)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,99)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
         projectile.setStayInScreen(true)
         for (let index = 0; index < randint(30, randint(40, randint(60, 80))); index++) {
             myGame.then(0.1, function (projectile) {
@@ -1044,10 +1044,10 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "红火球", function (projectile) {
-        myGame.setBullet(projectile, myGame.bulletP.damage, 3)
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 75)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, 3)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 3)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 75)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,3)
     })
     myGame.setProjectile(img`
         . . . . . . . . . . . . . . . . 
@@ -1067,7 +1067,7 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . 3 3 . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, "星星之火", function (projectile) {
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
         projectile.lifespan = 2500
         myGame.overlapAct(projectile, myGame.overlapKind.three, function () {
             for (let index = 0; index < 3; index++) {
@@ -1094,13 +1094,13 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         `, "火焰弹", function (projectile) {
         myGame.circular(projectile, 0.1, 0, myGame.clockwise.p, 120, 180)
-        myGame.setBullet(projectile, myGame.bulletP.damage, 10)
-        myGame.setBullet(projectile, myGame.bulletP.hurted, 6)
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 150)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet2(projectile, myGame.bulletP2.breakdef, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, 10)
-        myGame.setBlastAnim(projectile, 火球爆炸)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 10)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 6)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 150)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,10)
+fightext_projectile.setBlastAnim(projectile, 火球爆炸)
         myGame.tailshoot(projectile, 40, 尾焰)
     })
     火球 = myGame.strProjectiles("火球")
@@ -1143,8 +1143,8 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         . . . . . . . . . . . . . . . . 
         `, "火焰轮", function (projectile) {
         myGame.circular(projectile, 4, 0, myGame.clockwise.p, 45, 180)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
     myGame.setProjectile(img`
         ................
@@ -1345,13 +1345,13 @@ myGame.setProjectiles("恶龙的弹射物集合", function () {
         .....231132.....
         `, "火焰柱", function (projectile) {
         projectile.lifespan = 500
-        myGame.setBullet(projectile, myGame.bulletP.damage, 8)
-        myGame.setBullet(projectile, myGame.bulletP.yspeed, 150)
-        myGame.setBullet(projectile, myGame.bulletP.xspeed, 45)
-        myGame.setBullet(projectile, myGame.bulletP.hurted, 6)
-        myGame.setBullet2(projectile, myGame.bulletP2.indeflectible, true)
-        myGame.setBullet2(projectile, myGame.bulletP2.breakdef, true)
-        myGame.setBullet(projectile, myGame.bulletP.perishTogether, -1)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.damage, 8)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.yspeed, 150)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.xspeed, 45)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.hurted, 6)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.indeflectible, true)
+        myGame.setBullet2(projectile, fightext_projectile.bulletP2.breakdef, true)
+        myGame.setBullet(projectile, fightext_projectile.bulletP.perishTogether,-1)
     })
 })
 let 火球爆炸 = ""
