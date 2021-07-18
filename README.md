@@ -43,8 +43,8 @@ playGame.characterMenus()
     playgame.ts
 
 ## 项目模板：
-    直接导入项目https://makecode.com/_VWd0C5iLcAEo；
-    不用模板、只导入插件则在项目里添加拓展github:xirishi0/fightextension；
+    直接导入项目https://github.com/felixtsu/myfighter-playground/ 
+    不用模板、只导入插件则在项目里添加拓展github:cubicbird/fightextension；
     本插件的example.ts里有也有一个简单的模板，可以复制到main.ts里；
     其他example-xx.ts里有角色示例，粘贴进main.ts里就可以使用了，
     如果报错，就将example.ts里的内容也复制进去；
