@@ -517,7 +517,7 @@ namespace myGame {
         })
     }
 
-    //% blockId=cbpromisethen block="after %delay s then"
+    //% blockId=cbpromisethen block="延迟 %delay 秒后执行"
     //% topblock=false
     //% group="魔法"
     //% blockNamespace=弹射物

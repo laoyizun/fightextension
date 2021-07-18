@@ -4,6 +4,8 @@ namespace SpriteKind {
     export const p1body = SpriteKind.create()
     export const p2body = SpriteKind.create()
 }
+//%icon="\uf007" color="#6A6FEA"
+namespace 人物{}
 //%icon="\uf132" color="#B6392F"
 namespace 技能{}//"\uf132" "\uf198" "\uf140"
 //%icon="\uf135" color="#458FAA"
