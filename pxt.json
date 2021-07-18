@@ -13,6 +13,11 @@
         "assets.json",
         "mygame.ts",
         "playgame.ts",
+        "animation-ext.ts",
+        "character-ext.ts",
+        "fightext-sprites.ts",
+        "projectile-ext.ts",
+        "skill-ext.ts",
         "assets.ts"
     ],
     "testFiles": [
