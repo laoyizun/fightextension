@@ -18,6 +18,7 @@
         "fightext-sprites.ts",
         "projectile-ext.ts",
         "skill-ext.ts",
+        "lang-ext.ts",
         "assets.ts"
     ],
     "testFiles": [

@@ -19,7 +19,7 @@ namespace fightext_skill {
         A6,
         //% block="➡️+A"
         A8,
-        //% block="⬇️+➡️+A"
+        //% block="⬇️➡️+A"
         A9,
         //% block="⬇️+→+A"
         A10,
@@ -39,7 +39,7 @@ namespace fightext_skill {
         B6,
         //% block="➡️+B"
         B8,
-        //% block="⬇️+➡️+B"
+        //% block="⬇️➡️+B"
         B9,
         //% block="⬇️+→+B"
         B10,
@@ -183,25 +183,25 @@ namespace fightext_skill {
         }else if(str == SkillKind.A11){ //受身反击: 被击飞+↑+A
             return new skill(player.skill1A.mp, player.skill0A.f)
         }
-        else if(str == SkillKind.B){ //平A: A
+        else if(str == SkillKind.B){ //平A: B
             return new skill(player.skill0B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B1){ //反击: ⬇️+A
+        }else if(str == SkillKind.B1){ //反击: ⬇️+B
             return new skill(player.skill1B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B2){ //跳起攻击: ↑+A
+        }else if(str == SkillKind.B2){ //跳起攻击: ↑+B
             return new skill(player.skill2B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B3){ //跳起特殊攻击: ⬇️+↑+A
+        }else if(str == SkillKind.B3){ //跳起特殊攻击: ⬇️+↑+B
             return new skill(player.skill3B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B4){ //冲刺: ➡️➡️+A
+        }else if(str == SkillKind.B4){ //冲刺: ➡️➡️+B
             return new skill(player.skill4B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B6){ //冲跳攻: ➡️➡️+↑+A
+        }else if(str == SkillKind.B6){ //冲跳攻: ➡️➡️+↑+B
             return new skill(player.skill6B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B8){ //平A2: ➡️+A
+        }else if(str == SkillKind.B8){ //平A2: ➡️+B
             return new skill(player.skill8B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B9){ //反击2: ↘️+A
+        }else if(str == SkillKind.B9){ //反击2: ↘️+B
             return new skill(player.skill9B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B10){ //必杀: ⬇️+➡️+A
+        }else if(str == SkillKind.B10){ //必杀: ⬇️+➡️+B
             return new skill(player.skill10B.mp, player.skill0B.f)
-        }else if(str == SkillKind.B11){ //受身反击: 被击飞+↑+A
+        }else if(str == SkillKind.B11){ //受身反击: 被击飞+↑+B
             return new skill(player.skill1B.mp, player.skill0B.f)
         }
         return null
@@ -412,7 +412,7 @@ namespace fightext_skill {
     //%blockNamespace=技能
     //%group="动作"
     //%blockId=run block="起跑 %p=variables_get(player) ||速度%speed"
-    //%weighr=98
+    //%weight=98
     //%speed.defl=80
     export function run(p: Character, speed: number = 80){
         p.stop()
@@ -445,7 +445,7 @@ namespace fightext_skill {
     //%blockNamespace=技能
     //%group="动作"
     //%blockId=stop block="暂停控制 %p=variables_get(player) %time 秒"
-    //%weighr=96
+    //%weight=96
     //%speed.defl=1
     export function stop(p: Character, time: number = 1){
         p.stop()
@@ -462,8 +462,8 @@ namespace fightext_skill {
     //%blockId=defent block="防御效果 %p=variables_get(player) 持续 %t 秒 ||防御系数 %k"
     //%t.defl=1
     //%k.defl=0.5
-    //%weighr=98
-    export function defent(p: Character, t: number, k: number = 0.5){
+    //%weight=98
+    export function defend(p: Character, t: number, k: number = 0.5){
         p.def2 = k
         clearTimeout(p.def2clock)
         p.def2clock = setTimeout(()=>{p.def2clock = -1; p.def2=1; }, t*1000)
@@ -475,7 +475,7 @@ namespace fightext_skill {
     //%blockId=hurtedDown block="硬直减免 %p=variables_get(player) 持续 %t 秒 ||硬直减免系数 %k"
     //%t.defl=1
     //%k.defl=0.5
-    //%weighr=98
+    //%weight=98
     export function hurtedDown(p: Character, t: number, k: number = 0.5){
         p.hurtedDown = k
         clearTimeout(p.hurtedDownclock)
@@ -487,7 +487,7 @@ namespace fightext_skill {
     //%group="动作"
     //%blockId=immune block="无敌 %p=variables_get(player) 持续 %t 秒"
     //%t.defl=1
-    //%weighr=97
+    //%weight=97
     export function immune(p: Character, t: number){
         p.immu = 1
         clearTimeout(p.immuclock)

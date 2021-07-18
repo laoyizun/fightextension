@@ -5562,7 +5562,7 @@ fightext_skill.skillSet("大蝙蝠", function (player3) {
     })
     fightext_skill.setSkill(player3, fightext_skill.SkillKind.B9, 10, function (tempVar, player4) {
         fightext_skill.run(player4, 120)
-        fightext_skill.defent(player4, 0.5)
+        fightext_skill.defend(player4, 0.5)
         fightext_skill.add2(tempVar, "projectile", fightext_skill.newPosture(player4, img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -5608,7 +5608,7 @@ fightext_skill.skillSet("大蝙蝠", function (player3) {
         fightext_projectile.setBullet(fightext_skill.getVal2(tempVar, "projectile"), fightext_projectile.bulletP.perishTogether,-1)
     })
     fightext_skill.setSkill(player3, fightext_skill.SkillKind.B4, 4, function (tempVar, player4) {
-        fightext_skill.defent(player4, 0.5)
+        fightext_skill.defend(player4, 0.5)
         fightext_skill.add2(tempVar, "projectile", fightext_skill.newPosture(player4, img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . c c . . c c . . 
