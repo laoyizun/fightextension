@@ -1,7 +1,7 @@
 //%icon="\uf090" color="#CCC190"
 namespace 游戏{}
 namespace playGame{
-    export let characters :({character: myGame.myCharacter, name: string})[]
+    export let characters :({character: fightext_character.CustomCharacter, name: string})[]
     let p1img = img`
         ffffff...................ffff...
         fffffff.................fffff...
@@ -253,7 +253,7 @@ namespace playGame{
         p2.setFlag(SpriteFlag.Invisible, false)
         m2.setFlag(SpriteFlag.Invisible, false)
         b2.setFlag(SpriteFlag.Invisible, false)
-        
+
         game.pushScene()
         game.currentScene().flags |= scene.Flag.SeeThrough;
         dialog1 = new game.SplashDialog(75, 23);
@@ -293,12 +293,12 @@ namespace playGame{
         interval = setInterval(()=>{
             if(clock1 == -2 && clock2 == -2){
                 if(lock == 0
-                    && !controller.player1.isPressed(ControllerButton.A) 
+                    && !controller.player1.isPressed(ControllerButton.A)
                     && !controller.player2.isPressed(ControllerButton.A)){
                         lock = 1
                     }
                 else if(lock == 1
-                    && (controller.player1.isPressed(ControllerButton.A) 
+                    && (controller.player1.isPressed(ControllerButton.A)
                     || controller.player2.isPressed(ControllerButton.A)))
                 {
                     lock = 0
@@ -314,8 +314,8 @@ namespace playGame{
                     clearInterval(interval)
                     clearInterval(splashDialogClock1)
                     clearInterval(splashDialogClock2)
-                    myGame.overlap(chooseCharacter(myGame.PlayerKind.Player1, index1), 
-                                chooseCharacter(myGame.PlayerKind.Player2, index2))
+                    myGame.overlap(chooseCharacter(fightext_character.PlayerKind.Player1, index1),
+                                chooseCharacter(fightext_character.PlayerKind.Player2, index2))
                 }
             }
             if(controller.player1.isPressed(ControllerButton.A) && clock1 != -2){
@@ -425,11 +425,11 @@ namespace playGame{
     //%blockSetVariable="player"
     //%weight=98
     export */
-    function chooseCharacter(kind: myGame.PlayerKind, index: number) : myGame.Character{
+    function chooseCharacter(kind: fightext_character.PlayerKind, index: number) : fightext_character.Character{
         if(characters == null || index >= characters.length){
             return null
         }
-        let newPlayer = new myGame.Character(sprites.create(characters[index].character.img), controller.player1, SpriteKind.p1atk)
+        let newPlayer = new fightext_character.Character(sprites.create(characters[index].character.img), controller.player1, SpriteKind.p1atk)
         characters[index].character.basicSet(newPlayer)
         characters[index].character.skillSet(newPlayer)
         //copy(characters[index].character, newPlayer)
@@ -441,7 +441,7 @@ namespace playGame{
     //%group="游戏初始化"
     //%blockId=overlap block="开始游戏 %p1=variables_get(player1) %p2=variables_get(player2)"
     //%weight=90
-    export function overlap(p1: myGame.Character, p2: myGame.Character){
+    export function overlap(p1: fightext_character.Character, p2: fightext_character.Character){
         myGame.overlap(p1, p2)
     }
     */

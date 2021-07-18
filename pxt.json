@@ -1,6 +1,6 @@
 {
     "name": "fightextension",
-    "version": "0.1.3",
+    "version": "0.1.1",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -13,13 +13,17 @@
         "assets.json",
         "mygame.ts",
         "playgame.ts",
-        "mygame-2.ts",
-        "mygame-1.ts",
+        "animation-ext.ts",
+        "character-ext.ts",
+        "fightext-sprites.ts",
+        "projectile-ext.ts",
+        "skill-ext.ts",
+        "lang-ext.ts",
         "assets.ts"
     ],
     "testFiles": [
         "example-dragon.ts",
-        "examloe-bat.ts",
+        "example-bat.ts",
         "example-ghost.ts",
         "example-tesla.ts",
         "example.ts"
