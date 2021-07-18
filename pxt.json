@@ -15,6 +15,7 @@
         "playgame.ts",
         "animation-ext.ts",
         "character-ext.ts",
+        "character-ext-base.ts",
         "fightext-sprites.ts",
         "projectile-ext.ts",
         "skill-ext.ts",
