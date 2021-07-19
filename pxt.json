@@ -11,7 +11,7 @@
         "main.ts",
         "README.md",
         "assets.json",
-        "mygame.ts",
+        "myfighter-engine.ts",
         "playgame.ts",
         "animation-ext.ts",
         "character-ext.ts",

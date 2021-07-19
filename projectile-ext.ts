@@ -67,6 +67,26 @@ namespace fightext_projectile {
         })
     }
 
+    //重叠消亡 k(collision): 0=>未碰撞/超时重置, 1=>子弹碰子弹, 2=>子弹碰人; v: 碰撞存活优先级
+    export function perish(projectile: WaveSprite, k: number, v: number){
+        projectile.collision = k
+        if(projectile.overlapKind == 3 || projectile.collision == projectile.overlapKind){
+            projectile.overlapAct()
+        }
+        if(projectile.perishTogether != -1 && projectile.perishTogether <= v){
+            projectile.destroy()
+        }
+        else{
+            if(projectile.interval == -1 && projectile.collision == 2)
+            {
+                projectile.interval = setTimeout(function() {
+                    projectile.interval = -1
+                    projectile.collision = 0
+                }, 600)
+            }
+        }
+    }
+
     //% blockId=cbpromisethen block="延迟 %delay 秒后执行"
     //% topblock=false
     //% group="魔法"
