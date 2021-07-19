@@ -123,26 +123,6 @@ namespace fightext_character {
         }
     }
 
-    //重叠消亡 k(collision): 0=>未碰撞/超时重置, 1=>子弹碰子弹, 2=>子弹碰人; v: 碰撞存活优先级
-    function perish(sprite: WaveSprite, k: number, v: number){
-        sprite.collision = k
-        if(sprite.overlapKind == 3 || sprite.collision == sprite.overlapKind){
-            sprite.overlapAct()
-        }
-        if(sprite.perishTogether != -1 && sprite.perishTogether <= v){
-            sprite.destroy()
-        }
-        else{
-            if(sprite.interval == -1 && sprite.collision == 2)
-            {
-                sprite.interval = setTimeout(function() {
-                    sprite.interval = -1
-                    sprite.collision = 0
-                }, 600)
-            }
-        }
-    }
-
     export class Character{
         laspres = -1 //方向. 1:左，2:右
         rushspeed = 80 //奔跑速度
@@ -330,7 +310,7 @@ namespace fightext_character {
                 return
             }
             if(this.immu == 1){
-                perish(<WaveSprite>sprite, 0, 0)
+                fightext_projectile.perish(<WaveSprite>sprite, 0, 0)
                 return
             }
             if((<WaveSprite>sprite).damage == 0){
@@ -409,7 +389,7 @@ namespace fightext_character {
                     b.destroy()
                 }
             }
-            perish(<WaveSprite>sprite, 2, 0)
+            fightext_projectile.perish(<WaveSprite>sprite, 2, 0)
             if (this.statusbar.value == 0) {
                 if(this.player == controller.player1){
                     game.splash("player2 win!")

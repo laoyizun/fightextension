@@ -38,7 +38,7 @@ playGame.characterMenus()
 * 游戏模块：
     mygame-1.ts
     mygame-2.ts 
-    mygame.ts
+    myfighter-engine.ts
 * 整合模块：
     playgame.ts
 

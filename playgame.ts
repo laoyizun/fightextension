@@ -314,8 +314,9 @@ namespace playGame{
                     clearInterval(interval)
                     clearInterval(splashDialogClock1)
                     clearInterval(splashDialogClock2)
-                    myGame.overlap(chooseCharacter(fightext_character.PlayerKind.Player1, index1),
+                    fighter_engine.overlap(chooseCharacter(fightext_character.PlayerKind.Player1, index1),
                                 chooseCharacter(fightext_character.PlayerKind.Player2, index2))
+                    fighter_engine.handleAttackProjectileOverlaps()
                 }
             }
             if(controller.player1.isPressed(ControllerButton.A) && clock1 != -2){
@@ -432,8 +433,7 @@ namespace playGame{
         let newPlayer = new fightext_character.Character(sprites.create(characters[index].character.img), controller.player1, SpriteKind.p1atk)
         characters[index].character.basicSet(newPlayer)
         characters[index].character.skillSet(newPlayer)
-        //copy(characters[index].character, newPlayer)
-        myGame.setPlayer(newPlayer, kind)
+        fighter_engine.setPlayer(newPlayer, kind)
         return newPlayer
     }
     /*
