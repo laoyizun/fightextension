@@ -122,6 +122,11 @@ namespace fightext_projectile {
             bullet = <WaveSprite>sprites.createProjectileFromSide(b.img.clone(), 0, 0)
             func = b.cb
             reset(p.own, bullet)
+            
+            _setCurrentRequest(new fightext_utils.Request(bullet))
+            func(bullet)
+            invoke()
+
             a+=180
             if(p.dir == 1){
                 a = 180-a
@@ -129,14 +134,13 @@ namespace fightext_projectile {
             bullet.setPosition(p.x+d*Math.cos(a/57.3)+x, p.y+d*Math.sin(a/57.3)+y)
             bullet.setVelocity(s*Math.cos(a/57.3), s*Math.sin(a/57.3))
             if(bullet.vx < 0 || bullet.vx == 0 && p.dir == 1){
-                //bullet.vx = -bullet.vx
-                bullet.image.flipX()
+                if (!bullet.noFlip) {
+                    bullet.image.flipX()
+                }
                 bullet.dir = 1
             }
             bullet.setKind(p.kind())
-            _setCurrentRequest(new fightext_utils.Request(bullet))
-            func(bullet)
-            invoke()
+            
         }
     }
 
