@@ -314,6 +314,7 @@ namespace fightext_character {
                 return
             }
             if((<WaveSprite>sprite).damage == 0){
+                fightext_projectile.perish(<WaveSprite>sprite, 0, 0)
                 return
             }
             if ((this.defence == 1 || this.def2 != 1) && !((<WaveSprite>sprite).breakdef)) {
