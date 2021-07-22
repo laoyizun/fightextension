@@ -25,7 +25,9 @@ namespace fightext_projectile {
         //% block="不受反射"
         indeflectible,
         //% block="发射者被攻击时消亡"
-        attachPlayer
+        attachPlayer,
+        //% block="图像不随方向变化"
+        noFlip
     }
 
     //------------- 弹射物注册/定义 -------------
@@ -470,6 +472,7 @@ namespace fightext_projectile {
         own: Character //归属
         attachOwner = false //所有者被攻击时自动销毁
         blastAnim: string //爆炸(销毁)动画
+        noFlip = false; //图像不随方向销毁
     }
 
     export function reset(own: Character, bullet: WaveSprite, damage = 1, hitrec = 100, hurted = 1,
