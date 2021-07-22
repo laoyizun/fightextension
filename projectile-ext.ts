@@ -472,7 +472,7 @@ namespace fightext_projectile {
         own: Character //归属
         attachOwner = false //所有者被攻击时自动销毁
         blastAnim: string //爆炸(销毁)动画
-        noFlip = false; //图像不随方向销毁
+        noFlip = false; //图像不随方向变化
     }
 
     export function reset(own: Character, bullet: WaveSprite, damage = 1, hitrec = 100, hurted = 1,
@@ -497,6 +497,7 @@ namespace fightext_projectile {
         bullet.dir = 2 //朝向 1->左，2->右
         bullet.attachOwner = false //所有者被攻击时自动销毁
         bullet.blastAnim = null //爆炸(销毁)动画
+        bullet.noFlip = false //图像不随方向变化
     }
 
     //%block
@@ -541,6 +542,8 @@ namespace fightext_projectile {
         }
         else if(k == bulletP2.indeflectible){
             b.indeflectible = v
+        } else if(k == bulletP2.noFlip) {
+            b.noFlip = v
         }
         else if(k == bulletP2.attachPlayer){
             b.attachOwner = v
