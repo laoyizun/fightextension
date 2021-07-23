@@ -132,9 +132,6 @@ namespace fightext_projectile {
             bullet.setVelocity(s*Math.cos(a/57.3), s*Math.sin(a/57.3))
 
             if(bullet.vx < 0 || bullet.vx == 0 && p.dir == 1){
-                if (!bullet.noFlip) {
-                    bullet.image.flipX()
-                }
                 bullet.dir = 1
             }
             bullet.setKind(p.kind())
