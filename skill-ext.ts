@@ -346,19 +346,21 @@ namespace fightext_skill {
             a = 180-a
         }
 
+        bullet.setPosition(x+d*Math.cos(a/57.3), y+d*Math.sin(a/57.3))
+        bullet.setVelocity(s*Math.cos(a/57.3), s*Math.sin(a/57.3))
+
         bullet.setKind(p.bulletkind)
+        if(bullet.vx < 0 || bullet.vx == 0 && p.laspres == 1){
+            //bullet.vx = -bullet.vx
+            bullet.dir = 1
+        }
+
         fightext_utils._setCurrentRequest(new fightext_utils.Request(bullet))
         func(bullet)
         fightext_utils.invoke()
-        
-        bullet.setPosition(x+d*Math.cos(a/57.3), y+d*Math.sin(a/57.3))
-        bullet.setVelocity(s*Math.cos(a/57.3), s*Math.sin(a/57.3))
-        if(bullet.vx < 0 || bullet.vx == 0 && p.laspres == 1){
-            //bullet.vx = -bullet.vx
-            if (!bullet.noFlip) {
-                bullet.image.flipX()
-            }
-            bullet.dir = 1
+
+        if (bullet.dir == 1 && !bullet.noFlip) {
+            bullet.image.flipX()
         }
     }
 

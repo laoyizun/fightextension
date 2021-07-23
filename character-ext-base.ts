@@ -112,16 +112,18 @@ namespace fightext_character {
         {
             let bullet = <WaveSprite>sprites.createProjectileFromSide(img.clone(), 0, 0)
             reset(p, bullet)
-            handle(bullet)
             bullet.setPosition(x, y)
             bullet.setVelocity(speed*Math.cos(index/57.3), speed*Math.sin(index/57.3))
             if(p.laspres == 1){
                 bullet.vx = -bullet.vx
-                if (!bullet.noFlip) {
-                    bullet.image.flipX()
-                }
             }
             bullet.setKind(p.bulletkind)
+
+            handle(bullet)
+
+            if(p.laspres == 1 && !bullet.noFlip){
+                bullet.image.flipX()
+            }
         }
     }
 
