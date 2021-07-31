@@ -102,7 +102,8 @@ namespace fightext_projectile {
 
     export function createWaveSprite(img:Image, sprite?:Sprite, vx:number=0, vy:number=0) :WaveSprite{
         let waveSprite = <WaveSprite>fightext_sprites.createCustomSprite(WAVE_SPRITE_KIND_ID, img.clone())
-        if (sprite) {
+        game.splash(sprite)
+        if (sprite != null || sprite != undefined) {
             waveSprite.x = sprite.x
             waveSprite.y = sprite.y
         }
