@@ -338,7 +338,7 @@ namespace fightext_skill {
             console.log("发射的弹射物 '"+name+"' 未定义!")
             return
         }
-        bullet = <WaveSprite>sprites.createProjectileFromSide(b.img.clone(), 0, 0)
+        bullet = fightext_projectile.createWaveSprite(b.img)
         func = b.cb
         fightext_projectile.reset(p, bullet)
         a+=180

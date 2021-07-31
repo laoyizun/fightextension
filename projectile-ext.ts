@@ -100,6 +100,10 @@ namespace fightext_projectile {
         _getCurrentRequest().callbacks.push({delay: delay * 1000, callback: cb})
     }
 
+    export function createWaveSprite(img:Image) {
+        return <WaveSprite>fightext_sprites.createCustomSprite(WAVE_SPRITE_KIND_ID, img.clone())
+    }
+
     //%block
     //%group="特殊效果"
     //%blockNamespace=弹射物
@@ -119,7 +123,8 @@ namespace fightext_projectile {
                 console.log("空爆的弹射物 '"+name+"' 未定义!")
                 return
             }
-            bullet = <WaveSprite>sprites.createProjectileFromSide(b.img.clone(), 0, 0)
+            bullet = createWaveSprite(b.img)
+            // bullet = <WaveSprite>sprites.createProjectileFromSide(b.img.clone(), 0, 0)
             func = b.cb
             reset(p.own, bullet)
 
@@ -479,7 +484,33 @@ namespace fightext_projectile {
         attachOwner = false //所有者被攻击时自动销毁
         blastAnim: string //爆炸(销毁)动画
         noFlip = false; //图像不随方向变化
+
+        constructor(img:Image) {
+            super(img)
+            this.damage = 1 //伤害
+            this.hurted = 1 //攻击轻重,越大越容易击倒
+            this.hitrec = 100 //被攻击方硬直时间
+            this.breakdef = false //是否破防
+            this.xspeed = 50 //击飞时的x轴速度
+            this.yspeed = 20 //击飞时的y轴速度
+            this.rebound = false //反射敌方子弹
+            this.indeflectible = false //不受反射
+            this.isDestroyed = false //已消亡
+            this.perishTogether = 0 //碰撞存活优先级. -1~99, -1时碰撞双方都不会销毁
+            this.collision = 1 //上次碰撞类型：0=>未碰撞/超时重制, 1=>子弹碰子弹, 2=>子弹碰人
+            this.interval = -1 //碰撞后不消亡使用的时钟
+            this.circlock = -1 //转圈时钟
+            this.overlapAct = ()=>{} //碰撞后的行为
+            this.overlapKind = 3 //引发overlapAct的碰撞类型：1=>子弹碰子弹, 2=>子弹碰人, 3=>任意
+            this.dir = 2 //朝向 1->左，2->右
+            this.attachOwner = false //所有者被攻击时自动销毁
+            this.noFlip = false; //图像不随方向变化
+
+        }
     }
+
+    const WAVE_SPRITE_KIND_ID = fightext_sprites.registerCustomSpriteKind((img:Image) => new WaveSprite(img))
+
 
     export function reset(own: Character, bullet: WaveSprite, damage = 1, hitrec = 100, hurted = 1,
                    breakdef = false, xspeed = 50, yspeed = 20, rebound = false,

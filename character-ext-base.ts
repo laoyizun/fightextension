@@ -110,7 +110,9 @@ namespace fightext_character {
         endAngel = (180+endAngel)// % 360
         for(let index = beginAngel; index <= endAngel; index += offset)
         {
-            let bullet = <WaveSprite>sprites.createProjectileFromSide(img.clone(), 0, 0)
+
+            // let bullet = <WaveSprite>sprites.createProjectileFromSide(img.clone(), 0, 0)
+            let bullet = fightext_projectile.createWaveSprite(img)
             reset(p, bullet)
             bullet.setPosition(x, y)
             bullet.setVelocity(speed*Math.cos(index/57.3), speed*Math.sin(index/57.3))
