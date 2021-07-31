@@ -478,7 +478,8 @@ namespace fightext_character {
             this.attack = 1
             let img222 = atk.clone()
             animation.stopAnimation(animation.AnimationTypes.All, this.mySprite)
-            let projectile = <WaveSprite>sprites.createProjectileFromSprite(img222, this.mySprite, this.mySprite.vx, 0)
+            // let projectile = <WaveSprite>sprites.createProjectileFromSprite(img222, this.mySprite, this.mySprite.vx, 0)
+            let projectile = fightext_projectile.createWaveSprite(img222, this.mySprite, this.mySprite.vx, 0)
             projectile.lifespan = life;
             let follow: number
             follow = setInterval(()=>{
@@ -840,7 +841,7 @@ namespace fightext_character {
                             . . . 2 2 4 4 4 4 4 4 2 2 . . .
                             . . . . . 2 2 2 2 2 2 . . . . .
                         `,(s)=>{
-                            let pro = sprites.createProjectileFromSprite(img`
+                            let pro = fightext_projectile.createWaveSprite(img`
                                 . . . . . . . . . . . . . . . .
                                 . . . . . . . . . . . . . . . .
                                 . . . . . . . . . . . . . . . .
@@ -857,7 +858,7 @@ namespace fightext_character {
                                 . . . . . . . . . . . . . . . .
                                 . . . . . . . . . . . . . . . .
                                 . . . . . . . . . . . . . . . .
-                            `, s, 0, 0)
+                            `, s)
                             s.lifespan = 600
                             s.hurted = 4
                             s.breakdef = true
