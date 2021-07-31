@@ -318,7 +318,7 @@ namespace fightext_skill {
     //%group="技能设置"
     //%blockId=defaultSkill block="使用默认技能 %player=variables_get(player)"
     //%str.defl=SkillKind.A
-    export function defalutSkill(player: Character){
+    export function defaultSkill(player: Character){
         player.defaultskill()
     }
 
@@ -338,7 +338,7 @@ namespace fightext_skill {
             console.log("发射的弹射物 '"+name+"' 未定义!")
             return
         }
-        bullet = <WaveSprite>sprites.createProjectileFromSide(b.img.clone(), 0, 0)
+        bullet = fightext_projectile.createWaveSprite(b.img)
         func = b.cb
         fightext_projectile.reset(p, bullet)
         a+=180
@@ -510,7 +510,8 @@ namespace fightext_skill {
     //%blockSetVariable="projectile"
     export function newPosture(p: Character, img: Image, t: number = 0.3, atk: Image){
         if(p.hurted > 0){
-            let ret = <WaveSprite>sprites.createProjectileFromSprite(img, p.mySprite, p.mySprite.vx, 0)
+            // let ret = <WaveSprite>sprites.createProjectileFromSprite(img, p.mySprite, p.mySprite.vx, 0)
+            let ret = fightext_projectile.createWaveSprite(img, p.mySprite, p.mySprite.vx, 0)
             fightext_projectile.reset(p, ret)
             ret.lifespan = 0
             return ret

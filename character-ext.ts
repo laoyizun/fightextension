@@ -218,9 +218,13 @@ namespace fightext_character {
             return p.enemySprite
         }
         else { //(k == ME.P)
-            let ret = <WaveSprite>sprites.createProjectileFromSprite(img`
+            // let ret = <WaveSprite>sprites.createProjectileFromSprite(img`
+            //     .
+            // `, p.mySprite, p.mySprite.vx, 0)
+            let ret = fightext_projectile.createWaveSprite(img`
                 .
             `, p.mySprite, p.mySprite.vx, 0)
+
             reset(p, ret)
             ret.lifespan = 0
             return ret

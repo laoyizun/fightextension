@@ -430,7 +430,7 @@ namespace playGame{
         if(characters == null || index >= characters.length){
             return null
         }
-        let newPlayer = new fightext_character.Character(sprites.create(characters[index].character.img), controller.player1, SpriteKind.p1atk)
+        let newPlayer = new fightext_character.Character(fightext_projectile.createWaveSprite(characters[index].character.img), controller.player1, SpriteKind.p1atk)
         characters[index].character.basicSet(newPlayer)
         characters[index].character.skillSet(newPlayer)
         fighter_engine.setPlayer(newPlayer, kind)
