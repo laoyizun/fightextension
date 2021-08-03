@@ -1,32 +1,44 @@
 //%icon="\uf135" color="#458FAA"
-namespace 弹射物{} //"#BCE1F0"
+//%block="Custom Projectiles"
+//%block.loc.zh-CN="弹射物"
 namespace fightext_projectile {
 
     export enum bulletP{
-        //% block="伤害"
+        //% block="damage"
+        //%block.loc.zh-CN="伤害"
         damage,
-        //% block="攻击轻重"
+        //% block="hit force"
+        //%block.loc.zh-CN="攻击轻重"
         hurted,
-        //% block="硬直"
+        //% block="hit recovery"
+        //%block.loc.zh-CN="硬直"
         hitrec,
-        //% block="击飞vx"
+        //% block="knock vx"
+        //%block.loc.zh-CN="击飞vx"
         xspeed,
-        //% block="击飞vy"
+        //% block="knock vy"
+        //%block.loc.zh-CN="击飞vy"
         yspeed,
-        //% block="碰撞存活优先级"
+        //% block="overlap priority"
+        //%block.loc.zh-CN="碰撞存活优先级"
         perishTogether
     }
 
     export enum bulletP2{
-        //% block="破防"
+        //% block="break defend"
+        //%block.loc.zh-CN="破防"
         breakdef,
-        //% block="反射"
+        //% block="reflect"
+        //%block.loc.zh-CN="反射"
         rebound,
-        //% block="不受反射"
+        //% block="undeflectable"
+        //%block.loc.zh-CN="不受反射"
         indeflectible,
-        //% block="发射者被攻击时消亡"
+        //% block="channeling"
+        //%block.loc.zh-CN="发射者被攻击时消亡"
         attachPlayer,
-        //% block="图像不随方向变化"
+        //% block="no image flip"
+        //%block.loc.zh-CN="图像不随方向变化"
         noFlip
     }
 
@@ -50,9 +62,7 @@ namespace fightext_projectile {
         return projectiles
     }
 
-    //% blockId=cbpromiseinvoke block="invoke"
-    //% group="动作"
-    //%blockNamespace=弹射物
+    
     import runAnimationAt = fightext_animation.runAnimationAt;
     import _setCurrentRequest = fightext_utils._setCurrentRequest;
     import overlapKind = fightext_sprites.overlapKind;
@@ -89,10 +99,13 @@ namespace fightext_projectile {
         }
     }
 
-    //% blockId=cbpromisethen block="延迟 %delay 秒后执行"
+    //% blockId=cbpromisethen 
+    //% block="run %delay s later"
+    //% block.loc.zh-CN="延迟 %delay 秒后执行"
     //% topblock=false
-    //% group="魔法"
-    //% blockNamespace=弹射物
+    //% group="Magic"
+    //% group.loc.zh-CN="魔法"
+    //% blockNamespace=fightext_projectile
     //% handlerStatement=true
     //% draggableParameters="reporter"
     //% weight=79
@@ -112,9 +125,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="特殊效果"
-    //%blockNamespace=弹射物
-    //%blockId=splitshoot block="(空爆) %p=variables_get(projectile) 射出 弹射物%name || 偏移x %x y %y朝向角度 $a 速率 $s 与发射点到距离 $d"
+    //%group="Specials"
+    //%group.loc.zh-CN="特殊效果"
+    //%blockNamespace=fightext_projectile
+    //%blockId=splitshoot 
+    //%block="shoot custom projectile $name from  %p=variables_get(projectile) || offset x %x y %y angle $a velocity $s distance of firing $d"
+    //%block.loc.zh-CN="(空爆) %p=variables_get(projectile) 射出 弹射物%name || 偏移x %x y %y朝向角度 $a 速率 $s 与发射点到距离 $d"
     //%a.defl=180 x.defl=0 y.defl=0 s.defl=50 d.defl=0
     //%weight=78
     //%inlineInputMode=inline
@@ -159,9 +175,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="特殊效果"
-    //%blockNamespace=弹射物
-    //%blockId=tailshoot block="(尾焰) %p=variables_get(projectile) 每隔%t ms 产生动画 %anim"
+    //%group="Specials"
+    //%group.loc.zh-CN="特殊效果"
+    //%blockNamespace=fightext_projectile
+    //%blockId=tailshoot 
+    //%block="play $anim on %p=variables_get(projectile) interval $t ms"
+    //%block.loc.zh-CN="(尾焰) %p=variables_get(projectile) 每隔%t ms 产生动画 %anim"
     //%t.defl=100
     //%weight=77
     //%inlineInputMode=inline
@@ -174,10 +193,13 @@ namespace fightext_projectile {
         }, t)
     }
 
-    //% blockId=overlapAct block="(地雷) %p=variables_get(projectile) 被 %k=overlapKind 触碰后"
+    //% blockId=overlapAct 
     //% topblock=false
-    //% group="特殊效果"
-    //%blockNamespace=弹射物
+    //% group.loc.zh-CN="特殊效果"
+    //% group="Specials"
+    //%block="on %p=variables_get(projectile) overlaps with %k=overlapKind"
+    //%block.loc.zh-CN="(地雷) %p=variables_get(projectile) 被 %k=overlapKind 触碰后"
+    //%blockNamespace=fightext_projectile
     //% handlerStatement=true
     //% k.defl=overlapKind.three
     //% draggableParameters="reporter"
@@ -195,10 +217,13 @@ namespace fightext_projectile {
         p.overlapAct = func
     }
 
-    //% blockId=bulletInterval block="每隔%t 秒 持续执行 直到 %p=variables_get(projectile) 消亡"
+    //% blockId=bulletInterval 
+    //%block="run on interval %t s until %p=variables_get(projectile) is destroyed"
+    //%block.loc.zh-CN="每隔%t 秒 持续执行 直到 %p=variables_get(projectile) 消亡"
     //% topblock=false
-    //% group="特殊效果"
-    //%blockNamespace=弹射物
+    //% group.loc.zh-CN="特殊效果"
+    //% group="Specials"
+    //%blockNamespace=fightext_projectile
     //% handlerStatement=true
     //% draggableParameters="reporter"
     //% weight=75
@@ -215,9 +240,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="特殊效果"
-    //%blockNamespace=弹射物
-    //%blockId=setBlastAnim block="设定 %sprite=variables_get(projectile) 爆炸动画 %anim"
+    //% group.loc.zh-CN="特殊效果"
+    //% group="Specials"
+    //%blockNamespace=fightext_projectile
+    //%blockId=setBlastAnim 
+    //%block="set %sprite=variables_get(projectile) blast animation to %anim"
+    //%block.loc.zh-CN="设定 %sprite=variables_get(projectile) 爆炸动画 %anim"
     //%inlineInputMode=inline
     //%interval.defl=100
     //%weight=74
@@ -225,10 +253,12 @@ namespace fightext_projectile {
         b.blastAnim = anim
     }
 
-    // 自机狙
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=aimedshot block="(自机狙) %bullet=variables_get(projectile) 转向敌方精灵 ||转向速率 %time"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=aimedshot 
+    //%block="aim %bullet=variables_get(projectile) to opponent ||turnrate %time"
+    //%block.loc.zh-CN="(自机狙) %bullet=variables_get(projectile) 转向敌方精灵 ||转向速率 %time"
     //%time.defl=573
     export function aimedshot(bullet: WaveSprite, time: number = 573){
         let x: number = bullet.own.enemySprite.x
@@ -260,16 +290,21 @@ namespace fightext_projectile {
     }
 
     export enum clockwise{
-        //% block="顺"
+        //% block="clockwise"
+        //%block.loc.zh-CN="顺"
         p,
-        //% block="逆"
+        //% block="counterclockwise"
+        //%block.loc.zh-CN="逆"
         n
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=turnTo block="偏移 %p=variables_get(projectile) 转向角度 %angle ||速率%v"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=turnTo 
+    //%block.loc.zh-CN="偏移 %p=variables_get(projectile) 转向角度 %angle ||速率%v"
+    //%block="turn %p=variables_get(projectile) angle %angle || velocity %v"
     //%angle.defl=0 v.defl=1146
     //%inlineInputMode=inline
     export function turnTo(sprite: Sprite, angle: number, v: number = 1146){
@@ -292,18 +327,24 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=stopcircular block="停止转圈 %p=variables_get(projectile)"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=stopcircular 
+    //%block.loc.zh-CN="停止转圈 %p=variables_get(projectile)"
+    //%block="stop circuling %p=variables_get(projectile)"
     export function stopcircular(sprite: Sprite){
         clearInterval((<WaveSprite>sprite).circlock);
         (<WaveSprite>sprite).circlock = -1
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=circular block="转圈 %p=variables_get(projectile) ||半径%r 半径递增速率%v %t 时针 偏移速率%ov 偏移角度%oa"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=circular 
+    //%block="circle %p=variables_get(projectile) || radius %r radius incr rate %v clockwise %t accelerating %ov angle %oa"
+    //%block.loc.zh-CN="转圈 %p=variables_get(projectile) ||半径%r 半径递增速率%v %t 时针 偏移速率%ov 偏移角度%oa"
     //%r.defl=30 v=0 t.defl=clockwise.p ov.defl=0 oa.defl=180
     //%inlineInputMode=inline
     export function circular(sprite: Sprite, r: number = 30, v: number = 0,
@@ -340,9 +381,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=movetoxy block="移动 %sprite=variables_get(projectile) 在%time 秒内接近 位置x %desx y %desy"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=movetoxy 
+    //%block="move %sprite=variables_get(projectile) to x %desx y %desy in %time s"
+    //%block.loc.zh-CN="移动 %sprite=variables_get(projectile) 在%time 秒内接近 位置x %desx y %desy"
     //%inlineInputMode=inline
     export function movetoxy (sprite: Sprite, time: number, desx: number, desy: number) {
         movetox(sprite, time, desx)
@@ -350,9 +394,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=movetox block="移动 %sprite=variables_get(projectile) 在%time 秒内接近 位置x %desx"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=movetox 
+    //%block="move %sprite=variables_get(projectile) to x %desx in %time s"
+    //%block.loc.zh-CN="移动 %sprite=variables_get(projectile) 在%time 秒内接近 位置x %desx"
     //%inlineInputMode=inline
     export function movetox (sprite: Sprite, time: number, desx: number) {
         let clock: number
@@ -371,9 +418,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=movetoy block="移动 %sprite=variables_get(projectile) 在%time 秒内接近 位置y %desy"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=movetoy 
+    //%block="move %sprite=variables_get(projectile) to y %desy in %time s"
+    //%block.loc.zh-CN="移动 %sprite=variables_get(projectile) 在%time 秒内接近 位置y %desy"
     //%inlineInputMode=inline
     export function movetoy (sprite: Sprite, time: number, desy: number) {
         let clock: number
@@ -392,9 +442,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=movexy block="移动 %sprite=variables_get(projectile) 在%time 秒内移动 x %dx y %dy"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=movexy 
+    //%block="move %sprite=variables_get(projectile) x %dx y %dy in %time s"
+    //%block.loc.zh-CN="移动 %sprite=variables_get(projectile) 在%time 秒内移动 x %dx y %dy"
     //%inlineInputMode=inline
     export function movexy (sprite: Sprite, time: number, dx: number, dy: number) {
         if(dx != 0){
@@ -406,9 +459,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="行为/轨迹"
-    //%blockNamespace=弹射物
-    //%blockId=accelerateToV block="加速 %sprite=variables_get(projectile) 在%time 秒内加速 vx* %dx 倍 vy* %dy 倍"
+    //%group="Behavior / Ballistic"
+    //%group.loc.zh-CN="行为/轨迹"
+    //%blockNamespace=fightext_projectile
+    //%blockId=accelerateToV 
+    //%block="multiply %sprite=variables_get(projectile) vx %dx, vy %dy in %time s"
+    //%block.loc.zh-CN="加速 %sprite=variables_get(projectile) 在%time 秒内加速 vx* %dx 倍 vy* %dy 倍"
     //%inlineInputMode=inline
     export function acceToV (sprite: Sprite, time: number, vx: number, vy: number) {
         vx = sprite.vx * vx
@@ -428,9 +484,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="自定义弹射物"
-    //%blockNamespace=弹射物
-    //%blockId=setProjectiles block="自定义弹射物集合 标记名为%name"
+    //%group="Custom Projectile"
+    //%group.loc.zh-CN="自定义弹射物"
+    //%blockNamespace=fightext_projectile
+    //%blockId=setProjectiles 
+    //%block="define custom projectiles name %name"
+    //%block.loc.zh-CN="自定义弹射物集合 标记名为%name"
     //%weight=100
     //%afterOnStart=true
     export function setProjectiles(name:string, cb:()=>void){
@@ -438,9 +497,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="自定义弹射物"
-    //%blockNamespace=弹射物
-    //%blockId=strProjectiles block="弹射物名称 %name"
+    //%group="Custom Projectile"
+    //%group.loc.zh-CN="自定义弹射物"
+    //%blockNamespace=fightext_projectile
+    //%blockId=strProjectiles 
+    //%block="projectile name %name"
+    //%block.loc.zh-CN="弹射物名称 %name"
     //%weight=98
     //%blockSetVariable=projectileName
     export function strProjectiles(name: string){
@@ -448,9 +510,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="自定义弹射物"
-    //%blockNamespace=弹射物
-    //%blockId=setProjectile block="设置弹射物 %img=screen_image_picker 命名为%name"
+    //%group="Custom Projectile"
+    //%group.loc.zh-CN="自定义弹射物"
+    //%blockNamespace=fightext_projectile
+    //%blockId=setProjectile 
+    //%block="define projectile %img=screen_image_picker name %name"
+    //%block.loc.zh-CN="设置弹射物 %img=screen_image_picker 命名为%name"
     //%weight=81
     //%inlineInputMode=inline
     //%draggableParameters="projectile"
@@ -545,9 +610,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="属性"
-    //%blockNamespace=弹射物
-    //%blockId=setBullet block="设置弹射物%b=variables_get(projectile) 属性 %k=bulletP 为 %v"
+    //%group="projectile attributes"
+    //%group.loc.zh-CN="属性"
+    //%blockNamespace=fightext_projectile
+    //%blockId=setBullet 
+    //%block="set %b=variables_get(projectile) %k=bulletP to %v"
+    //%block.loc.zh-CN="设置弹射物%b=variables_get(projectile) 属性 %k=bulletP 为 %v"
     //%v.defl=0
     //%weight=78
     export function setBullet(b:WaveSprite, k: bulletP, v: number){
@@ -572,9 +640,12 @@ namespace fightext_projectile {
     }
 
     //%block
-    //%group="属性"
-    //%blockNamespace=弹射物
-    //%blockId=setBullet2 block="设置弹射物%b=variables_get(projectile) 特性 %k=bulletP2 为 %v=toggleOnOff"
+    //%group="projectile attributes"
+    //%group.loc.zh-CN="属性"
+    //%blockNamespace=fightext_projectile
+    //%blockId=setBullet2 
+    //%block="set %b=variables_get(projectile) %k=bulletP2 to %v=toggleOnOff"
+    //%block.loc.zh-CN="设置弹射物%b=variables_get(projectile) 特性 %k=bulletP2 为 %v=toggleOnOff"
     //%v.defl=true
     //%weight=78
     export function setBullet2(b:WaveSprite, k: bulletP2, v: boolean){
@@ -606,26 +677,35 @@ namespace fightext_projectile {
     }
 
     //%block
-    //% group="参数"
-    //%blockNamespace=弹射物
-    //%blockId=isDestroyed block="%b=variables_get(projectile) 已销毁"
+    //%group="projectile attributes"
+    //%group.loc.zh-CN="属性"
+    //%blockNamespace=fightext_projectile
+    //%blockId=isDestroyed 
+    //%block="%b=variables_get(projectile) is destroyed"
+    //%block.loc.zh-CN="%b=variables_get(projectile) 已销毁"
     export function isDestroyed(b: WaveSprite): boolean{
         return b.isDestroyed
     }
 
     //%block
-    //% group="参数"
-    //%blockNamespace=弹射物
-    //%blockId=projectileOwner block="%b=variables_get(projectile) 的所有者"
+    //%group="projectile attributes"
+    //%group.loc.zh-CN="属性"
+    //%blockNamespace=fightext_projectile
+    //%blockId=projectileOwner 
+    //%block="owner of %b=variables_get(projectile)"
+    //%block.loc.zh-CN="%b=variables_get(projectile) 的所有者"
     //%weight=99
     export function projectileOwner(b: WaveSprite): Character {
         return b.own
     }
 
     //%block
-    //%group="参数"
-    //%blockNamespace=弹射物
-    //%blockId=spriteToWave block="将精灵 %b=variables_get(sprite) 转化为弹射物"
+    //%group="projectile attributes"
+    //%group.loc.zh-CN="属性"
+    //%blockNamespace=fightext_projectile
+    //%blockId=spriteToWave 
+    //%block="cast %b=variables_get(sprite) to custom orojectile"
+    //%block.loc.zh-CN="将精灵 %b=variables_get(sprite) 转化为弹射物"
     //%weight=100
     export function spriteToWave(b: Sprite): WaveSprite{
         return <WaveSprite>b
