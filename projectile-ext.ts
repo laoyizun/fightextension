@@ -129,7 +129,7 @@ namespace fightext_projectile {
     //%group.loc.zh-CN="特殊效果"
     //%blockNamespace=fightext_projectile
     //%blockId=splitshoot 
-    //%block="shoot custom projectile $name from  %p=variables_get(projectile) || offset x %x y %y angle $a velocity $s distance of firing $d"
+    //%block="shoot custom projectile $name from  %p=variables_get(projectile) || offset x %x offset y %y velocity $s angle $a with additional offset $d"
     //%block.loc.zh-CN="(空爆) %p=variables_get(projectile) 射出 弹射物%name || 偏移x %x y %y朝向角度 $a 速率 $s 与发射点到距离 $d"
     //%a.defl=180 x.defl=0 y.defl=0 s.defl=50 d.defl=0
     //%weight=78

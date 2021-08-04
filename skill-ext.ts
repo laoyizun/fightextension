@@ -1,5 +1,6 @@
 //%icon="\uf132" color="#B6392F"
-namespace 技能{}//"\uf132" "\uf198" "\uf140"
+//%block="Fighter Skill"
+//%block.loc.zh-CN="技能"
 namespace fightext_skill {
     import Character = fightext_character.Character;
     import WaveSprite = fightext_projectile.WaveSprite;
@@ -23,7 +24,8 @@ namespace fightext_skill {
         A9,
         //% block="⬇️+→+A"
         A10,
-        //% block="受身+A"
+        //% block.loc.zh-CN="受身+A"
+        //% block="QuickStand+A"
         A11,
         //% block="B"
         B,
@@ -43,7 +45,8 @@ namespace fightext_skill {
         B9,
         //% block="⬇️+→+B"
         B10,
-        //% block="受身+B"
+        //% block.loc.zh-CN="受身+B"
+        //% block="QuickStand+B"
         B11
     }
 
@@ -70,9 +73,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="技能设置"
-    //%blockId=skillSet block="自定义人物 %name 技能"
+    //%blockNamespace=fightext_skill
+    //%group="Custom Skills"
+    //%group.loc.zh-CN="技能设置"
+    //%blockId=skillSet 
+    //%block="define skill of character %name"
+    //%block.loc.zh-CN="自定义人物 %name 技能"
     //%str.defl=SkillKind.A mp.defl=0
     //%weight=98
     //%draggableParameters="player"
@@ -87,9 +93,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="临时变量"
-    //%blockId=getTempVar block="获取临时变量 %t=variables_get(tempVar) %key"
+    //%blockNamespace=fightext_skill
+    //%group="Temp Variable"
+    //%group.loc.zh-CN="临时变量"
+    //%blockId=getTempVar 
+    //%block="%t=variables_get(tempVar) of key %key"
+    //%block.loc.zh-CN="获取临时变量 %t=variables_get(tempVar) %key"
     //%weight=89
     export function getVal(tempVar: tempVarDic, key: string){
         if(tempVar.map[key] == undefined){
@@ -99,54 +108,72 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="临时变量"
-    //%blockId=addTempVar block="设置临时变量 %t=variables_get(tempVar) %key = %val"
+    //%blockNamespace=fightext_skill
+    //%group="Temp Variable"
+    //%group.loc.zh-CN="临时变量"
+    //%blockId=addTempVar 
+    //%block="set %t=variables_get(tempVar) key %key to %val"
+    //%block.loc.zh-CN="设置临时变量 %t=variables_get(tempVar) %key = %val"
     //%weight=89
     export function add(tempVar: tempVarDic, key: string, val: number){
         tempVar.map[key] = val
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="临时变量"
-    //%blockId=getTempVar2 block="获取临时弹射物 %t=variables_get(tempVar) %key"
+    //%blockNamespace=fightext_skill
+    //%group="Temp Variable"
+    //%group.loc.zh-CN="临时变量"
+    //%blockId=getTempVar2 
+    //%block="temp projectile %t=variables_get(tempVar) of key %key"
+    //%block.loc.zh-CN="获取临时弹射物 %t=variables_get(tempVar) %key"
     //%weight=88
     export function getVal2(tempVar: tempVarDic, key: string){
         return tempVar.map2[key]
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="临时变量"
-    //%blockId=addTempVar2 block="设置临时弹射物 %t=variables_get(tempVar) %key 为 %val=variables_get(projectile)"
+    //%blockNamespace=fightext_skill
+    //%group="Temp Variable"
+    //%group.loc.zh-CN="临时变量"
+    //%blockId=addTempVar2 
+    //%block="set temp projectile %t=variables_get(tempVar) of key %key to %val=variables_get(projectile)"
+    //%block.loc.zh-CN="设置临时弹射物 %t=variables_get(tempVar) %key 为 %val=variables_get(projectile)"
     //%weight=88
     export function add2(tempVar: tempVarDic, key: string, val: WaveSprite){
         tempVar.map2[key] = val
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="临时变量"
-    //%blockId=getTempVar3 block="获取保存的技能 %t=variables_get(tempVar) %key"
+    //%blockNamespace=fightext_skill
+    //%group="Temp Variable"
+    //%group.loc.zh-CN="临时变量"
+    //%blockId=getTempVar3 
+    //%block="saved skill %t=variables_get(tempVar) of key %key"
+    //%block.loc.zh-CN="获取保存的技能 %t=variables_get(tempVar) %key"
     //%weight=88
     export function getVal3(tempVar: tempVarDic, key: string){
         return tempVar.map3[key]
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="临时变量"
-    //%blockId=addTempVar3 block="%t=variables_get(tempVar) 将技能%val=variables_get(skill) 临时保存为 %key"
+    //%blockNamespace=fightext_skill
+    //%group="Temp Variable"
+    //%group.loc.zh-CN="临时变量"
+    //%blockId=addTempVar3 
+    //%block="save %val=variables_get(skill) to %t=variables_get(tempVar) of key %key"
+    //%block.loc.zh-CN="%t=variables_get(tempVar) 将技能%val=variables_get(skill) 临时保存为 %key"
     //%weight=88
     export function add3(tempVar: tempVarDic, val: skill, key: string){
         tempVar.map3[key] = val
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="临时变量"
-    //%blockId=updateTempVar block="以幅度 %val 修改临时变量 %t=variables_get(tempVar) %key"
+    //%blockNamespace=fightext_skill
+    //%group="Temp Variable"
+    //%group.loc.zh-CN="临时变量"
+    //%blockId=updateTempVar 
+    //%block="change %t=variables_get(tempVar) of key %key by %val"
+    //%block.loc.zh-CN="以幅度 %val 修改临时变量 %t=variables_get(tempVar) %key"
     //%weight=89
     export function updateVar(val: number, tempVar: tempVarDic, key: string){
         tempVar.map[key] += val
@@ -156,9 +183,12 @@ namespace fightext_skill {
     //------------ 临时变量end ------------
 
     //%block
-    //%blockNamespace=技能
-    //%group="技能设置"
-    //%blockId=getSkill block="%player=variables_get(player) 技能%str=SkillKind"
+    //%blockNamespace=fightext_skill
+    //%group="Custom Skill"
+    //%group.loc.zh-CN="技能设置"
+    //%blockId=getSkill 
+    //%block="Skill %str=SkillKind of %player=variables_get(player) "
+    //%block.loc.zh-CN="%player=variables_get(player) 技能%str=SkillKind"
     //%weight=89
     export function getSkill(player: Character, str: SkillKind){
         //%blockSetVariable=skill
@@ -208,9 +238,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="技能设置"
-    //%blockId=setSkill2 block="设置技能 %player=variables_get(player) %str=SkillKind 为%skill=variables_get(skill)"
+    //%blockNamespace=fightext_skill
+    //%group="Custom Skill"
+    //%group.loc.zh-CN="技能设置"
+    //%blockId=setSkill2 
+    //%block="set %player=variables_get(player) %str=SkillKind skill to %skill=variables_get(skill)"
+    //%block.loc.zh-CN="设置技能 %player=variables_get(player) %str=SkillKind 为%skill=variables_get(skill)"
     //%weight=89
     export function setSkill2(player: Character, str: SkillKind, skill: skill){
         if(str == SkillKind.A){ //平A: A
@@ -258,10 +291,13 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="技能设置"
+    //%blockNamespace=fightext_skill
+    //%group="Custom Skill"
+    //%group.loc.zh-CN="技能设置"
     //%afterOnStart=true
-    //%blockId=setSkill block="设置技能 $player=variables_get(player) %str=SkillKind 消耗mp %mp"
+    //%blockId=setSkill 
+    //%block="set $player=variables_get(player) skill %str=SkillKind mp cost %mp"
+    //%block.loc.zh-CN="设置技能 $player=variables_get(player) %str=SkillKind 消耗mp %mp"
     //%str.defl=SkillKind.A mp.defl=0
     //%weight=90
     //%topblock=false
@@ -312,20 +348,25 @@ namespace fightext_skill {
         }
     }
 
-    //默认技能
     //%block
-    //%blockNamespace=技能
-    //%group="技能设置"
-    //%blockId=defaultSkill block="使用默认技能 %player=variables_get(player)"
+    //%blockNamespace=fightext_skill
+    //%group="Custom Skill"
+    //%group.loc.zh-CN="技能设置"
+    //%blockId=defaultSkill 
+    //%block="%player=variables_get(player) apply default skillset"
+    //%block.loc.zh-CN="使用默认技能 %player=variables_get(player)"
     //%str.defl=SkillKind.A
     export function defaultSkill(player: Character){
         player.defaultskill()
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=shoot2 block="射击 %p=variables_get(player) 发射弹射物 %name 从x $x y $y ||朝向角度 $a 速率 $s 与发射点到距离 $d"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=shoot2 
+    //%block="%p=variables_get(player) shoot projectile %name from x $x y $y || angle $a velocity $s offset $d"
+    //%block.loc.zh-CN="射击 %p=variables_get(player) 发射弹射物 %name 从x $x y $y ||朝向角度 $a 速率 $s 与发射点到距离 $d"
     //%a.defl=180 s.defl=50 x.defl=0 y.defl=0  d.defl=0
     //%weight=99
     //%inlineInputMode=inline
@@ -365,9 +406,12 @@ namespace fightext_skill {
     }
 
     // 反击，防御状态被攻击才能发出
-    //%blockNamespace=技能
-    //%group="特殊技能"
-    //%blockId=counterAttack block="(反击) %p=variables_get(player) 尝试执行 消耗mp %mp"
+    //%blockNamespace=fightext_skill
+    //%group="Specials"
+    //%group.loc.zh-CN="特殊技能"
+    //%blockId=counterAttack 
+    //%block="%p=variables_get(player) counter-attack attempt mp %mp"
+    //%block.loc.zh-CN="(反击) %p=variables_get(player) 尝试执行 消耗mp %mp"
     //%mp.defl=0
     //%topblock=false
     //%handlerStatement=true
@@ -376,9 +420,12 @@ namespace fightext_skill {
     }
 
     // 自动攻击，暂停控制，按[下]退出
-    //%blockNamespace=技能
-    //%group="特殊技能"
-    //%blockId=autoAttack block="(持续攻击) %p=variables_get(player) 每隔 %time 秒自动执行 消耗mp %mp"
+    //%blockNamespace=fightext_skill
+    //%group="Specials"
+    //%group.loc.zh-CN="特殊技能"
+    //%blockId=autoAttack 
+    //%block="%p=variables_get(player) auto attack interval %time mp %mp"
+    //%block.loc.zh-CN="(持续攻击) %p=variables_get(player) 每隔 %time 秒自动执行 消耗mp %mp"
     //%time.defl=0 mp.defl=0
     //%inlineInputMode=inline
     //% topblock=false
@@ -390,9 +437,12 @@ namespace fightext_skill {
 //=================== 人物动作 ===================
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=jump block="起跳 %p=variables_get(player) ||竖直速度%vy 水平速度%vx"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=jump 
+    //%block="%p=variables_get(player) jump || vy %vy vx %vx"
+    //%block.loc.zh-CN="起跳 %p=variables_get(player) || 竖直速度%vy 水平速度%vx"
     //%vy.defl=100 vx.defl=0
     //%weight=98
     export function jump(p: Character, vy: number = 100, vx: number = 0){
@@ -415,9 +465,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=run block="起跑 %p=variables_get(player) ||速度%speed"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=run 
+    //%block="%p=variables_get(player) dash || velocity %speed"
+    //%block.loc.zh-CN="起跑 %p=variables_get(player) ||速度%speed"
     //%weight=98
     //%speed.defl=80
     export function run(p: Character, speed: number = 80){
@@ -448,9 +501,12 @@ namespace fightext_skill {
         // }
     }
 
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=stop block="暂停控制 %p=variables_get(player) %time 秒"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=stop 
+    //%block="stop %p=variables_get(player) control for %time s"
+    //%block.loc.zh-CN="暂停控制 %p=variables_get(player) %time 秒"
     //%weight=96
     //%speed.defl=1
     export function stop(p: Character, time: number = 1){
@@ -463,9 +519,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=defent block="防御效果 %p=variables_get(player) 持续 %t 秒 ||防御系数 %k"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=defent 
+    //%block="%p=variables_get(player) defend for %t s || damage reduction rate %k"
+    //%block.loc.zh-CN="防御效果 %p=variables_get(player) 持续 %t 秒 ||防御系数 %k"
     //%t.defl=1
     //%k.defl=0.5
     //%weight=98
@@ -476,9 +535,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=hurtedDown block="硬直减免 %p=variables_get(player) 持续 %t 秒 ||硬直减免系数 %k"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=hurtedDown 
+    //%block="%p=variables_get(player) gains faster hit recover for %t s || rate %k"
+    //%block.loc.zh-CN="硬直减免 %p=variables_get(player) 持续 %t 秒 ||硬直减免系数 %k"
     //%t.defl=1
     //%k.defl=0.5
     //%weight=98
@@ -489,9 +551,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=immune block="无敌 %p=variables_get(player) 持续 %t 秒"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=immune 
+    //%block="%p=variables_get(player) become immune for %t s"
+    //%block.loc.zh-CN="无敌 %p=variables_get(player) 持续 %t 秒"
     //%t.defl=1
     //%weight=97
     export function immune(p: Character, t: number){
@@ -501,9 +566,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=newPosture block="近身攻击 %p=variables_get(player) 摆出姿势 %img=screen_image_picker %t 秒 攻击部位(projectile) %atk=screen_image_picker "
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=newPosture 
+    //%block="%p=variables_get(player) attack with posture %img=screen_image_picker for %t s attacking part %atk=screen_image_picker"
+    //%block.loc.zh-CN="近身攻击 %p=variables_get(player) 摆出姿势 %img=screen_image_picker %t 秒 攻击部位(projectile) %atk=screen_image_picker "
     //%inlineInputMode=inline
     //%t.defl=0.3
     //%weight=97
@@ -530,9 +598,12 @@ namespace fightext_skill {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=turn block="%p=variables_get(player) 转向"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=turn 
+    //%block="turn %p=variables_get(player)"
+    //%block.loc.zh-CN="%p=variables_get(player) 转向"
     //%weight=95
     export function turn(p: Character){
         if(p.laspres == 1){
@@ -561,10 +632,13 @@ namespace fightext_skill {
         }
     }
 
-    //% block="延迟 $time 秒后执行"
+    
     //% time.defl=0.5
-    //%blockNamespace=技能
-    //%group="动作"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //% block="run $time s later"
+    //% block.loc.zh-CN="延迟 $time 秒后执行"
     //%handlerStatement=1
     //%time=timePicker ms"
     //%weight=10

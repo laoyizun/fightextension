@@ -1,5 +1,5 @@
 //%icon="\uf007" color="#6A6FEA"
-//%block="Character"
+//%block="Fighters"
 //%block.loc.zh-CN="人物"
 namespace fightext_character {
     import reset = fightext_projectile.reset;
