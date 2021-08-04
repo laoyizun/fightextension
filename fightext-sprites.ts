@@ -7,11 +7,14 @@ namespace SpriteKind {
 
 namespace fightext_sprites {
     export enum overlapKind{
-        //% block="敌方弹射物"
+        //% block="opponet projectile"
+        //%block.loc.zh-CN="敌方弹射物"
         one,
-        //% block="敌方精灵"
+        //% block="opponent sprite"
+        //%block.loc.zh-CN="敌方精灵"
         two,
-        //% block="任意敌方物体"
+        //% block="opponent projectile or sprite"
+        //%block.loc.zh-CN="任意敌方物体"
         three
     }
 

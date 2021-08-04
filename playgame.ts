@@ -1,5 +1,6 @@
 //%icon="\uf090" color="#CCC190"
-namespace 游戏{}
+//%block="Fighter Game"
+//%block.loc.zh-CN="格斗游戏"
 namespace playGame{
     export let characters :({character: fightext_character.CustomCharacter, name: string})[]
     let p1img = img`
@@ -229,9 +230,12 @@ namespace playGame{
     }
 
     //%block
-    //%group="游戏初始化"
-    //%blockNamespace=游戏
-    //%blockId=characterMenus block="开始游戏"
+    //%group="Initialization"
+    //%group.loc.zh-CN="游戏初始化"
+    //%blockNamespace=playGame
+    //%blockId=characterMenus 
+    //%block="start game"
+    //%block.loc.zh-CN="开始游戏"
     //%weight=99
     export function characterMenus(){
 
@@ -445,14 +449,5 @@ namespace playGame{
         myGame.overlap(p1, p2)
     }
     */
-
-    //%block
-    //%blockNamespace=游戏
-    //%group="分隔符"
-    //%blockId=bar block="块间分隔标记 %s"
-    //%weight=89
-    export function bar(s: string){
-
-    }
 
 }

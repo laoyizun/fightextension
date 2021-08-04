@@ -15,74 +15,103 @@ namespace fightext_character {
     }
 
     export enum atkKind{
-        //% block="击拳1(A)"
+        //% block="Attack (A)"
+        //% block.loc.zh-CN="击拳1(A)"
         BasicAtkA,
-        //% block="击拳2(A)"
+        //% block="Rush Attack (A)"
+        //% block.loc.zh-CN="击拳2(A)"
         RushAtkA,
-        //% block="踢腿1(B)"
+        //% block="Attack (B)"
+        //% block.loc.zh-CN="踢腿1(B)"
         BasicAtkB,
-        //% block="踢腿2(B)"
+        //% block="Rush Attack (B)"
+        //% block.loc.zh-CN="踢腿2(B)"
         RushAtkB
     }
 
     export enum stimgKind{
-        //% block="防御"
+        //% block="Defence"
+        //% block.loc.zh-CN="防御"
         Defence,
-        //% block="击飞"
+        //% block="Knock"
+        //% block.loc.zh-CN="击飞"
         Hitover,
-        //% block="受身"
+        //% block="Quick standing"
+        //% block.loc.zh-CN="受身"
         Quickst,
-        //% block="倒地"
+        //% block="Down"
+        //% block.loc.zh-CN="倒地"
         Lie,
-        //% block="站立"
+        //% block="Stand"
+        //% block.loc.zh-CN="站立"
         Stand
     }
 
     export enum abilityKind{
-        //% block="奔跑速度"
+        //% block="rush speed"
+        //% block.loc.zh-CN="奔跑速度"
         rushspeed,
-        //% block="起跳速度"
+        //% block="jump speed"
+        //% block.loc.zh-CN="起跳速度"
         jumpspeed,
-        //% block="行走速度"
+        //% block="walk speed"
+        //% block.loc.zh-CN="行走速度"
         walkspeed,
-        //% block="A攻击伤害"
+        //% block="Attack (A) damage"
+        //% block.loc.zh-CN="A攻击伤害"
         damageA,
-        //% block="A攻击硬直"
+        //% block="Attack (A) hitrecover"
+        //% block.loc.zh-CN="A攻击硬直"
         hitrecA,
-        //% block="B攻击伤害"
+        //% block="Attack (B) damage"
+        //% block.loc.zh-CN="B攻击伤害"
         damageB,
-        //% block="B攻击硬直"
+        //% block="Attack (B) hitrecover"
+        //% block.loc.zh-CN="B攻击硬直"
         hitrecB,
-        //% block="防御持续时间"
+        //% block="defend period"
+        //% block.loc.zh-CN="防御持续时间"
         defencelas,
-        //% block="最长反击反应时间"
+        //% block="counter attack response time"
+        //% block.loc.zh-CN="最长反击反应时间"
         defact,
-        //% block="防御减伤系数"
+        //% block="defense"
+        //% block.loc.zh-CN="防御减伤系数"
         def,
-        //% block="倒地时间"
+        //% block="down time"
+        //% block.loc.zh-CN="倒地时间"
         downtime,
-        //% block="起身无敌时间"
+        //% block="immune time"
+        //% block.loc.zh-CN="起身无敌时间"
         immutime,
-        //% block="击飞速率系数"
+        //% block="knock rate"
+        //% block.loc.zh-CN="击飞速率系数"
         hitk
     }
     export enum atkimgKind{
-        //% block="击拳1"
+        //% block="Attack (A)"
+        //% block.loc.zh-CN="击拳1"
         hand1,
-        //% block="击拳2"
+        //% block="Rush Attack (A)"
+        //% block.loc.zh-CN="击拳2"
         hand2,
-        //% block="踢腿1"
+        //% block="Attack (B)"
+        //% block.loc.zh-CN="踢腿1"
         leg1,
-        //% block="踢腿2"
+        //% block="Rush Attack (B)"
+        //% block.loc.zh-CN="踢腿2"
         leg2
     }
 
     export enum aniKind{
-        //% block="受伤动作"
+        //% block="Hit"
+        //% block.loc.zh-CN="受伤动作"
         Hurt,
-        //% block="走路动画"
+        //% block="Walking"
+        //% block.loc.zh-CN="走路动画"
         Walk,
-        //% block="站立动画"
+        //% block="Standing"
+        //% block.loc.zh-CN="站立动画"
         Stand
     }
 
@@ -94,11 +123,15 @@ namespace fightext_character {
     }
 
     export enum ME{
-        //% block="精灵"
+        //% block="sprite"
+        //% block.loc.zh-CN="精灵"
         M,
-        //% block="敌方精灵"
+        //% block="opponent sprite"
+        //% block.loc.zh-CN="敌方精灵"
         E,
-        //% block="弹射物"
+        //% deprecated=true
+        //% block="projectile"
+        //% block.loc.zh-CN="弹射物"
         P
     }
 

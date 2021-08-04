@@ -1,5 +1,6 @@
 //%icon="\uf007" color="#6A6FEA"
-namespace 人物{}
+//%block="Fighters"
+//%block.loc.zh-CN="人物"
 namespace fightext_character {
     import reset = fightext_projectile.reset;
     import WaveSprite = fightext_projectile.WaveSprite;
@@ -24,9 +25,12 @@ namespace fightext_character {
     //=================== 自定义人物 ===================
 
     //%block
-    //%blockNamespace=人物
-    //%group="自定义人物"
-    //%blockId=setPlayerStImage block="设置$p=variables_get(player) %k=stimgKind 姿势 $img=screen_image_picker"
+    //%blockNamespace=fightext_character
+    //%group="Custom Fighter"
+    //%group.loc.zh-CN="自定义人物"
+    //%blockId=setPlayerStImage 
+    //%block="set $p=variables_get(player) %k=stimgKind posture to  $img=screen_image_picker"
+    //%block.loc.zh-CN="设置$p=variables_get(player) %k=stimgKind 姿势 $img=screen_image_picker"
     //%inlineInputMode=inline
     export function setStImage(p: Character, k: stimgKind, img: Image){
         if(k == stimgKind.Defence){
@@ -48,9 +52,12 @@ namespace fightext_character {
         }
     }
     //%block
-    //%blockNamespace=人物
-    //%group="自定义人物"
-    //%blockId=setPlayerAtkImage block="设置$p=variables_get(player) %k=atkimgKind 姿势 $img=screen_image_picker 攻击部位 %atk=screen_image_picker"
+    //%blockNamespace=fightext_character
+    //%group="Custom Fighter"
+    //%group.loc.zh-CN="自定义人物"
+    //%blockId=setPlayerAtkImage 
+    //%block="set $p=variables_get(player) %k=atkimgKind posture to $img=screen_image_picker attack part %atk=screen_image_picker""
+    //%block.loc.zh-CN="设置$p=variables_get(player) %k=atkimgKind 姿势 $img=screen_image_picker 攻击部位 %atk=screen_image_picker"
     //%inlineInputMode=inline
     export function setAtkImage(p: Character, k: atkimgKind, img: Image, atk: Image){
         if(k == atkimgKind.hand1)
@@ -75,9 +82,12 @@ namespace fightext_character {
     }
 
     //%block
-    //%blockNamespace=人物
-    //%group="自定义人物"
-    //%blockId=setPlayerWalkImage block="设置$p=variables_get(player) %k=aniKind $img=animation_editor ||走路帧间隔%t ms"
+    //%blockNamespace=fightext_character
+    //%group="Custom Fighter"
+    //%group.loc.zh-CN="自定义人物"
+    //%blockId=setPlayerWalkImage
+    //%block="set $p=variables_get(player) %k=aniKind $img=animation_editor ||interval %t ms"
+    //%block.loc.zh-CN="设置$p=variables_get(player) %k=aniKind $img=animation_editor ||走路帧间隔%t ms"
     //%inlineInputMode=inline
     //%t.defl=200
     export function setWalkImage(p: Character, k: aniKind, img: Image[], t: number = 200){
@@ -101,9 +111,12 @@ namespace fightext_character {
     }
 
     //%block
-    //%blockNamespace=人物
-    //%group="自定义人物"
-    //%blockId=setAbility block="设置%p=variables_get(player) 属性 %k=abilityKind 为 %v"
+    //%blockNamespace=fightext_character
+    //%group="Custom Fighter"
+    //%group.loc.zh-CN="自定义人物"
+    //%blockId=setAbility 
+    //%block="set %p=variables_get(player) attribute %k=abilityKind to %v"
+    //%block.loc.zh-CN="设置%p=variables_get(player) 属性 %k=abilityKind 为 %v"
     //%v.defl=0
     export function setAbility(p: Character, k: abilityKind, v: number){
         if(k == abilityKind.damageA){
@@ -135,27 +148,37 @@ namespace fightext_character {
         }
     }
     export enum playerStatus{
-        //% block="受伤"
+        
+        //% block="hit"
+        //% block.loc.zh-CN="受伤"
         hurted,
-        //% block="击飞"
+        //% block="knocked"
+        //% block.loc.zh-CN="击飞"
         hitover,
-        //% block="跳起"
+        //% block="in air"
+        //% block.loc.zh-CN="跳起"
         jump,
-        //% block="冲刺"
+        //% block="dashing"
+        //% block.loc.zh-CN="冲刺"
         rush,
-        //% block="防御"
+        //% block="defending"
+        //% block.loc.zh-CN="防御"
         defence,
-        //% block="攻击"
+        //% block="attacking"
+        //% block.loc.zh-CN="攻击"
         attack,
-        //% block="移动"
+        //% block="moving"
+        //% block.loc.zh-CN="移动"
         move,
-        //% block="朝向右"
+        //% block="facingRight"
+        //% block.loc.zh-CN="朝向右"
         right
     }
 
     //%block
-    //%blockNamespace=人物
-    //% group="参数"
+    //%blockNamespace=fightext_character
+    //%group="Character Attributes"
+    //%group.loc.zh-CN="参数"
     //%blockId=dirRight block="%p=variables_get(player) %k"
     //%k.defl=playerStatus.right
     export function dirRight(p: Character, k: playerStatus = playerStatus.right): boolean{
@@ -186,8 +209,9 @@ namespace fightext_character {
     }
 
     //%block
-    //% group="参数"
-    //%blockNamespace=人物
+    //%group="Character Attributes"
+    //%group.loc.zh-CN="参数"
+    //%blockNamespace=fightext_character
     //%blockId=getHPMPXY
     //%block="%p=variables_get(player) %k"
     export function getHPMPXY(p: Character, k: HPMP){
@@ -206,8 +230,9 @@ namespace fightext_character {
     }
 
     //%block
-    //% group="参数"
-    //%blockNamespace=人物
+    //%group="Character Attributes"
+    //%group.loc.zh-CN="参数"
+    //%blockNamespace=fightext_character
     //%blockId=getSprite
     //%block="%p=variables_get(player) %k"
     export function getSprite(p: Character, k: ME){
@@ -232,9 +257,12 @@ namespace fightext_character {
     }
 
     //%block
-    //%blockNamespace=人物
-    //%group="自定义人物"
-    //%blockId=basicSet block="自定义人物 %img=screen_image_picker 命名为 %name"
+    //%blockNamespace=fightext_character
+    //%group="Custom Fighter"
+    //%group.loc.zh-CN="自定义人物"
+    //%blockId=basicSet 
+    //%block="define fighter %img=screen_image_picker name %name"
+    //%block.loc.zh-CN="自定义人物 %img=screen_image_picker 命名为 %name"
     //%str.defl=SkillKind.A mp.defl=0
     //%weight=99
     //%draggableParameters="player"
@@ -252,8 +280,8 @@ namespace fightext_character {
     }
 
     /*//%block
-    //%blockNamespace=人物
-    //%group="自定义人物"
+    //%blockNamespace=fightext_character
+    //%group.loc.zh-CN="自定义人物"
     //%blockId=exportCharacter block="导出人物 %name"
     export */
     function exportCharacter(name: string){
@@ -270,9 +298,12 @@ namespace fightext_character {
     }
 
     //%block
-    //%blockNamespace=技能
-    //%group="动作"
-    //%blockId=attackAction block="攻击 %p=variables_get(player) %atk=atkKind ||持续 $time 秒"
+    //%blockNamespace=fightext_skill
+    //%group="Action"
+    //%group.loc.zh-CN="动作"
+    //%blockId=attackAction 
+    //%block="attack %p=variables_get(player) %atk=atkKind ||for $time s"
+    //%block.loc.zh-CN="攻击 %p=variables_get(player) %atk=atkKind ||持续 $time 秒"
     //%time.defl = 0
     //%inlineInputMode=inline
     //%weight=99

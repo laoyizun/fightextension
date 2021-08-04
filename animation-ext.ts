@@ -1,5 +1,6 @@
 //%icon="\uf008" color="#BCE190"
-namespace 动画{}//"\uf008" "\uf152"
+//%block="Fight Animations"
+//%block.loc.zh-CN="格斗动画"
 namespace fightext_animation {
 
     //=================== 动画 ===================
@@ -22,9 +23,11 @@ namespace fightext_animation {
     export let animations: { [key: string]: projectileAnimation; } = {}
 
     //%block
-    //%group="自定义动画"
-    //%blockNamespace=动画
-    //%blockId=defAnimation block="自定义动画集合"
+    //%blockNamespace="fightext_animation"
+    //%blockId=defAnimation 
+    //%block="define animations"
+    //%block.loc.zh-CN="自定义动画集合"
+    //%group=Definition
     //%weight=100
     //%afterOnStart=true
     export function defAnimation(f: () => void) {
@@ -33,9 +36,11 @@ namespace fightext_animation {
 
 
     //%block
-    //%group="自定义动画"
-    //%blockNamespace=动画
-    //%blockId=setAnimation block="自定义动画 %anim=animation_editor 命名为%name|| 每帧间隔%interval ms 下一动画%next"
+    //%blockNamespace=fightext_animation
+    //%blockId=setAnimation 
+    //%block="define animation %anim=animation_editor name %name|| interval %interval ms next animation %next"
+    //%block.loc.zh-CN="自定义动画 %anim=animation_editor 命名为%name|| 每帧间隔%interval ms 下一动画%next"
+    //%group=Definition
     //%weight=99
     //%interval.defl=100
     //%inlineInputMode=inline
@@ -48,12 +53,14 @@ namespace fightext_animation {
         animations[name] = animation
     }
 
-//%block
-//%group="自定义动画"
-//%blockNamespace=动画
-//%blockId=runAnimation block="%sprite=variables_get(projectile) 播放动画 %name|| 跟随%follow=toggleOnOff 循环播放%loop=toggleOnOff"
-//%weight=98
-//%inlineInputMode=inline
+    //%block
+    //%blockNamespace=fightext_animation
+    //%blockId=runAnimation 
+    //%block="play animation $name on %sprite=variables_get(projectile) || follow %follow=toggleOnOff loop %loop=toggleOnOff"
+    //%block.loc.zh-CN="%sprite=variables_get(projectile) 播放动画 %name || 跟随%follow=toggleOnOff 循环播放%loop=toggleOnOff" 
+    //%group="Run animations"
+    //%weight=98
+    //%inlineInputMode=inline
     export function runAnimation(sprite: Sprite, name: string, follow = false, loop = false) {
         let tsprite = _runAnimation(name, loop)
         if (tsprite == null) {
@@ -81,9 +88,11 @@ namespace fightext_animation {
     }
 
     //%block
-    //%group="自定义动画"
-    //%blockNamespace=动画
-    //%blockId=runAnimationAt block="播放动画 %name 在x%x y%y|| 循环播放%loop=toggleOnOff"
+    //%blockNamespace=fightext_animation
+    //%blockId=runAnimationAt 
+    //%block="play animation %name at x%x y%y|| loop %loop=toggleOnOff"
+    //%block.loc.zh-CN="播放动画 %name 在x%x y%y|| 循环播放%loop=toggleOnOff"
+    //%group="Run animations"
     //%weight=97
     //%inlineInputMode=inline
     export function runAnimationAt(name: string, x: number, y: number, loop = false) {
