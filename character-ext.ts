@@ -26,7 +26,7 @@ namespace fightext_character {
 
     //%block
     //%blockNamespace=fightext_character
-    //%group.loc.zh-CN="Custom Character"
+    //%group="Custom Fighter"
     //%group.loc.zh-CN="自定义人物"
     //%blockId=setPlayerStImage 
     //%block="set $p=variables_get(player) %k=stimgKind posture to  $img=screen_image_picker"
@@ -53,7 +53,7 @@ namespace fightext_character {
     }
     //%block
     //%blockNamespace=fightext_character
-    //%group.loc.zh-CN="Custom Character"
+    //%group="Custom Fighter"
     //%group.loc.zh-CN="自定义人物"
     //%blockId=setPlayerAtkImage 
     //%block="set $p=variables_get(player) %k=atkimgKind posture to $img=screen_image_picker attack part %atk=screen_image_picker""
@@ -83,7 +83,7 @@ namespace fightext_character {
 
     //%block
     //%blockNamespace=fightext_character
-    //%group.loc.zh-CN="Custom Character"
+    //%group="Custom Fighter"
     //%group.loc.zh-CN="自定义人物"
     //%blockId=setPlayerWalkImage
     //%block="set $p=variables_get(player) %k=aniKind $img=animation_editor ||interval %t ms"
@@ -112,7 +112,7 @@ namespace fightext_character {
 
     //%block
     //%blockNamespace=fightext_character
-    //%group.loc.zh-CN="Custom Character"
+    //%group="Custom Fighter"
     //%group.loc.zh-CN="自定义人物"
     //%blockId=setAbility 
     //%block="set %p=variables_get(player) attribute %k=abilityKind to %v"
@@ -258,10 +258,10 @@ namespace fightext_character {
 
     //%block
     //%blockNamespace=fightext_character
-    //%group="Custom Character"
+    //%group="Custom Fighter"
     //%group.loc.zh-CN="自定义人物"
     //%blockId=basicSet 
-    //%block="define character %img=screen_image_picker name %name"
+    //%block="define fighter %img=screen_image_picker name %name"
     //%block.loc.zh-CN="自定义人物 %img=screen_image_picker 命名为 %name"
     //%str.defl=SkillKind.A mp.defl=0
     //%weight=99
@@ -299,7 +299,7 @@ namespace fightext_character {
 
     //%block
     //%blockNamespace=fightext_skill
-    //%group="Actions"
+    //%group="Action"
     //%group.loc.zh-CN="动作"
     //%blockId=attackAction 
     //%block="attack %p=variables_get(player) %atk=atkKind ||for $time s"

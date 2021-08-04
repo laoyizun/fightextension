@@ -74,10 +74,10 @@ namespace fightext_skill {
 
     //%block
     //%blockNamespace=fightext_skill
-    //%group="Custom Skills"
+    //%group="Custom Skill"
     //%group.loc.zh-CN="技能设置"
     //%blockId=skillSet 
-    //%block="define skill of character %name"
+    //%block="define skill of fighter %name"
     //%block.loc.zh-CN="自定义人物 %name 技能"
     //%str.defl=SkillKind.A mp.defl=0
     //%weight=98
@@ -172,8 +172,8 @@ namespace fightext_skill {
     //%group="Temp Variable"
     //%group.loc.zh-CN="临时变量"
     //%blockId=updateTempVar 
-    //%block="change %t=variables_get(tempVar) of key %key by %val"
-    //%block.loc.zh-CN="以幅度 %val 修改临时变量 %t=variables_get(tempVar) %key"
+    //%block="change %tempVar=variables_get(tempVar) of key $key by $val"
+    //%block.loc.zh-CN="以幅度 %val 修改临时变量 %tempVar=variables_get(tempVar) $key"
     //%weight=89
     export function updateVar(val: number, tempVar: tempVarDic, key: string){
         tempVar.map[key] += val
@@ -187,11 +187,10 @@ namespace fightext_skill {
     //%group="Custom Skill"
     //%group.loc.zh-CN="技能设置"
     //%blockId=getSkill 
-    //%block="Skill %str=SkillKind of %player=variables_get(player) "
-    //%block.loc.zh-CN="%player=variables_get(player) 技能%str=SkillKind"
+    //%block="Skill $str=SkillKind of %player=variables_get(player)"
+    //%block.loc.zh-CN="%player=variables_get(player) 技能$str=SkillKind"
     //%weight=89
     export function getSkill(player: Character, str: SkillKind){
-        //%blockSetVariable=skill
         if(str == SkillKind.A){ //平A: A
             return new skill(player.skill0A.mp, player.skill0A.f)
         }else if(str == SkillKind.A1){ //反击: ⬇️+A
@@ -392,7 +391,6 @@ namespace fightext_skill {
 
         bullet.setKind(p.bulletkind)
         if(bullet.vx < 0 || bullet.vx == 0 && p.laspres == 1){
-            //bullet.vx = -bullet.vx
             bullet.dir = 1
         }
 
@@ -405,7 +403,7 @@ namespace fightext_skill {
         }
     }
 
-    // 反击，防御状态被攻击才能发出
+    
     //%blockNamespace=fightext_skill
     //%group="Specials"
     //%group.loc.zh-CN="特殊技能"
@@ -416,21 +414,23 @@ namespace fightext_skill {
     //%topblock=false
     //%handlerStatement=true
     export function counterAttack(p: Character, mp: number = 0, func: ()=>void){
+        // 反击，防御状态被攻击才能发出
         p.counterAttack(mp, func)
     }
 
-    // 自动攻击，暂停控制，按[下]退出
+    
     //%blockNamespace=fightext_skill
     //%group="Specials"
     //%group.loc.zh-CN="特殊技能"
     //%blockId=autoAttack 
-    //%block="%p=variables_get(player) auto attack interval %time mp %mp"
+    //%block="%p=variables_get(player) auto attack on interval %time s mp cost %mp"
     //%block.loc.zh-CN="(持续攻击) %p=variables_get(player) 每隔 %time 秒自动执行 消耗mp %mp"
     //%time.defl=0 mp.defl=0
     //%inlineInputMode=inline
     //% topblock=false
     //% handlerStatement=true
     export function autoAttack(p: Character, time: number, mp: number, func:()=>void){
+        // 自动攻击，暂停控制，按[下]退出
         p.autoAttack(time*1000, mp, func)
     }
 
