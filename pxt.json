@@ -20,14 +20,16 @@
         "projectile-ext.ts",
         "skill-ext.ts",
         "lang-ext.ts",
-        "assets.ts"
+        "assets.ts",
+        "tilemap.g.jres",
+        "tilemap.g.ts"
     ],
     "testFiles": [
         "example-ghost.ts",
         "example.ts"
     ],
     "targetVersions": {
-        "target": "1.5.33",
+        "target": "1.7.24",
         "targetId": "arcade"
     },
     "supportedTargets": [
