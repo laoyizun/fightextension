@@ -324,6 +324,16 @@ namespace playGame{
                     fighter_engine.overlap(player1, player2)
                     fighter_engine.handleAttackProjectileOverlaps()
 
+                    info.startCountdown(90)
+                    info.onCountdownEnd(function() {
+                        if (player1.statusbar.value > player2.statusbar.value) {
+                            game.splash("player1 wins!")
+                        } else {
+                            game.splash("player2 wins!")
+                        }
+                        game.reset()
+                    })
+
                     if (BATTLE_GROUND_ENABLE) {
                         tiles.setTilemap(tilemap`级别1`)
                         scene.centerCameraAt(80 + 24, 60)
