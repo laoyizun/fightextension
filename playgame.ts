@@ -2,6 +2,7 @@
 //%block="Fighter Game"
 //%block.loc.zh-CN="格斗游戏"
 namespace playGame{
+    export const BATTLE_GROUND_ENABLE = true
     export let characters :({character: fightext_character.CustomCharacter, name: string})[]
     let p1img = img`
         ffffff...................ffff...
@@ -318,9 +319,34 @@ namespace playGame{
                     clearInterval(interval)
                     clearInterval(splashDialogClock1)
                     clearInterval(splashDialogClock2)
-                    fighter_engine.overlap(chooseCharacter(fightext_character.PlayerKind.Player1, index1),
-                                chooseCharacter(fightext_character.PlayerKind.Player2, index2))
+                    let player1 = chooseCharacter(fightext_character.PlayerKind.Player1, index1)
+                    let player2 = chooseCharacter(fightext_character.PlayerKind.Player2, index2)
+                    fighter_engine.overlap(player1, player2)
                     fighter_engine.handleAttackProjectileOverlaps()
+
+                    info.startCountdown(90)
+                    info.onCountdownEnd(function() {
+                        if (player1.statusbar.value > player2.statusbar.value) {
+                            game.splash("player1 wins!")
+                        } else {
+                            game.splash("player2 wins!")
+                        }
+                        game.reset()
+                    })
+
+                    if (BATTLE_GROUND_ENABLE) {
+                        tiles.setTilemap(tilemap`级别1`)
+                        scene.centerCameraAt(80 + 24, 60)
+                        scene.onOverlapTile(SpriteKind.p1body, sprites.builtin.forestTiles10, function (sprite, location) {
+                            game.splash("player2 win!")
+                            game.reset()
+                        })
+                        scene.onOverlapTile(SpriteKind.p2body, sprites.builtin.forestTiles10, function (sprite, location) {
+                            game.splash("player1 win!")
+                            game.reset()
+                        })
+                    }
+                    
                 }
             }
             if(controller.player1.isPressed(ControllerButton.A) && clock1 != -2){

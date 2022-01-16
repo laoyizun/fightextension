@@ -6,6 +6,7 @@ namespace fighter_engine{
     import Character = fightext_character.Character;
     import PlayerKind = fightext_character.PlayerKind;
     export const PHYSICS_G = 200
+    export const BATTLE_GROUND_X_OFFSET = 32
 
     function handleCharacterProjectileOnDestroy(sprite: Sprite) {
         let b = <WaveSprite>sprite
@@ -62,10 +63,9 @@ namespace fighter_engine{
 
 //=================== 游戏初始化 ===================
     export function setPlayer(p: Character, kind: PlayerKind){
-        p.mySprite.setStayInScreen(true)
         if(kind == PlayerKind.Player1){
             p.player = controller.player1
-            p.mySprite.x = 5
+            p.mySprite.x = 16 + (playGame.BATTLE_GROUND_ENABLE?BATTLE_GROUND_X_OFFSET:0)
             p.mySprite.setKind(SpriteKind.p1body)
             p.bulletkind = SpriteKind.p1atk
             p.startusbarsOffset = -53
@@ -73,11 +73,14 @@ namespace fighter_engine{
         }
         else{
             p.player = controller.player2
-            p.mySprite.x = 155
+            p.mySprite.x = 128 + (playGame.BATTLE_GROUND_ENABLE ? BATTLE_GROUND_X_OFFSET : 0)   
             p.mySprite.setKind(SpriteKind.p2body)
             p.bulletkind = SpriteKind.p2atk
             p.startusbarsOffset = 53
             p.laspres = 1
+        }
+        if (!playGame.BATTLE_GROUND_ENABLE) {
+            p.mySprite.setStayInScreen(true)
         }
     }
 
