@@ -606,6 +606,7 @@ namespace fightext_projectile {
         bullet.dir = 2 //朝向 1->左，2->右
         bullet.attachOwner = false //所有者被攻击时自动销毁
         bullet.blastAnim = null //爆炸(销毁)动画
+        bullet.setFlag(SpriteFlag.DestroyOnWall, true) //碰到墙壁自动销毁
         bullet.noFlip = false //图像不随方向变化
     }
 
