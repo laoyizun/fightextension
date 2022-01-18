@@ -273,6 +273,14 @@ namespace fightext_character {
             this.mpbar.value = v
         }
 
+        isJumped() {
+            return this.jump != 0
+        }
+
+        canJump() {
+            return this.jump == 0 || this.jump == 1
+        }
+
         // 暂停控制
         stop () {
             this.move(0)
@@ -302,7 +310,7 @@ namespace fightext_character {
                     }
                 }
                 this.attack = 0
-                if(this.jump == 0){
+                if (!this.isJumped()){
                     this.mySprite.vx = 0
                     this.move(this.walkspeed)
                 }
@@ -311,7 +319,7 @@ namespace fightext_character {
         // 落地之后做某事
         toground(dosth: ()=>void){
             let f = false
-            if(this.jump == 1 && this.hitoverST == 1){ //受身
+            if(this.isJumped() && this.hitoverST == 1){ //受身
                 this.hitoverST = 0
                 this.hurted = 0
                 this.mySprite.setImage(this.quickst.clone())
@@ -448,12 +456,12 @@ namespace fightext_character {
             clearTimeout(this.hurtclock)
             this.hurtclock = -1
             this.stop()
-            if(kind >= this.hurtedimg.length || this.jump == 1){
+            if(kind >= this.hurtedimg.length || this.isJumped()){
                 this.mySprite.setImage(this.hitover.clone())
                 this.hits = -999
                 this.mySprite.vy = -pro.yspeed
                 this.mySprite.vx = dir ? pro.xspeed : -pro.xspeed
-                if(this.jump == 1){
+                if (this.isJumped()){
                     clearInterval(this.jumpclock)
                     this.jumpclock = -1
                     this.jump = 0
@@ -1278,7 +1286,7 @@ namespace fightext_character {
             if (this.attack != 0 || this.hurted > 0 && this.hitoverST == 0) {
                 return
             }
-            if (this.jump == 0) {
+            if (this.canJump()) {
                 clearTimeout(this.comboclock)
                 this.comboclock = -1
                 if(this.skill == 0 || this.skill == 8){
@@ -1294,7 +1302,7 @@ namespace fightext_character {
                     this.stand()
                 }
                 // 起跳后无法左右移动
-                this.jump = 1
+                this.jump += 1
                 this.stop()
                 if (this.leftDOWN == 1 || this.leftDOWN == -1) {
                     this.mySprite.vx = -this.walkspeed
@@ -1314,7 +1322,7 @@ namespace fightext_character {
         }
 
         rightdown(){
-            if (this.jump != 0 || (this.attack | this.hurted) != 0
+            if (this.isJumped() || (this.attack | this.hurted) != 0
                 || this.leftDOWN == 1 || this.leftDOWN == -1) {
                 if(this.attack == 0){
                     this.laspres = 2
@@ -1375,7 +1383,7 @@ namespace fightext_character {
             }
         }
         leftdown(){
-            if (this.jump != 0 || (this.attack | this.hurted) != 0
+            if (this.isJumped() || (this.attack | this.hurted) != 0
                 || this.rightDOWN == 1 || this.rightDOWN == -1) {
                 if(this.attack == 0){
                     this.laspres = 1
